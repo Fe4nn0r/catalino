@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { Link, Router } from "@reach/router";
+
+const Home = () => (
+  <div>
+    Home <Link to="/test">Go to test</Link>
+  </div>
+);
+const PageTest = () => (
+  <div>
+    Test <Link to="/">Back to home</Link>
+  </div>
+);
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Home path="/" />
+      <PageTest path="test" />
+    </Router>
   );
 }
 
