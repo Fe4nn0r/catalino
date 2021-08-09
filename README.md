@@ -2,11 +2,23 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## File structure
+
+### Banner library
+
+The banner library, that will be used to display banners on pre-existing web pages with a `<script>` tag is stored in the `lib/` folder.
+
+This folder will be bundled as a `.js` file using [https://rollupjs.org/guide/en/](Rollup)
+
+### Game module
+
+The game modules is a `create-react-app` application, the sources files are stored in the `src` folder.
+
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `yarn start`
+### `yarn start:app`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -20,6 +32,10 @@ Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### `yarn build`
+Launch the commands `yarn build:app` and `yarn:build:lib`.
+Note that `yarn:build:app` erases all content from the `build` folder, so any previous build of the library will be erased too
+
+### `yarn build:app`
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
@@ -28,6 +44,16 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `yarn build:lib`
+
+Bundles the library from the `lib` folder to the `build` folder.
+The `lib.js` file is meant to be used in a script tag, and will be invoked as an IIFE.
+
+### `yarn build:lib:watch`
+
+Watches changes in the `lib` folder and automatically re-build the lib
+
 
 ### `yarn eject`
 
