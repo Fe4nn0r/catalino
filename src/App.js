@@ -13,10 +13,13 @@ const PageTest = () => (
 
 function App() {
   return (
-    <Router>
-      <Home path="/" />
-      <PageTest path="test" />
-    </Router>
+    <>
+      <h1>{process.env.REACT_APP_BRAND_NAME}</h1>
+      <Router>
+        <Home path="/" />
+        <PageTest path="test" />
+      </Router>
+    </>
   );
 }
 
