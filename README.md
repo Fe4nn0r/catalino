@@ -18,13 +18,19 @@ The game modules is a `create-react-app` application, the sources files are stor
 
 In the project directory, you can run:
 
-### `yarn start:app`
+### `yarn start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
+
+### `yarn start:lib`
+
+Serves the `test_lib.html` file on a local url, usually [http://localhost:5000](http://localhost:5000)
+
+This URL won't auto refresh in case of changes either in the lib or in the html file.
 
 ### `yarn test`
 

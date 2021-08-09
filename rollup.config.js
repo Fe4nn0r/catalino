@@ -8,11 +8,13 @@ import dotenv from "rollup-plugin-dotenv";
 import pkg from "./package.json";
 
 const OUT = 'build/lib.js';
+const OUT_TEST_DIR = 'test_lib/lib.js';
 
 export default {
   input: "lib/index.js",
   output: [
     { file: OUT, format: "iife", name: "lib" },
+    { file: OUT_TEST_DIR, format: "iife", name: "lib" },
   ],
   plugins: [
     dotenv(),
@@ -28,7 +30,7 @@ export default {
       exclude: "node_modules/**",
       babelHelpers: "bundled",
     }),
-    del({ targets: [OUT] }),
+    del({ targets: [OUT, OUT_TEST_DIR] }),
   ],
   external: Object.keys(pkg.peerDependencies || {}),
 };

@@ -14,8 +14,9 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start:app": "react-scripts start",
+    "start": "react-scripts start",
     "build:app": "react-scripts build",
+    "start:lib": "npx serve test_lib",
     "build:lib": "rollup -c",
     "build:lib:watch": "rollup -c -w",
     "build": "npm run build:app && npm run build:lib",
