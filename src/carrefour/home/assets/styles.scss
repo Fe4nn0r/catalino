@@ -1,0 +1,51 @@
+.home-container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 10;
+  background: #efefef url("../../assets/bg.png") no-repeat center center fixed;
+
+  .go-to-game-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    .game-period {
+      color: gray;
+    }
+    .title {
+      font-weight: bold;
+      font-size: 60px;
+      margin: 10px;
+    }
+    .price {
+      margin: 10px;
+      font-size: 30px;
+      font-weight: bold;
+    }
+    .description {
+      width: 20%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 17px;
+      font-weight: bold;
+      text-align: center;
+    }
+    .play-button {
+      margin-top: 50px;
+      text-align: center;
+      border-radius: 30px;
+      width: 130px;
+      padding: 15px;
+      font-weight: bold;
+      font-size: 20px;
+      color: white;
+      background-color: #2196f3;
+    }
+  }
+}
