@@ -1,4 +1,5 @@
 import "./assets/styles.scss";
+import { Link } from "@reach/router";
 function Campaign() {
   return (
     <div className="go-to-game-container">
@@ -9,7 +10,9 @@ function Campaign() {
         <div className="description">
           Refunder for the purchase one of the eligible product
         </div>
-        <div className="play-button">Play</div>
+        <Link className="play-button" to="game">
+          Play
+        </Link>
       </div>
     </div>
   );

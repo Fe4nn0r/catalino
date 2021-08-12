@@ -1,2 +1,94 @@
 .game-container {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  height: 100vh;
+
+  .game-content {
+    position: relative;
+    z-index: 10;
+    margin: auto;
+    .slot-machine {
+      position: relative;
+      width: 750px;
+      height: 530px;
+      z-index: 10;
+      background: url("../../assets/slot-spot.png") no-repeat center;
+      .screen-container {
+        width: 100%;
+        height: 80%;
+      }
+      .play-button {
+        margin: auto;
+        text-align: center;
+        border-radius: 30px;
+        width: 160px;
+        padding: 15px;
+        font-weight: bold;
+        font-size: 22px;
+        color: #000000;
+        background-color: #ffffff;
+        cursor: pointer;
+      }
+    }
+
+    .slot-lever-support {
+      position: absolute;
+      width: 85px;
+      height: 80px;
+      top: 350px;
+      left: 710px;
+      z-index: 8;
+      background: url("../../assets/slot-lever-support.png") no-repeat center;
+      cursor: pointer;
+    }
+
+    .slot-lever {
+      position: absolute;
+      top: 26%;
+      left: 755px;
+      width: 13px;
+      height: 218px;
+      background-color: #7cabf9;
+      z-index: 5;
+      cursor: pointer;
+    }
+    .lever-slide {
+      animation: 0.4s linear 2 alternate lever-slide-frame;
+    }
+    @keyframes lever-slide-frame {
+      0% {
+        top: 26%;
+        height: 218px;
+        background-color: #7cabf9;
+      }
+      100% {
+        top: 69%;
+        height: 0px;
+        background-color: #567bb3;
+      }
+    }
+    .slot-hand {
+      position: absolute;
+      top: 23%;
+      left: 736px;
+      width: 52px;
+      height: 52px;
+      background-color: #023587;
+      border-radius: 50%;
+      z-index: 15;
+      cursor: pointer;
+    }
+    .hand-slide {
+      animation: 0.4s linear 2 alternate hand-slide-frame;
+    }
+    @keyframes hand-slide-frame {
+      0% {
+        top: 23%;
+      }
+      100% {
+        top: 69%;
+      }
+    }
+  }
 }
