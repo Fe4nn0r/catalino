@@ -5,7 +5,7 @@
   left: 0;
   top: 0;
   z-index: 10;
-  background: url("../../assets/spot.png") no-repeat center;
+  background: url("../../../assets/spot.png") no-repeat center;
 
   .go-to-game-content {
     display: flex;
@@ -30,6 +30,7 @@
 
     .title {
       width: 30%;
+      font-family: Righteous;
       font-style: normal;
       font-weight: normal;
       font-size: 60px;

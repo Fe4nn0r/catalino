@@ -8,15 +8,64 @@
     position: relative;
     z-index: 10;
     margin: auto;
+    .title {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      padding-top: 70px;
+      font-size: 28px;
+      font-style: normal;
+      font-weight: bold;
+      line-height: 30px;
+      text-align: center;
+      letter-spacing: 0.03em;
+      color: #ffffff;
+      text-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
+    }
     .slot-machine {
       position: relative;
       width: 750px;
       height: 530px;
       z-index: 10;
-      background: url("../../assets/slot-spot.png") no-repeat center;
+      background: url("../../../assets/slot-spot.png") no-repeat center;
       .screen-container {
-        width: 100%;
-        height: 80%;
+        margin: 50px auto 40px auto;
+        width: 591px;
+        height: 207px;
+        border-radius: 150px;
+        border: solid 12px #2b6cd6;
+        box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.7);
+        display: flex;
+        overflow: hidden;
+
+        .screen-column {
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+          width: 34%;
+          background-color: white;
+          border-left: solid 5px #2b6cd6;
+          justify-content: center;
+          align-items: center;
+          overflow: hidden;
+          img {
+            position: relative;
+            width: 85px;
+            height: 100px;
+            margin: 9px;
+          }
+          @keyframes spinIt {
+            from {
+              top: -100%;
+            }
+            to {
+              top: 130%;
+            }
+          }
+        }
+        .screen-column-first {
+          border-left: none;
+        }
       }
       .play-button {
         margin: auto;
@@ -30,6 +79,10 @@
         background-color: #ffffff;
         cursor: pointer;
       }
+      .disabled {
+        opacity: 0.5;
+        color: #787a7c;
+      }
     }
 
     .slot-lever-support {
@@ -39,7 +92,7 @@
       top: 350px;
       left: 710px;
       z-index: 8;
-      background: url("../../assets/slot-lever-support.png") no-repeat center;
+      background: url("../../../assets/slot-lever-support.png") no-repeat center;
       cursor: pointer;
     }
 

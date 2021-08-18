@@ -1,12 +1,13 @@
+import React from "react";
 import "./assets/styles.scss";
 import { Router } from "@reach/router";
-import Campaign from "../Campaign/Campaign";
 import Game from "../Game/Game";
+import Landing from "../Landing/Landing";
 function Home() {
   return (
     <div className="home-container">
       <Router>
-        <Campaign path="/" />
+        <Landing path="/" />
         <Game path="game" />
       </Router>
     </div>
