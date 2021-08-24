@@ -1,6 +1,6 @@
 @import "src/assets/screen-size";
 
-.lost-content {
+.not-allowed-content {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -18,10 +18,11 @@
     text-align: center;
     color: #ffffff;
     margin: auto;
+    width: 80%;
   }
   .description {
-    margin: 5% auto 13%;
-    padding: 2%;
+    margin: auto;
+    padding: 6% 0 8% 0;
     font-style: normal;
     font-weight: bold;
     font-size: 22px;
@@ -30,31 +31,9 @@
     letter-spacing: 0.02em;
     color: #ffffff;
     text-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
+    width: 70%;
   }
   .button-area {
     margin: auto;
-  }
-  .left-eye {
-    position: fixed;
-    left: 35%;
-    top: 45%;
-  }
-  .right-eye {
-    position: fixed;
-    right: 35%;
-    top: 45%;
-  }
-  .lips {
-    position: fixed;
-    right: 48%;
-    top: 69%;
-    width: 50px;
-    height: 10px;
-    border-radius: 30px;
-    background-color: black;
-    opacity: 0.3;
-    @media (max-height: $laptop-height) {
-      top: 74%;
-    }
   }
 }
