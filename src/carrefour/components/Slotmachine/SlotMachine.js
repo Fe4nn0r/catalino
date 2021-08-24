@@ -13,6 +13,7 @@ function SlotMachine({ content }) {
         <div className="slot-machine-lever" />
         <div className="slot-machine-hand" />
       </div>
+      <div className="shop-and-play-layer"></div>
     </div>
   );
 }

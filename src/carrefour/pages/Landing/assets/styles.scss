@@ -79,3 +79,16 @@
     }
   }
 }
+.shop-and-play-layer {
+  pointer-events: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 30;
+  background: url("../../../assets/background-layer.png") no-repeat center;
+  background-size: 1200px 600px;
+  @media (max-height: $laptop-height) {
+    bottom: 50px;
+    background-size: 1150px auto;
+  }
+}

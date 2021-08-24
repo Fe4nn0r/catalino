@@ -12,9 +12,7 @@ function Home() {
   return (
     <div className="home-container">
       <div className="logo">
-        <Link to="/">
-          <img src={carrefour} />
-        </Link>
+        <img src={carrefour} />
       </div>
       <Router>
         <Landing path="/" />

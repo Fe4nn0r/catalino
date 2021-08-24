@@ -10,7 +10,7 @@ const REDIRECTING_TIME = 800;
 
 function Game() {
   const [animated, setAnimated] = useState(false);
-  const [winner, setWinner] = useState(false);
+  const [winner, setWinner] = useState(true);
   const navigate = useNavigate();
   const [leverPulled] = useSound(leverSound);
 
@@ -75,6 +75,7 @@ function Game() {
           onClick={() => play()}
         />
       </div>
+      <div className="shop-and-play-layer" />
     </div>
   );
 }
