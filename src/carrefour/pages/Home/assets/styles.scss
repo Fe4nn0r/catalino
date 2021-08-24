@@ -5,10 +5,14 @@
   left: 0;
   top: 0;
   z-index: 10;
-  background: linear-gradient(
-      rgba(255, 255, 255, 0.5),
-      rgba(255, 255, 255, 0.5)
-    ),
-    url("../../../assets/bg.png") no-repeat center;
+  background-color: #e8f1fb;
   background-size: cover;
+  .logo {
+    width: 100%;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 3%;
+  }
 }

@@ -1,17 +1,28 @@
+import React, { useState } from "react";
 import "./assets/styles.scss";
+import Checkbox from "../../components/Checkbox/Checkbox";
+import Button from "../../components/Button/Button";
 import { Link } from "@reach/router";
+
 function Landing() {
+  const [agreed, setAgreed] = useState(false);
+
+  function agree() {
+    setAgreed(!agreed);
+  }
   return (
     <div className="go-to-game-container">
       <div className="go-to-game-content">
-        <div className="game-period"> FROM THE 1ST TO THE 30TH</div>
+        <div className="game-period"> From the 1st to the 30th</div>
         <div className="title">Try to win your basket</div>
         <div className="description">
-          Refunder for the purchase one of the eligible product
+          for the purchase of one eligible product
         </div>
-        <Link className="play-button" to="game">
-          Play
-        </Link>
+        <div className="agree">
+          <Checkbox checkAction={agree} />I agree with the{" "}
+          <Link to="game"> conditions </Link> of the game
+        </div>
+        <Button text="Play" enable={agreed} to={"/game"} />
       </div>
     </div>
   );
