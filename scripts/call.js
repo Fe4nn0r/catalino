@@ -4,6 +4,8 @@ var partner_key = "9589ba2c8fef6759f96a7c2726c7d8a0";
 var partner_secret = "3c1931161ae51ef1a168a82fe7f0eba3";
 var partner_id = 9;
 
+var bannerId = 'banner-promo-catalina';
+var classNameElementSearchElement = 'js-search-content';
 var xPath = {
     "homepage": "//*[@id=\"maincontent\"]/div[3]/div",
     "categories": "//div[contains(@class, 'product-grid js-search-content')]",
@@ -21,6 +23,7 @@ function addBanner(xPath, imgSrc, linkUrl) {
     var link = document.createElement("a");
     link.href = linkUrl;
     link.target = '_BLANK';
+    link.id = bannerId;
     var img = document.createElement("img");
     img.src = imgSrc
     img.style = 'width:100%;'
@@ -124,21 +127,18 @@ async function hideFunction() {
     document.getElementsByClassName("cart__footer")[0].remove();
 }
 
+function isShown() {
+    return !!document.getElementById(bannerId);
+}
 
-async function initCatalina() {
-    var pageview = findInDataLayer('homepage') || findInDataLayer('product_listing') || findInDataLayer('search');
-    const data = await httpGet(host + "/api/v1/ecommerce/offers?retailer_id=1", "/ecommerce/offers?retailer_id=1");
-    var codePromoArray = data[0].products.map(e => e.code);
-    console.log('data API : ', data);
-    console.log("products eligibles", codePromoArray);
+function showOrHideBanner(data, codePromoArray) {
+    if(isShown()) return;
 
     if(window.location.href === 'https://www.carrefour.it/') {
-        console.log('show banner home page');
         addBanner(xPath.homepage, data[0].picture_url, 'http://www.in-tact.fr');
     }
 
     if(window.location.href.startsWith('https://www.carrefour.it/spesa-online/')) {
-        console.log('is: ', isEligibleProductsInPage(codePromoArray));
         if(isEligibleProductsInPage(codePromoArray)) {
             console.log('show banner in category');
             addBanner(xPath.categories, data[0].picture_url, 'http://www.in-tact.fr');
@@ -151,6 +151,28 @@ async function initCatalina() {
             addBanner(xPath.search, data[0].picture_url, 'http://www.in-tact.fr');
         }
     }
+}
+
+async function initCatalina() {
+    var pageview = findInDataLayer('homepage') || findInDataLayer('product_listing') || findInDataLayer('search');
+    const data = await httpGet(host + "/api/v1/ecommerce/offers?retailer_id=1", "/ecommerce/offers?retailer_id=1");
+    var codePromoArray = data[0].products.map(e => e.code);
+    console.log('data API : ', data);
+    console.log("products eligibles", codePromoArray);
+
+    var target = document.getElementsByClassName(classNameElementSearchElement)[0];
+    if(target) {
+        var MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
+        var observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function (mutation) {
+                showOrHideBanner(data, codePromoArray);
+            });
+        });
+        var config = { attributes: true, childList: true, characterData: true };
+        observer.observe(target, config);
+    }
+
+    showOrHideBanner(data, codePromoArray);
 
 }
 async function initBennet() {
