@@ -1,7 +1,8 @@
 var dataLayer = window.dataLayer;
-var host = "https://uat-it.cwallet.couponnetwork.fr";
+var host = "https://cmfr-test.azure-api.net/s-a-p-test";
 var partner_key = "9589ba2c8fef6759f96a7c2726c7d8a0";
 var partner_secret = "3c1931161ae51ef1a168a82fe7f0eba3";
+var subscription_key = "2fb179f5556c471f8ea8ea9c77dd2e50";
 var partner_id = 9;
 
 var bannerId = 'banner-promo-catalina';
@@ -90,6 +91,7 @@ async function getHeaders(apiActionPath) {
         'X-Partner-Access-Token': partnerToken,
         'X-Cwallet-Partner-Id': partner_id,
         'X-Cwallet-Timestamp': timeStamp,
+        'Ocp-Apim-Subscription-Key' : subscription_key,
     };
     return header;
 }
@@ -155,7 +157,7 @@ function showOrHideBanner(data, codePromoArray) {
 
 async function initCatalina() {
     var pageview = findInDataLayer('homepage') || findInDataLayer('product_listing') || findInDataLayer('search');
-    const data = await httpGet(host + "/api/v1/ecommerce/offers?retailer_id=1", "/ecommerce/offers?retailer_id=1");
+    const data = await httpGet(host + "/ecommerce/offers?retailer_id=1", "/ecommerce/offers?retailer_id=1");
     var codePromoArray = data[0].products.map(e => e.code);
     console.log('data API : ', data);
     console.log("products eligibles", codePromoArray);
