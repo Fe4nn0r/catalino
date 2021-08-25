@@ -1,0 +1,39 @@
+@import "src/assets/screen-size";
+
+.not-allowed-content {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  .confetti {
+    position: fixed;
+    top: 0%;
+    left: 50%;
+  }
+  .title {
+    font-family: Righteous;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 52px;
+    line-height: 60px;
+    text-align: center;
+    color: #ffffff;
+    margin: auto;
+    width: 80%;
+  }
+  .description {
+    margin: auto;
+    padding: 6% 0 8% 0;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 30px;
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: #ffffff;
+    text-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
+    width: 70%;
+  }
+  .button-area {
+    margin: auto;
+  }
+}

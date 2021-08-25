@@ -1,0 +1,205 @@
+@import "src/assets/screen-size";
+
+.game-container {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  height: 100vh;
+  font-family: "Righteous";
+
+  .game-content {
+    position: relative;
+    z-index: 10;
+    margin: auto;
+
+    .title {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      padding-top: 70px;
+      font-size: 28px;
+      font-style: normal;
+      line-height: 30px;
+      text-align: center;
+      letter-spacing: 0.03em;
+      color: #ffffff;
+      text-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
+      @media (max-height: $laptop-height) {
+        padding-top: 100px;
+        font-size: 25px;
+      }
+    }
+
+    .slot-machine {
+      position: relative;
+      width: 750px;
+      height: 530px;
+      z-index: 10;
+      background: url("../../../assets/slot-spot.png") no-repeat center;
+      @media (max-height: $laptop-height) {
+        background-size: 600px auto;
+      }
+
+      .screen-container {
+        margin: 50px auto 40px auto;
+        width: 591px;
+        height: 207px;
+        border-radius: 150px;
+        border: solid 12px #2b6cd6;
+        box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.7);
+        display: flex;
+        overflow: hidden;
+        @media (max-height: $laptop-height) {
+          width: 500px;
+          height: 35%;
+          margin: 30px auto 20px auto;
+        }
+        .screen-column {
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+          width: 34%;
+          background-color: white;
+          border-left: solid 5px #2b6cd6;
+          justify-content: center;
+          align-items: center;
+          overflow: hidden;
+
+          img {
+            position: relative;
+            margin: 9px;
+            top: 25%;
+            user-select: none;
+          }
+
+          @keyframes spinIt {
+            from {
+              top: -200%;
+            }
+            to {
+              top: 200%;
+            }
+          }
+        }
+
+        .screen-column-first {
+          border-left: none;
+        }
+      }
+
+      .buttons-area {
+        display: flex;
+        margin-left: 38%;
+        .insert-coin {
+          display: flex;
+          margin-left: 4%;
+          margin-top: 1%;
+          width: 96px;
+          height: 37px;
+          background-color: #1c5ac2;
+          border-radius: 9px;
+          .coin-line {
+            margin: auto;
+            justify-items: center;
+            align-items: center;
+            width: 44px;
+            height: 0px;
+            border-radius: 9px;
+            border: 4px solid rgba(0, 0, 0, 0.4);
+          }
+        }
+      }
+    }
+
+    .slot-lever-support {
+      position: absolute;
+      width: 85px;
+      height: 80px;
+      top: 350px;
+      left: 710px;
+      z-index: 8;
+      background: url("../../../assets/slot-lever-support.png") no-repeat center;
+      cursor: pointer;
+      @media (max-height: $laptop-height) {
+        top: 310px;
+        left: 650px;
+      }
+    }
+
+    .slot-lever {
+      position: absolute;
+      top: 26%;
+      left: 755px;
+      width: 13px;
+      height: 218px;
+      background-color: #7cabf9;
+      z-index: 5;
+      cursor: pointer;
+      @media (max-height: $laptop-height) {
+        top: 25%;
+        left: 695px;
+        width: 12px;
+        height: 180px;
+      }
+    }
+
+    .lever-slide {
+      animation: 0.4s linear 2 alternate lever-slide-frame;
+    }
+
+    @keyframes lever-slide-frame {
+      0% {
+        top: 26%;
+        height: 218px;
+        background-color: #7cabf9;
+      }
+      100% {
+        top: 69%;
+        height: 0px;
+        background-color: #567bb3;
+      }
+    }
+
+    .slot-hand {
+      position: absolute;
+      top: 23%;
+      left: 736px;
+      width: 52px;
+      height: 52px;
+      background-color: #023587;
+      border-radius: 50%;
+      z-index: 15;
+      cursor: pointer;
+      @media (max-height: $laptop-height) {
+        left: 676px;
+      }
+    }
+
+    .hand-slide {
+      animation: 0.4s linear 2 alternate hand-slide-frame;
+    }
+
+    @keyframes hand-slide-frame {
+      0% {
+        top: 23%;
+      }
+      100% {
+        top: 69%;
+      }
+    }
+  }
+  .shop-and-play-layer {
+    pointer-events: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    opacity: 0.4;
+    background: url("../../../assets/background-layer.png") no-repeat center;
+    background-size: 1600px 800px;
+    @media (max-height: $laptop-height) {
+      bottom: 50px;
+      background-size: 1150px auto;
+    }
+  }
+}

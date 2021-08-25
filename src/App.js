@@ -1,4 +1,5 @@
-import Home from "./carrefour/home/Home";
+import React from "react";
+import Home from "./carrefour/pages/Home/Home";
 
 function App() {
   return (

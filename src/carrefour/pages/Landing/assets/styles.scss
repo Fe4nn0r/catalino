@@ -1,0 +1,94 @@
+@import "src/assets/screen-size";
+
+.go-to-game-container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 10;
+  background: url("../../../assets/spot.png") no-repeat center;
+  background-size: 539px 501px;
+  @media (max-height: $laptop-height) {
+    background-size: 500px auto;
+  }
+  .go-to-game-content {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    height: 100%;
+    max-width: 980px;
+    .game-period {
+      font-style: normal;
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 25px;
+      text-align: center;
+      letter-spacing: 0.02em;
+      opacity: 0.8;
+      text-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
+      padding-bottom: 20px;
+    }
+
+    .title {
+      width: 30%;
+      font-family: Righteous;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 49px;
+      line-height: 60px;
+      text-align: center;
+      color: #ffffff;
+    }
+
+    .price {
+      margin: 10px;
+      font-size: 30px;
+      font-weight: bold;
+    }
+
+    .description {
+      width: 30%;
+      padding: 2%;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 22px;
+      line-height: 30px;
+      text-align: center;
+      letter-spacing: 0.02em;
+      color: #ffffff;
+      text-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
+    }
+    .agree {
+      display: flex;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 13px;
+      line-height: 18px;
+      letter-spacing: 0.02em;
+      color: #a9c9ff;
+      margin-bottom: 20px;
+      a {
+        padding-left: 5px;
+        padding-right: 5px;
+        color: #a9c9ff;
+      }
+    }
+  }
+}
+.shop-and-play-layer {
+  pointer-events: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 30;
+  background: url("../../../assets/background-layer.png") no-repeat center;
+  background-size: 1200px 600px;
+  @media (max-height: $laptop-height) {
+    bottom: 50px;
+    background-size: 1150px auto;
+  }
+}

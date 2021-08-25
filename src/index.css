@@ -11,3 +11,18 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+@font-face {
+  font-family: "Righteous";
+  font-style: normal;
+  font-weight: normal;
+  src: url("assets/fonts/Righteous-Regular.ttf");
+}
+@font-face {
+  font-family: "Open sans";
+  font-style: normal;
+  font-weight: normal;
+  src: url("assets/fonts/OpenSans-Regular.ttf");
+}
+body {
+  font-family: "Open sans";
+}

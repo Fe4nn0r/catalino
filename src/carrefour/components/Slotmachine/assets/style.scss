@@ -1,0 +1,92 @@
+@import "src/assets/screen-size";
+
+.slot-machine-container {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  height: 100vh;
+  font-family: "Righteous";
+
+  .slot-machine-content {
+    position: relative;
+    z-index: 10;
+    margin: auto;
+
+    .slot-machine-screen {
+      display: flex;
+      position: relative;
+      width: 750px;
+      height: 530px;
+      z-index: 10;
+      background: url("../../../assets/slot-spot.png") no-repeat center;
+      @media (max-height: $laptop-height) {
+        background-size: 600px auto;
+      }
+      .slot-machine-screen-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .slot-machine-lever-support {
+      position: absolute;
+      width: 85px;
+      height: 80px;
+      top: 350px;
+      left: 710px;
+      z-index: 8;
+      background: url("../../../assets/slot-lever-support.png") no-repeat center;
+      @media (max-height: $laptop-height) {
+        top: 310px;
+        left: 650px;
+      }
+    }
+
+    .slot-machine-lever {
+      position: absolute;
+      top: 26%;
+      left: 755px;
+      width: 13px;
+      height: 218px;
+      background-color: #7cabf9;
+      z-index: 5;
+      @media (max-height: $laptop-height) {
+        top: 25%;
+        left: 695px;
+        width: 12px;
+        height: 180px;
+      }
+    }
+
+    .slot-machine-hand {
+      position: absolute;
+      top: 23%;
+      left: 736px;
+      width: 52px;
+      height: 52px;
+      background-color: #023587;
+      border-radius: 50%;
+      z-index: 15;
+      @media (max-height: $laptop-height) {
+        left: 676px;
+      }
+    }
+  }
+  .shop-and-play-layer {
+    pointer-events: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    opacity: 0.4;
+    background: url("../../../assets/background-layer.png") no-repeat center;
+    background-size: 1600px 800px;
+    @media (max-height: $laptop-height) {
+      bottom: 50px;
+      background-size: 1150px auto;
+    }
+  }
+}
