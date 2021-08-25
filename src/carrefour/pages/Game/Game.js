@@ -5,12 +5,13 @@ import leverSound from "../../../assets/sound/lever.mp3";
 import "./assets/styles.scss";
 import Screen from "./Screen";
 import Button from "../../components/Button/Button";
+import request from "../../../utils/request";
 
 const REDIRECTING_TIME = 800;
 
 function Game() {
   const [animated, setAnimated] = useState(false);
-  const [winner, setWinner] = useState(false);
+  const [winner, setWinner] = useState(true);
   const navigate = useNavigate();
   const [leverPulled] = useSound(leverSound);
 
@@ -18,6 +19,10 @@ function Game() {
     if (!animated) {
       leverPulled();
       setAnimated(true);
+      request("https://jsonplaceholder.typicode.com/todos/1").then((json) =>
+        console.log(json)
+      );
+
       setWinner(!winner);
     }
   }
