@@ -1,5 +1,4 @@
 var dataLayer = window.dataLayer;
-console.log('dataLayer', dataLayer);
 var host = "https://uat-it.cwallet.couponnetwork.fr";
 var partner_key = "9589ba2c8fef6759f96a7c2726c7d8a0";
 var partner_secret = "3c1931161ae51ef1a168a82fe7f0eba3";
@@ -36,7 +35,6 @@ function isEligibleProductsInPage(arrayIds) {
     var showBanner = false;
     arrayIds.forEach(id => {
         if([...list].map(e => e.dataset.pid).includes(id)) {
-            console.log('oui on affiche');
             showBanner = showBanner || true;
         }
     });
@@ -99,10 +97,7 @@ function crypToken(callback) {
 }
 function findInDataLayer(pageType) {
     var dl = dataLayer;
-    console.log('here');
     if (!(dl && dl.length)) return null;
-    console.log('here2');
-
     for (var i = dl.length - 1; i >= 0; i--) {
         if (dl[i].pageType === pageType) return dl[i];
     }
@@ -134,8 +129,7 @@ async function initCatalina() {
     var pageview = findInDataLayer('homepage') || findInDataLayer('product_listing') || findInDataLayer('search');
     const data = await httpGet(host + "/api/v1/ecommerce/offers?retailer_id=1", "/ecommerce/offers?retailer_id=1");
     var codePromoArray = data[0].products.map(e => e.code);
-    console.log(data);
-    console.log("pageview :", pageview);
+    console.log('data API : ', data);
     console.log("products eligibles", codePromoArray);
 
     if(window.location.href === 'https://www.carrefour.it/') {
