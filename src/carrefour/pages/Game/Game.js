@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "@reach/router";
 import useSound from "use-sound";
 import leverSound from "../../../assets/sound/lever.mp3";
 import "./assets/styles.scss";
 import Screen from "./Screen";
 import Button from "../../components/Button/Button";
-import request from "../../../utils/request";
+import { getWallet } from "../../../utils/catalinaRequests";
 
 const REDIRECTING_TIME = 800;
 
@@ -14,16 +14,28 @@ function Game() {
   const [winner, setWinner] = useState(true);
   const navigate = useNavigate();
   const [leverPulled] = useSound(leverSound);
+  useEffect(() => {
+    getWallet().then((results) => {
+      let lotteryId = 0;
+      if (results.lottery_rejected && results.lottery_rejected.length > 0) {
+        lotteryId = results.lottery_rejected[0].id;
+      }
+      if (
+        results.validated &&
+        results.validated.length > 0 &&
+        results.validated[0].id > lotteryId
+      ) {
+        setWinner(true);
+      } else {
+        setWinner(false);
+      }
+    });
+  }, []);
 
   function play() {
     if (!animated) {
       leverPulled();
       setAnimated(true);
-      request("https://jsonplaceholder.typicode.com/todos/1").then((json) =>
-        console.log(json)
-      );
-
-      setWinner(!winner);
     }
   }
 

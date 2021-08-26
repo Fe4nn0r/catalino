@@ -1,19 +1,41 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./assets/styles.scss";
 import Checkbox from "../../components/Checkbox/Checkbox";
 import Button from "../../components/Button/Button";
-import { Link } from "@reach/router";
+import { Link, useNavigate } from "@reach/router";
 import { useTranslation } from "react-i18next";
+import {
+  getCryptedAuthentification,
+  GetTokenOldDurtyWay,
+} from "../../../utils/catalinaRequests";
+import Loading from "../../components/Loading/Loading";
 
 function Landing() {
   const [t] = useTranslation("message");
   const [agreed, setAgreed] = useState(false);
+  const [allowed, setAllowed] = useState(false);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const body = {
+      retailer_id: 1,
+      holder_ref: "TQtBZxoTTk/HnDSVpBNVsw==",
+    };
+    getCryptedAuthentification(body)
+      .then(() => {
+        setAllowed(true);
+      })
+      .catch((err) => {
+        navigate("/can-not-play");
+      });
+  }, []);
 
   function agree() {
     setAgreed(!agreed);
   }
 
-  return (
+  return allowed ? (
     <>
       <div className="go-to-game-container">
         <div className="go-to-game-content">
@@ -31,6 +53,8 @@ function Landing() {
       </div>
       <div className="shop-and-play-layer" />
     </>
+  ) : (
+    <Loading />
   );
 }
 

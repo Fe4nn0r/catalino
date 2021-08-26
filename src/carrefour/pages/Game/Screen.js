@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 
 import "./assets/styles.scss";
-import ico1 from "../../assets/ico1.png";
-import ico2 from "../../assets/ico2.png";
-import ico3 from "../../assets/ico3.png";
-import ico4 from "../../assets/ico4.png";
-import ico5 from "../../assets/ico5.png";
-import ico6 from "../../assets/ico6.png";
-import ico7 from "../../assets/ico7.png";
-import ico8 from "../../assets/ico8.png";
-import ico9 from "../../assets/ico9.png";
-import icoWin from "../../assets/icoWin.png";
+import ico1 from "../../resources/assets/ico1.png";
+import ico2 from "../../resources/assets/ico2.png";
+import ico3 from "../../resources/assets/ico3.png";
+import ico4 from "../../resources/assets/ico4.png";
+import ico5 from "../../resources/assets/ico5.png";
+import ico6 from "../../resources/assets/ico6.png";
+import ico7 from "../../resources/assets/ico7.png";
+import ico8 from "../../resources/assets/ico8.png";
+import ico9 from "../../resources/assets/ico9.png";
+import icoWin from "../../resources/assets/icoWin.png";
 
 const DURATION = 5000;
 
