@@ -4,10 +4,7 @@ import Checkbox from "../../components/Checkbox/Checkbox";
 import Button from "../../components/Button/Button";
 import { Link, useNavigate } from "@reach/router";
 import { useTranslation } from "react-i18next";
-import {
-  getCryptedAuthentification,
-  GetTokenOldDurtyWay,
-} from "../../../utils/catalinaRequests";
+import { getCryptedAuthentication } from "../../../utils/catalinaRequests";
 import Loading from "../../components/Loading/Loading";
 
 function Landing() {
@@ -22,7 +19,7 @@ function Landing() {
       retailer_id: 1,
       holder_ref: "TQtBZxoTTk/HnDSVpBNVsw==",
     };
-    getCryptedAuthentification(body)
+    getCryptedAuthentication(body)
       .then(() => {
         setAllowed(true);
       })
