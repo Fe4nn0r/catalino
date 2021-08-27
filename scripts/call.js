@@ -7,11 +7,29 @@ var partner_id = 9;
 
 var bannerId = 'banner-promo-catalina';
 var classNameElementSearchElement = 'js-search-content';
-var xPath = {
-    "homepage": "//*[@id=\"maincontent\"]/div[3]/div",
-    "categories": "//div[contains(@class, 'product-grid js-search-content')]",
-    "search": "//div[contains(@class, 'product-grid js-search-content')]",
-};
+var config = [
+    {
+        name: 'homepage',
+        xpath: "//*[@id=\"maincontent\"]/div[3]/div",
+        condition:  (pageViewData) => {
+            return pageViewData.page_path === '/';
+        }
+    },
+    {
+        name: 'categories',
+        xpath: "//div[contains(@class, 'product-grid js-search-content')]",
+        condition:  (pageViewData, codePromoArray) => {
+           return  pageViewData.page_type === "product_listing" && isEligibleProductsInPage(codePromoArray)
+        }
+    },
+    {
+        name: 'search',
+        xpath: "//div[contains(@class, 'product-grid js-search-content')]",
+        condition:  (pageViewData, codePromoArray) => {
+            return pageViewData.page_type === "search" && isEligibleProductsInPage(codePromoArray);
+        }
+    },
+];
 
 function getElementByXpath(path) {
     return document.evaluate(path, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
@@ -32,6 +50,7 @@ function addBanner(xPath, imgSrc, linkUrl) {
 }
 
 function isEligibleProductsInPage(arrayIds) {
+    if(!arrayIds) return false;
     var list = document.querySelectorAll('[data-pid]');
     var showBanner = false;
     arrayIds.forEach(id => {
@@ -105,54 +124,42 @@ function isBannerShown() {
     return !!document.getElementById(bannerId);
 }
 
-function showOrHideBanner(data, codePromoArray, currentPage) {
-    if(isBannerShown()) return;
-    switch (currentPage) {
-        case 'homepage':
-            addBanner(xPath.homepage, data[0].picture_url, 'http://www.in-tact.fr');
-            break;
-        case 'product_listing':
-            if(isEligibleProductsInPage(codePromoArray)) {
-                console.log('show banner in category');
-                addBanner(xPath.categories, data[0].picture_url, 'http://www.in-tact.fr');
-            }
-            break;
-        case 'search' :
-            if(isEligibleProductsInPage(codePromoArray)) {
-                console.log('show banner in search');
-                addBanner(xPath.search, data[0].picture_url, 'http://www.in-tact.fr');
-            }
-            break;
-        default:
-            return ;
-    }
+function showOrHideBanner(data, pageViewData, codePromoArray ) {
+    config.forEach(currentConfig => {
+        if(isBannerShown()) return;
+        if(currentConfig.condition(pageViewData, codePromoArray)) {
+            addBanner(currentConfig.xpath, data[0].picture_url, 'http://www.in-tact.fr');
+            console.log('show banner : ', currentConfig.name);
+        }
+    });
+
 }
 
-function returnPageView () {
-    return dataLayer.map(e => e.page_type).filter(e => !!e)[0];
 
+function returnPageViewData () {
+    return dataLayer.filter(e => e.event === 'pageview')[0];
 }
 
 async function initCatalina() {
-    var pageview = returnPageView();
+    var pageViewData = returnPageViewData();
     const data = await httpGet(host + "/ecommerce/offers?retailer_id=1", "/ecommerce/offers?retailer_id=1");
     var codePromoArray = data[0].products.map(e => e.code);
     console.log('data API : ', data);
     console.log("products eligibles", codePromoArray);
-    console.log("pageView", pageview);
+    console.log("pageView", pageViewData);
     console.log('dataLayer', dataLayer);
 
     var target = document.getElementsByClassName(classNameElementSearchElement)[0];
     if(target) {
         var MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
         var observer = new MutationObserver(() => {
-            showOrHideBanner(data, codePromoArray, pageview);
+            showOrHideBanner(data, pageViewData, codePromoArray);
         });
         var config = { attributes: true, childList: true, characterData: true };
         observer.observe(target, config);
     }
 
-    showOrHideBanner(data, codePromoArray, pageview);
+    showOrHideBanner(data, pageViewData, codePromoArray);
 
 }
 
