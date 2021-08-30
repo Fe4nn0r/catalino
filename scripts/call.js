@@ -10,6 +10,8 @@ var classNameElementSearchElement = 'js-search-content';
 var config = [
     {
         name: 'homepage',
+        url: 'www.in-tact.fr',
+        style: 'width:100%;',
         xpath: "//*[@id=\"maincontent\"]/div[3]/div",
         condition:  (pageViewData) => {
             return pageViewData.page_path === '/';
@@ -17,6 +19,8 @@ var config = [
     },
     {
         name: 'categories',
+        url: 'www.in-tact.fr',
+        style: 'width:100%;',
         xpath: "//div[contains(@class, 'product-grid js-search-content')]",
         condition:  (pageViewData, codePromoArray) => {
            return  pageViewData.page_type === "product_listing" && isEligibleProductsInPage(codePromoArray)
@@ -24,9 +28,20 @@ var config = [
     },
     {
         name: 'search',
+        url: 'www.in-tact.fr',
+        style: 'width:100%;',
         xpath: "//div[contains(@class, 'product-grid js-search-content')]",
         condition:  (pageViewData, codePromoArray) => {
             return pageViewData.page_type === "search" && isEligibleProductsInPage(codePromoArray);
+        }
+    },
+    {
+        name: 'cart',
+        url: 'www.in-tact.fr',
+        style: 'width:100%;margin-top:10px;',
+        xpath: "//div[contains(@class, 'line-item-card-wrapper')]",
+        condition:  (pageViewData, codePromoArray) => {
+            return pageViewData.page_type === "checkout" && !!pageViewData.cart_listItem.split(',').filter(value => codePromoArray.includes(value)).length
         }
     },
 ];
@@ -35,14 +50,14 @@ function getElementByXpath(path) {
     return document.evaluate(path, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
 }
 
-function addBanner(xPath, imgSrc, linkUrl) {
+function addBanner(xPath, imgSrc, linkUrl, style) {
     var link = document.createElement("a");
     link.href = linkUrl;
     link.target = '_BLANK';
     link.id = bannerId;
     var img = document.createElement("img");
-    img.src = imgSrc
-    img.style = 'width:100%;'
+    img.src = imgSrc;
+    img.style = style;
     img.className = "banner-game";
     link.appendChild(img);
     var content = getElementByXpath(xPath);
@@ -128,8 +143,8 @@ function showOrHideBanner(data, pageViewData, codePromoArray ) {
     config.forEach(currentConfig => {
         if(isBannerShown()) return;
         if(currentConfig.condition(pageViewData, codePromoArray)) {
-            addBanner(currentConfig.xpath, data[0].picture_url, 'http://www.in-tact.fr');
-            console.log('show banner : ', currentConfig.name);
+            addBanner(currentConfig.xpath, data[0].picture_url, currentConfig.url, currentConfig.style);
+            console.log('show banner : ', currentConfig.name, currentConfig.style);
         }
     });
 
