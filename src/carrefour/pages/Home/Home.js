@@ -1,15 +1,14 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./assets/styles.scss";
-import { Link, navigate, Router, useNavigate } from "@reach/router";
+import { Link, Router } from "@reach/router";
 import Game from "../Game/Game";
 import Landing from "../Landing/Landing";
 import Footer from "../../components/Footer/Footer";
-import carrefour from "../../resources/assets/carrefour.png";
+import carrefour from "../../resources/assets/img/carrefour.png";
 import Win from "../Win/Win";
 import Lost from "../Lost/Lost";
 import CanNotPlay from "../NotAllowed/CanNotPlay";
 import AlreadyPlayed from "../NotAllowed/AlreadyPlayed";
-import { getCryptedAuthentification } from "../../../utils/catalinaRequests";
 import RefundIntro from "../Refund/RefundIntro";
 
 function Home() {

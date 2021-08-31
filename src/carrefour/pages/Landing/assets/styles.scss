@@ -1,4 +1,4 @@
-@import "src/assets/screen-size";
+@import "../../../resources/assets/styles/variables";
 
 .go-to-game-container {
   position: fixed;
@@ -7,7 +7,7 @@
   left: 0;
   top: 0;
   z-index: 10;
-  background: url("../../../resources/assets/spot.png") no-repeat center;
+  background: url("../../../resources/assets/img/spot.png") no-repeat center;
   background-size: 539px 501px;
   @media (max-height: $laptop-height) {
     background-size: 500px auto;
@@ -85,8 +85,8 @@
   width: 100%;
   height: 100%;
   z-index: 30;
-  background: url("../../../resources/assets/background-layer.png") no-repeat
-    center;
+  background: url("../../../resources/assets/img/background-layer.png")
+    no-repeat center;
   background-size: 1200px 600px;
   @media (max-height: $laptop-height) {
     bottom: 50px;

@@ -1,0 +1,15 @@
+form {
+  font-family: "Open sans";
+
+  input[type="text"] {
+    padding: 10px;
+    background-color: $color-primary;
+    border: none;
+    color: $color-secondary;
+    border-bottom: 2px solid transparentize($color-secondary, 0.7);
+    outline: none;
+    text-align: center;
+    font-size: 20px;
+    width: 75%;
+  }
+}

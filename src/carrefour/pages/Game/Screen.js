@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from "react";
 
 import "./assets/styles.scss";
-import ico1 from "../../resources/assets/ico1.png";
-import ico2 from "../../resources/assets/ico2.png";
-import ico3 from "../../resources/assets/ico3.png";
-import ico4 from "../../resources/assets/ico4.png";
-import ico5 from "../../resources/assets/ico5.png";
-import ico6 from "../../resources/assets/ico6.png";
-import ico7 from "../../resources/assets/ico7.png";
-import ico8 from "../../resources/assets/ico8.png";
-import ico9 from "../../resources/assets/ico9.png";
-import icoWin from "../../resources/assets/icoWin.png";
+import ico1 from "../../resources/assets/img/ico1.png";
+import ico2 from "../../resources/assets/img/ico2.png";
+import ico3 from "../../resources/assets/img/ico3.png";
+import ico4 from "../../resources/assets/img/ico4.png";
+import ico5 from "../../resources/assets/img/ico5.png";
+import ico6 from "../../resources/assets/img/ico6.png";
+import ico7 from "../../resources/assets/img/ico7.png";
+import ico8 from "../../resources/assets/img/ico8.png";
+import ico9 from "../../resources/assets/img/ico9.png";
+import icoWin from "../../resources/assets/img/icoWin.png";
 import useSound from "use-sound";
-import screenSound1 from "../../../assets/sound/Screen1.mp3";
-import screenSound2 from "../../../assets/sound/Screen2.mp3";
-import screenSound3 from "../../../assets/sound/Screen3.mp3";
+import screenSound1 from "../../resources/assets/sound/Screen1.mp3";
+import screenSound2 from "../../resources/assets/sound/Screen2.mp3";
+import screenSound3 from "../../resources/assets/sound/Screen3.mp3";
 
 const DURATION = 5000;
 

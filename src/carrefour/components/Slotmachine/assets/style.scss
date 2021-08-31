@@ -1,4 +1,4 @@
-@import "src/assets/screen-size";
+@import "../../../resources/assets/styles/variables";
 
 .slot-machine-container {
   display: flex;
@@ -18,7 +18,7 @@
       width: 750px;
       height: 530px;
       z-index: 10;
-      background: url("../../../resources/assets/slot-spot.png") no-repeat
+      background: url("../../../resources/assets/img/slot-spot.png") no-repeat
         center;
       @media (max-height: $laptop-height) {
         background-size: 600px auto;
@@ -39,7 +39,7 @@
       top: 350px;
       left: 710px;
       z-index: 8;
-      background: url("../../../resources/assets/slot-lever-support.png")
+      background: url("../../../resources/assets/img/slot-lever-support.png")
         no-repeat center;
       @media (max-height: $laptop-height) {
         top: 310px;
@@ -84,8 +84,8 @@
     height: 100%;
     z-index: 2;
     opacity: 0.4;
-    background: url("../../../resources/assets/background-layer.png") no-repeat
-      center;
+    background: url("../../../resources/assets/img/background-layer.png")
+      no-repeat center;
     background-size: 1600px 800px;
     @media (max-height: $laptop-height) {
       bottom: 50px;

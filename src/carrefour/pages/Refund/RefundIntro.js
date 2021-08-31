@@ -11,6 +11,9 @@ function RefundIntro() {
     return (
       <div className="refund-intro-content content">
         <div className="subtitle">{t("refund.intro.title")}</div>
+        <form action="">
+          <input type="text" />
+        </form>
         <div className="button-area">
           <Button text={t("refund.intro.btn")} enable to="/" />{" "}
         </div>
