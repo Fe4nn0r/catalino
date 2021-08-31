@@ -42,7 +42,7 @@ function Landing() {
   return allowed ? (
     <>
       <div className="go-to-game-container">
-        <div className="go-to-game-content">
+        <div className="go-to-game-content content">
           <div className="game-period"> {t("landing.gamePeriod")}</div>
           <div className="title">{t("landing.title")}</div>
           <div className="description">{t("landing.description")}</div>
