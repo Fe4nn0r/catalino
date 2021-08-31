@@ -5,10 +5,8 @@ import Button from "../../components/Button/Button";
 import { Link, useNavigate } from "@reach/router";
 import { useTranslation } from "react-i18next";
 import {
-  decript,
-  encryptWithKey,
-  generateCryptedHolderRef,
   getCryptedAuthentication,
+  getEncryptedHolderRef,
 } from "../../../utils/catalinaRequests";
 import Loading from "../../components/Loading/Loading";
 
@@ -20,12 +18,15 @@ function Landing() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log(encryptWithKey("1", "TQtBZxoTTk/HnDSVpBNVsw=="));
+    const offerId = 4318; //TODO : to be sent by the retaler website
+    const retailerId = 1; //TODO : to be sent by the retaler website
+    const holderRef = "2"; //TODO : to be sent by the retaler website
+    console.log(getEncryptedHolderRef(holderRef));
     const body = {
       retailer_id: 1,
-      holder_ref: "TQtBZxoTTk/HnDSVpBNVsw==",
+      holder_ref: getEncryptedHolderRef(holderRef),
     };
-    getCryptedAuthentication(body)
+    getCryptedAuthentication(body, retailerId, offerId, holderRef)
       .then(() => {
         setAllowed(true);
       })

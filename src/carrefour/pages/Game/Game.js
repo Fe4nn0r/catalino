@@ -8,41 +8,34 @@ import winSound from "../../../assets/sound/Win.mp3";
 import "./assets/styles.scss";
 import Screen from "./Screen";
 import Button from "../../components/Button/Button";
-import { getWallet } from "../../../utils/catalinaRequests";
+import { applyBasket, getWallet } from "../../../utils/catalinaRequests";
 
 const REDIRECTING_TIME = 800;
 
 function Game() {
   const [animated, setAnimated] = useState(false);
-  const [winner, setWinner] = useState(true);
+  let [winner, setWinner] = useState(false);
   const navigate = useNavigate();
   const [leverPulled] = useSound(leverSound, { volume: 0.05 });
   const [sliderPlay, { stop }] = useSound(sliderSound, { volume: 0 });
   const [winSoundPlay] = useSound(winSound, { volume: 0.3 });
 
   useEffect(() => {
-    getWallet().then((results) => {
-      let lotteryId = 0;
-      if (results.lottery_rejected && results.lottery_rejected.length > 0) {
-        lotteryId = results.lottery_rejected[0].id;
-      }
-      if (
-        results.validated &&
-        results.validated.length > 0 &&
-        results.validated[0].id > lotteryId
-      ) {
-        setWinner(true);
-      } else {
-        setWinner(false);
-      }
-    });
+    getWallet()
+      .then((isWinner) => {
+        leverPulled();
+        setAnimated(true);
+        sliderPlay();
+        setWinner(isWinner);
+        console.log("Winner", isWinner);
+      })
+      .catch((err) => {
+        navigate("/can-not-play");
+      });
   }, []);
 
   function play() {
     if (!animated) {
-      leverPulled();
-      setAnimated(true);
-      sliderPlay();
     }
   }
 
