@@ -18,10 +18,9 @@ function Landing() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const offerId = 4318; //TODO : to be sent by the retaler website
+    const offerId = 4318; //TODO : to be sent by the offerId website
     const retailerId = 1; //TODO : to be sent by the retaler website
-    const holderRef = "2"; //TODO : to be sent by the retaler website
-    console.log(getEncryptedHolderRef(holderRef));
+    const holderRef = "2"; //TODO : to be sent by the holderRef website
     const body = {
       retailer_id: 1,
       holder_ref: getEncryptedHolderRef(holderRef),
