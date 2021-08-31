@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "@reach/router";
 import useSound from "use-sound";
 import leverSound from "../../../assets/sound/lever.mp3";
-import sliderSound from "../../../assets/sound/slider.mp3";
 import winSound from "../../../assets/sound/Win.mp3";
 
 import "./assets/styles.scss";
@@ -11,19 +10,17 @@ import Button from "../../components/Button/Button";
 import { getWallet } from "../../../utils/catalinaRequests";
 
 const REDIRECTING_TIME = 800;
-
+const abort = true;
 function Game() {
   const [animated, setAnimated] = useState(false);
   let [winner, setWinner] = useState(false);
   let [isScreenFinished, setScreenFinished] = useState(false);
   const navigate = useNavigate();
   const [leverPulled] = useSound(leverSound, { volume: 0.05 });
-  const [sliderPlay, { stop }] = useSound(sliderSound, { volume: 0 });
   const [winSoundPlay] = useSound(winSound, { volume: 0.3 });
 
   useEffect(() => {
     if (isScreenFinished) {
-      stop();
       setTimeout(() => {
         if (winner) {
           winSoundPlay();
@@ -37,15 +34,15 @@ function Game() {
 
   function play() {
     if (!animated) {
+      leverPulled();
+      setAnimated(true);
       getWallet()
         .then((isWinner) => {
-          leverPulled();
-          setAnimated(true);
-          sliderPlay();
           setWinner(isWinner);
         })
         .catch((err) => {
-          navigate("/can-not-play");
+          //navigate("/can-not-play"); not used because the setTimeOut keeps running even after redirect
+          window.location.href = "/can-not-play";
         });
     }
   }
