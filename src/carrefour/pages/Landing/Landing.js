@@ -4,7 +4,12 @@ import Checkbox from "../../components/Checkbox/Checkbox";
 import Button from "../../components/Button/Button";
 import { Link, useNavigate } from "@reach/router";
 import { useTranslation } from "react-i18next";
-import { getCryptedAuthentication } from "../../../utils/catalinaRequests";
+import {
+  decript,
+  encryptWithKey,
+  generateCryptedHolderRef,
+  getCryptedAuthentication,
+} from "../../../utils/catalinaRequests";
 import Loading from "../../components/Loading/Loading";
 
 function Landing() {
@@ -15,6 +20,7 @@ function Landing() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    console.log(encryptWithKey("1", "TQtBZxoTTk/HnDSVpBNVsw=="));
     const body = {
       retailer_id: 1,
       holder_ref: "TQtBZxoTTk/HnDSVpBNVsw==",

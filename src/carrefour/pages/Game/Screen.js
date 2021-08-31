@@ -11,6 +11,10 @@ import ico7 from "../../resources/assets/ico7.png";
 import ico8 from "../../resources/assets/ico8.png";
 import ico9 from "../../resources/assets/ico9.png";
 import icoWin from "../../resources/assets/icoWin.png";
+import useSound from "use-sound";
+import screenSound1 from "../../../assets/sound/Screen1.mp3";
+import screenSound2 from "../../../assets/sound/Screen2.mp3";
+import screenSound3 from "../../../assets/sound/Screen3.mp3";
 
 const DURATION = 5000;
 
@@ -20,6 +24,9 @@ function Screen({ animate, speed, screenNumber, winner, onFinish }) {
   const [fruitStyle, setFruitStyle] = useState(defaultStyle);
   const [gameFinished, setGameFinished] = useState(false);
   const totalTime = DURATION + waitingTime * 5000;
+  const [screenSound1Play] = useSound(screenSound1, { volume: 0.1 });
+  const [screenSound2Play] = useSound(screenSound2, { volume: 0.1 });
+  const [screenSound3Play] = useSound(screenSound3, { volume: 0.1 });
 
   useEffect(() => {
     if (animate) {
@@ -27,6 +34,7 @@ function Screen({ animate, speed, screenNumber, winner, onFinish }) {
       setTimeout(() => {
         animateFruits(false);
         setGameFinished(true);
+        triggerSound();
         onFinish && onFinish();
       }, totalTime);
     }
@@ -43,6 +51,20 @@ function Screen({ animate, speed, screenNumber, winner, onFinish }) {
     setFruitStyle(newStyle);
   }
 
+  function triggerSound() {
+    switch (screenNumber) {
+      case 1:
+        screenSound1Play();
+        break;
+      case 2:
+        screenSound2Play();
+        break;
+      case 3:
+        screenSound3Play();
+        break;
+    }
+  }
+
   function getWaitingTime() {
     switch (screenNumber) {
       case 1:
@@ -50,7 +72,7 @@ function Screen({ animate, speed, screenNumber, winner, onFinish }) {
       case 2:
         return 0.2;
       case 3:
-        return 0.5;
+        return 0.4;
       default:
         return 0;
     }

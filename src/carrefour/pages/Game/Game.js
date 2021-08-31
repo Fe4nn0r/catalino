@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "@reach/router";
 import useSound from "use-sound";
 import leverSound from "../../../assets/sound/lever.mp3";
+import sliderSound from "../../../assets/sound/slider.mp3";
+import winSound from "../../../assets/sound/Win.mp3";
+
 import "./assets/styles.scss";
 import Screen from "./Screen";
 import Button from "../../components/Button/Button";
@@ -13,7 +16,10 @@ function Game() {
   const [animated, setAnimated] = useState(false);
   const [winner, setWinner] = useState(true);
   const navigate = useNavigate();
-  const [leverPulled] = useSound(leverSound);
+  const [leverPulled] = useSound(leverSound, { volume: 0.05 });
+  const [sliderPlay, { stop }] = useSound(sliderSound, { volume: 0 });
+  const [winSoundPlay] = useSound(winSound, { volume: 0.3 });
+
   useEffect(() => {
     getWallet().then((results) => {
       let lotteryId = 0;
@@ -36,12 +42,15 @@ function Game() {
     if (!animated) {
       leverPulled();
       setAnimated(true);
+      sliderPlay();
     }
   }
 
   function onScreenFinished() {
+    stop();
     setTimeout(() => {
       if (winner) {
+        winSoundPlay();
         navigate("/win");
       } else {
         navigate("/lost");

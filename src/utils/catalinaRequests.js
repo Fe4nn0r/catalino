@@ -78,3 +78,15 @@ async function getHeaders(apiActionPath, methodRest, dataLength) {
     "Access-Control-Allow-Origin": "*",
   };
 }
+
+export function generateCryptedHolderRef(holder_ref) {
+  const encodedWord = CryptoJS.enc.Utf8.parse(holder_ref); // encodedWord Array object
+  const encoded = CryptoJS.enc.Base64.stringify(encodedWord);
+  return encoded;
+}
+export function encryptWithKey(holder_ref) {
+  const encrypted = CryptoJS.AES.encrypt(holder_ref, partner_secret, {
+    mode: CryptoJS.mode.ECB,
+  });
+  return encrypted.toString(); // Ciphertext
+}
