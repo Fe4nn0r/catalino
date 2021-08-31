@@ -7,5 +7,11 @@
     "conditions": "conditions",
     "agreeP2": "of the game",
     "play": "Play"
+  },
+  "refund": {
+    "intro": {
+      "title": "Enter your email adress* below to be notified of the refund",
+      "btn": "Validate"
+    }
   }
 }

@@ -10,6 +10,7 @@ import Lost from "../Lost/Lost";
 import CanNotPlay from "../NotAllowed/CanNotPlay";
 import AlreadyPlayed from "../NotAllowed/AlreadyPlayed";
 import { getCryptedAuthentification } from "../../../utils/catalinaRequests";
+import RefundIntro from "../Refund/RefundIntro";
 
 function Home() {
   return (
@@ -26,6 +27,7 @@ function Home() {
         <Lost path="lost" />
         <CanNotPlay path="/can-not-play" />
         <AlreadyPlayed path="/already-played" />
+        <RefundIntro path="/refund-intro" />
       </Router>
       <Footer />
     </div>

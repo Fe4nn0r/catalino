@@ -1,6 +1,7 @@
 import React from "react";
 
 import "./assets/style.scss";
+import "../../resources/styles/generic.scss";
 
 function SlotMachine({ content }) {
   return (
