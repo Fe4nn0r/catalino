@@ -1,7 +1,7 @@
 import React from "react";
-
+import { useMediaQuery } from "react-responsive";
 import "./assets/style.scss";
-import sponsors from "./assets/images/sponsors.png";
+import sponsors from "../../resources/assets/img/sponsors.png";
 
 function Footer() {
   return (

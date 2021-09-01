@@ -12,6 +12,9 @@
   @media (max-height: $laptop-height) {
     background-size: 500px auto;
   }
+  @media (max-height: $smartphone-height) {
+    background-size: 470px auto;
+  }
   .go-to-game-content {
     display: flex;
     flex-direction: column;
@@ -20,7 +23,7 @@
     justify-content: center;
     margin: auto;
     height: 100%;
-    max-width: 980px;
+    max-width: 292px;
     .game-period {
       font-style: normal;
       font-weight: 600;
