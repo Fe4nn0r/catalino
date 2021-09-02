@@ -59,7 +59,12 @@ form {
     width: 75%;
     color: $color-light-primary;
     .checkbox {
-      width: 30px;
+      box-sizing: border-box;
+      width: 25px;
+      margin: 0;
+    }
+    a {
+      color: $color-light-primary;
     }
   }
 }

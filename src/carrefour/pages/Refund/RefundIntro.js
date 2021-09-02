@@ -49,8 +49,7 @@ function RefundIntro() {
             <Checkbox checkAction={agree} />
             <div>
               {t("refund.intro.agree")}
-              <Link to="/game"> {t("landing.conditions")} </Link>{" "}
-              {t("landing.agreeP2")}
+              <Link to="/conditions"> {t("refund.intro.agreeLink")} </Link>{" "}
             </div>
           </div>
           <div className="button-area">
