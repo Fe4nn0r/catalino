@@ -12,9 +12,21 @@
     "intro": {
       "title": "Enter your email adress* below to be notified of the refund",
       "label": "*Your email will be only used to inform you about the refund",
+      "error": "(The format of your email is incorrect)",
+      "errorRequest": "(A problem happened during the claim. Try again)",
       "btn": "Validate",
       "agree": "I agree that my data wil be used for reimbursement purpose in accordance with the ",
       "agreeLink": "general condition of use"
+    }
+  },
+  "win": {
+    "btn": "Claim your reward"
+  },
+  "success": {
+    "email": {
+      "title": "Thanks for your information",
+      "description": "You wining has been sent to Carrefour and will be validated depending on your effective order under 3 or 4 days",
+      "btn": "Go on Carrefour’s site"
     }
   }
 }

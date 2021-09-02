@@ -1,32 +1,39 @@
 import React, { useState } from "react";
-import "./assets/styles.scss";
 import SlotMachine from "../../components/Slotmachine/SlotMachine";
 import { useTranslation } from "react-i18next";
 import { useForm } from "react-hook-form";
 import Checkbox from "../../components/Checkbox/Checkbox";
-import { Link } from "@reach/router";
+import { Link, useNavigate } from "@reach/router";
+import { sendEmailForRefund } from "../../../utils/catalinaRequests";
 
 function RefundIntro() {
   const {
     register,
     handleSubmit,
-    setValue,
-    watch,
     formState: { isValid, errors },
   } = useForm({
     mode: "onChange",
     reValidateMode: "onChange",
   });
   const { t } = useTranslation("message");
+  const navigate = useNavigate();
 
   function onSubmit(data) {
-    console.log(data);
+    setRequestError(false);
+    sendEmailForRefund(data.email)
+      .then(() => {
+        navigate("/success-email");
+      })
+      .catch((err) => {
+        setRequestError(true);
+      });
   }
 
   function agree() {
     setAgreed(!agreed);
   }
   const [agreed, setAgreed] = useState(false);
+  const [requestError, setRequestError] = useState(false);
 
   function RefundIntroContent() {
     return (
@@ -34,6 +41,7 @@ function RefundIntro() {
         <div className="subtitle">{t("refund.intro.title")}</div>
         <form onSubmit={handleSubmit(onSubmit)}>
           <input
+            autoFocus={true}
             type="text"
             autoComplete="off"
             {...register("email", {
@@ -45,6 +53,18 @@ function RefundIntro() {
             })}
           />
           <label htmlFor="email">{t("refund.intro.label")}</label>
+
+          {errors.email && (
+            <label htmlFor="email" className="info">
+              {t("refund.intro.error")}
+            </label>
+          )}
+          {requestError && (
+            <label htmlFor="email" className="info">
+              {t("refund.intro.errorRequest")}
+            </label>
+          )}
+
           <div className="agree">
             <Checkbox checkAction={agree} />
             <div>

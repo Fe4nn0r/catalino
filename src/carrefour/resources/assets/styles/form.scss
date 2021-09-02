@@ -9,10 +9,14 @@ form {
     font-size: 13px;
     font-style: normal;
     font-weight: 400;
-    line-height: 18px;
+    line-height: 5px;
     text-align: center;
     margin-top: 12px;
     color: transparentize($color-secondary, 0.2);
+    &.info {
+      font-style: italic;
+      font-size: 11px;
+    }
   }
 
   input[type="text"] {
