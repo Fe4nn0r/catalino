@@ -11,7 +11,9 @@
   "refund": {
     "intro": {
       "title": "Enter your email adress* below to be notified of the refund",
-      "btn": "Validate"
+      "label": "*Your email will be only used to inform you about the refund",
+      "btn": "Validate",
+      "agree": "I agree that my data wil be used for reimbursement purpose in accordance with the general condition of use"
     }
   }
 }
