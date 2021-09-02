@@ -6,11 +6,19 @@
   align-items: center;
   height: 100vh;
   font-family: "Righteous";
+  @media (max-width: $smartphone-width) {
+    margin-top: 10%;
+    display: block;
+    height: 85vh;
+  }
 
   .game-content {
     position: relative;
     z-index: 10;
     margin: auto;
+    @media (max-width: $smartphone-width) {
+      position: inherit;
+    }
 
     .title {
       width: 100%;
@@ -25,8 +33,9 @@
       color: #ffffff;
       text-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
       @media (max-height: $laptop-height) {
-        padding-top: 100px;
         font-size: 25px;
+        margin-top: 12%;
+        padding: 0 25px;
       }
     }
 
@@ -40,7 +49,22 @@
       @media (max-height: $laptop-height) {
         background-size: 600px auto;
       }
-
+      @media (max-width: $smartphone-width) {
+        background: url("../../../resources/assets/img/slot-spot-mobile.png")
+          no-repeat center;
+        position: absolute;
+        width: 100%;
+        margin-bottom: 20%;
+      }
+      .description {
+        display: flex;
+        flex-direction: column;
+        padding: 0 0 5px;
+        font-size: 17px;
+        .or {
+          opacity: 0.5;
+        }
+      }
       .screen-container {
         margin: 50px auto 40px auto;
         width: 591px;
@@ -55,6 +79,12 @@
           height: 35%;
           margin: 30px auto 20px auto;
         }
+        @media (max-width: $smartphone-width) {
+          width: 350px;
+          height: 150px;
+          margin: 20px 0 20px 0;
+        }
+
         .screen-column {
           display: flex;
           flex-direction: column;
@@ -71,6 +101,9 @@
             margin: 9px;
             top: 25%;
             user-select: none;
+            @media (max-width: $smartphone-width) {
+              width: 70px;
+            }
           }
 
           @keyframes spinIt {
@@ -88,31 +121,43 @@
         }
       }
 
+      .shake-phone {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 5%;
+        @media (min-width: $smartphone-width) {
+          display: none;
+        }
+        img {
+          margin-left: 35%;
+        }
+        .insert-coin {
+          margin-left: 10%;
+        }
+      }
+
       .buttons-area {
         display: flex;
         margin-left: 38%;
+        @media (max-width: $smartphone-width) {
+          flex-direction: column;
+          margin: auto;
+          justify-content: center;
+          align-items: center;
+        }
+
         .insert-coin {
-          display: flex;
-          margin-left: 4%;
-          margin-top: 1%;
-          width: 96px;
-          height: 37px;
-          background-color: #1c5ac2;
-          border-radius: 9px;
-          .coin-line {
-            margin: auto;
-            justify-items: center;
-            align-items: center;
-            width: 44px;
-            height: 0px;
-            border-radius: 9px;
-            border: 4px solid rgba(0, 0, 0, 0.4);
+          @media (max-width: $smartphone-width) {
+            display: none;
           }
         }
       }
     }
 
     .slot-lever-support {
+      @media (max-width: $smartphone-width) {
+        display: none;
+      }
       position: absolute;
       width: 85px;
       height: 80px;
@@ -129,6 +174,9 @@
     }
 
     .slot-lever {
+      @media (max-width: $smartphone-width) {
+        display: none;
+      }
       position: absolute;
       top: 26%;
       left: 755px;
@@ -163,6 +211,9 @@
     }
 
     .slot-hand {
+      @media (max-width: $smartphone-width) {
+        display: none;
+      }
       position: absolute;
       top: 23%;
       left: 736px;
@@ -190,6 +241,7 @@
       }
     }
   }
+
   .shop-and-play-layer {
     pointer-events: none;
     position: fixed;
@@ -204,5 +256,32 @@
       bottom: 50px;
       background-size: 1150px auto;
     }
+    @media (max-width: $smartphone-width) {
+      background: url("../../../resources/assets/img/background-layer-mobile.png")
+        no-repeat;
+      position: absolute;
+      z-index: 1;
+      background-size: 100% 100%;
+    }
+  }
+}
+
+.insert-coin {
+  display: flex;
+  margin-left: 4%;
+  margin-top: 1%;
+  width: 96px;
+  height: 37px;
+  background-color: #1c5ac2;
+  border-radius: 9px;
+
+  .coin-line {
+    margin: auto;
+    justify-items: center;
+    align-items: center;
+    width: 44px;
+    height: 0px;
+    border-radius: 9px;
+    border: 4px solid rgba(0, 0, 0, 0.4);
   }
 }
