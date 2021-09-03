@@ -4,7 +4,7 @@ import { Link, Router } from "@reach/router";
 import Game from "../Game/Game";
 import Landing from "../Landing/Landing";
 import Footer from "../../components/Footer/Footer";
-import carrefour from "../../resources/assets/img/carrefour.png";
+import logo from "../../resources/assets/img/logo.png";
 import Win from "../Win/Win";
 import Lost from "../Lost/Lost";
 import CanNotPlay from "../NotAllowed/CanNotPlay";
@@ -20,7 +20,7 @@ function Home() {
     <div id="home-container">
       <div className="logo">
         <Link to="/">
-          <img src={carrefour} />
+          <img src={logo} />
         </Link>
       </div>
       <Router>

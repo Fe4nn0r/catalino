@@ -29,6 +29,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "start:bennet": "cp -r src/apps/bennet/resources src/shop/ && env-cmd -f ./src/apps/bennet/.env react-scripts start",
+    "start:carrefour": "cp -r src/apps/carrefour/resources src/shop/ && env-cmd -f ./src/apps/carrefour/.env react-scripts start",
     "build:app": "react-scripts build",
     "start:lib": "npx serve test_lib",
     "build:lib": "rollup -c",
@@ -64,6 +66,7 @@
     "@rollup/plugin-commonjs": "^20.0.0",
     "@rollup/plugin-node-resolve": "^13.0.4",
     "@rollup/plugin-replace": "^3.0.0",
+    "env-cmd": "^10.1.0",
     "husky": "^7.0.1",
     "lint-staged": "^11.1.2",
     "npm-run-all": "^4.1.5",

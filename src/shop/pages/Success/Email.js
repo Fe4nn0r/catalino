@@ -11,7 +11,13 @@ function SuccessEmail() {
         <div className="title">{t("success.email.title")}</div>
         <div className="subtitle">{t("success.email.description")}</div>
         <div className="button-area">
-          <Button text={t("success.email.btn")} enable to="/" />{" "}
+          <Button
+            text={t("success.email.btn")}
+            enable
+            doAction={() =>
+              (document.location = process.env.REACT_APP_HOME_SHOPPING_URL)
+            }
+          />
         </div>
       </div>
     );
