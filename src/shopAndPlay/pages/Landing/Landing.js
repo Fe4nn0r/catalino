@@ -5,7 +5,6 @@ import Button from "../../components/Button/Button";
 import { Link, useNavigate } from "@reach/router";
 import { useTranslation } from "react-i18next";
 import Moment from "moment";
-import appConfig from "../../resources/config/config.json";
 
 import {
   getCryptedAuthentication,
@@ -13,8 +12,9 @@ import {
   getOffer,
 } from "../../../utils/catalinaRequests";
 import Loading from "../../components/Loading/Loading";
+import { getDatesAndApplyApiConfiguration } from "../../../utils/appApiConfiguration";
 
-function Landing() {
+function Landing({ offerId, retailerId, holderRef }) {
   const [t] = useTranslation("message");
   const [agreed, setAgreed] = useState(false);
   const [allowed, setAllowed] = useState(false);
@@ -24,9 +24,6 @@ function Landing() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const offerId = 4318; //TODO : to be sent by the offerId website
-    const retailerId = 1; //TODO : to be sent by the retaler website
-    const holderRef = "2"; //TODO : to be sent by the holderRef website
     const body = {
       retailer_id: 1,
       holder_ref: getEncryptedHolderRef(holderRef),
@@ -36,10 +33,9 @@ function Landing() {
         getOffer(offerId)
           .then((offer) => {
             Moment.locale();
-            setStartDate(getDate(offer.started_at));
-            setEndDate(getDate(offer.ended_at));
-            document.getElementById("home-container").style.backgroundColor =
-              "#e8f1fb"; //offer.background_color;
+            const gameDates = getDatesAndApplyApiConfiguration(offer);
+            setStartDate(gameDates.startDate);
+            setEndDate(gameDates.endDate);
             setAllowed(true);
           })
           .catch((err) => {
@@ -51,12 +47,10 @@ function Landing() {
       });
   }, []);
 
-  function getDate(date) {
-    return Moment(date).format(appConfig.dateFormat);
-  }
   function agree() {
     setAgreed(!agreed);
   }
+
   return allowed ? (
     <>
       <div className="go-to-game-container">

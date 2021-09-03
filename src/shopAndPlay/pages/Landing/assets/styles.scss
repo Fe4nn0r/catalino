@@ -11,17 +11,15 @@
     center;
   @media (max-width: $smartphone-width) {
     background: url("../../../resources/assets/img/spot.png") no-repeat center;
+    position: inherit;
+    height: 500px;
+    margin-bottom: 20%;
   }
   @media (max-height: $laptop-height) {
     background-size: 530px auto;
   }
   @media (max-width: $smartphone-width) and (max-height: $iphone-x-height) {
     background-size: 470px auto;
-  }
-  @media (max-width: $smartphone-width) {
-    position: inherit;
-    height: 500px;
-    margin-bottom: 20%;
   }
   .go-to-game-content {
     row-gap: inherit;

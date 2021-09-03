@@ -2,5 +2,6 @@
   "celebrationConfig": {
     "colors": ["#EED900", "#EED900", "#2E70DE", "#7ABA94", "#FF4B4B", "#FFAB94"]
   },
-  "dateFormat": "DD-MM-YYYY"
+  "dateFormat": "DD-MM-YYYY",
+  "homePageId": "home-container"
 }

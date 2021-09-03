@@ -13,6 +13,9 @@ import RefundIntro from "../Refund/RefundIntro";
 import SuccessEmail from "../Success/Email";
 
 function Home() {
+  const offerId = 4318; //TODO : to be sent by the offerId website
+  const retailerId = 1; //TODO : to be sent by the retaler website
+  const holderRef = "2"; //TODO : to be sent by the holderRef website
   return (
     <div id="home-container">
       <div className="logo">
@@ -21,7 +24,12 @@ function Home() {
         </Link>
       </div>
       <Router>
-        <Landing path="/" />
+        <Landing
+          offerId={offerId}
+          retailerId={retailerId}
+          holderRef={holderRef}
+          path="/"
+        />
         <Game path="game" />
         <Win path="win" />
         <Lost path="lost" />

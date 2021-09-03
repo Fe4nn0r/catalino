@@ -37,7 +37,7 @@ function RefundIntro() {
 
   function RefundIntroContent() {
     return (
-      <div className="refund-intro-content content">
+      <div className="content">
         <div className="subtitle">{t("refund.intro.title")}</div>
         <form onSubmit={handleSubmit(onSubmit)}>
           <input
