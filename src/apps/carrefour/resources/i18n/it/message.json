@@ -20,6 +20,8 @@
     }
   },
   "win": {
+    "title": "Well done, you won !",
+    "description": "You winning will be paid into your Carrefour fidelity account",
     "btn": "Claim your reward"
   },
   "success": {

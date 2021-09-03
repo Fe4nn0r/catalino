@@ -46,7 +46,7 @@
         width: 591px;
         height: 207px;
         border-radius: 150px;
-        border: solid 12px #2b6cd6;
+        border: solid 12px $color-machine-border;
         box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.7);
         display: flex;
         overflow: hidden;
@@ -61,7 +61,7 @@
           height: 100%;
           width: 34%;
           background-color: white;
-          border-left: solid 5px #2b6cd6;
+          border-left: solid 5px $color-machine-border;
           justify-content: center;
           align-items: center;
           overflow: hidden;
@@ -97,7 +97,7 @@
           margin-top: 1%;
           width: 96px;
           height: 37px;
-          background-color: #1c5ac2;
+          background-color: #00000047;
           border-radius: 9px;
           .coin-line {
             margin: auto;
@@ -134,7 +134,7 @@
       left: 755px;
       width: 13px;
       height: 218px;
-      background-color: #7cabf9;
+      background-color: $color-machine-levier;
       z-index: 5;
       cursor: pointer;
       @media (max-height: $laptop-height) {
@@ -153,12 +153,12 @@
       0% {
         top: 26%;
         height: 218px;
-        background-color: #7cabf9;
+        background-color: $color-machine-levier;
       }
       100% {
         top: 69%;
         height: 0px;
-        background-color: #567bb3;
+        background-color: darken($color-machine-levier, 30%);
       }
     }
 
@@ -168,7 +168,7 @@
       left: 736px;
       width: 52px;
       height: 52px;
-      background-color: #023587;
+      background-color: $color-machine-head;
       border-radius: 50%;
       z-index: 15;
       cursor: pointer;

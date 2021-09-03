@@ -20,13 +20,15 @@
     }
   },
   "win": {
+    "title": "Well done, you won !",
+    "description": "You winning will be paid into your Bennet fidelity account",
     "btn": "Claim your reward"
   },
   "success": {
     "email": {
       "title": "Thanks for your information",
-      "description": "You wining has been sent to Carrefour and will be validated depending on your effective order under 3 or 4 days",
-      "btn": "Go on Carrefour’s site"
+      "description": "You wining has been sent to Bennet and will be validated depending on your effective order under 3 or 4 days",
+      "btn": "Go on Bennet’s site"
     }
   }
 }

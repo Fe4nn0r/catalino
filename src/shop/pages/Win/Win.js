@@ -37,10 +37,8 @@ function Win() {
         <div className="confetti">
           <Confetti active={hurray} config={config} />
         </div>
-        <div className="title">Well done, you won !</div>
-        <div className="description">
-          Your winning will be paid into your Carrefour fidelity account
-        </div>
+        <div className="title">{t("win.title")}</div>
+        <div className="description">{t("win.description")}</div>
         <div className="button-area">
           <Button text={t("win.btn")} enable to="/refund-intro" />{" "}
         </div>
