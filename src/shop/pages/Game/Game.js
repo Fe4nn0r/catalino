@@ -42,7 +42,7 @@ function Game() {
           leverPulled();
           setAnimated(true);
           sliderPlay();
-          setWinner(true);
+          setWinner(isWinner);
         })
         .catch((err) => {
           navigate("/can-not-play");
