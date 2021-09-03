@@ -37,10 +37,10 @@ function Game() {
 
   function play() {
     if (!animated) {
+      leverPulled();
+      setAnimated(true);
       getWallet()
         .then((isWinner) => {
-          leverPulled();
-          setAnimated(true);
           setWinner(isWinner);
         })
         .catch((err) => {

@@ -4,6 +4,9 @@ import Checkbox from "../../components/Checkbox/Checkbox";
 import Button from "../../components/Button/Button";
 import { Link, useNavigate } from "@reach/router";
 import { useTranslation } from "react-i18next";
+import Moment from "moment";
+import appConfig from "../../resources/config/config.json";
+
 import {
   getCryptedAuthentication,
   getEncryptedHolderRef,
@@ -32,8 +35,9 @@ function Landing() {
       .then(() => {
         getOffer(offerId)
           .then((offer) => {
-            setStartDate(offer.started_at);
-            setEndDate(offer.ended_at);
+            Moment.locale();
+            setStartDate(getDate(offer.started_at));
+            setEndDate(getDate(offer.ended_at));
             document.getElementById("home-container").style.backgroundColor =
               "#e8f1fb"; //offer.background_color;
             setAllowed(true);
@@ -47,10 +51,12 @@ function Landing() {
       });
   }, []);
 
+  function getDate(date) {
+    return Moment(date).format(appConfig.dateFormat);
+  }
   function agree() {
     setAgreed(!agreed);
   }
-  function changeBackground(background_color) {}
   return allowed ? (
     <>
       <div className="go-to-game-container">

@@ -4,7 +4,6 @@ import "./assets/style.scss";
 function Footer() {
   return (
     <div className="footer">
-      <div className="sponsors"></div>
       <div className="options">
         <p>Help (FAQ)</p>
         <p>General conditions</p>
