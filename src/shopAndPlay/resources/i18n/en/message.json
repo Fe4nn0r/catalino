@@ -1,6 +1,6 @@
 {
   "landing": {
-    "gamePeriod": "From the 1st to the 30th",
+    "gamePeriod": "From {{start}} to {{end}}",
     "title": "Try to win your basket",
     "description": "for the purchase of one eligible product",
     "agreeP1": "I agree with the",

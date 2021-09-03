@@ -1,12 +1,12 @@
 @import "../../../resources/assets/styles/variables";
 
-.home-container {
+#home-container {
   width: 100vw;
   height: 100vh;
   left: 0;
   top: 0;
   z-index: 10;
-  background-color: #e8f1fb;
+  background-color: $background-color;
   background-size: cover;
   @media (max-width: $smartphone-width) {
     height: auto;

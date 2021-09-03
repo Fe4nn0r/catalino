@@ -54,6 +54,7 @@ export default function request(url, callOptions = null) {
     {
       headers: {},
       mode: "cors",
+      crossDomain: true,
       // credentials: 'include',
     },
     callOptions

@@ -19,13 +19,11 @@ function Game() {
   let [isScreenFinished, setScreenFinished] = useState(false);
   const navigate = useNavigate();
   const [leverPulled] = useSound(leverSound, { volume: 0.05 });
-  const [sliderPlay, { stop }] = useSound(sliderSound, { volume: 0 });
   const [winSoundPlay] = useSound(winSound, { volume: 0.3 });
   const isMobile = useMediaQuery({ query: "(max-width: 414px)" });
 
   useEffect(() => {
     if (isScreenFinished) {
-      stop();
       setTimeout(() => {
         if (winner) {
           winSoundPlay();
@@ -43,7 +41,6 @@ function Game() {
         .then((isWinner) => {
           leverPulled();
           setAnimated(true);
-          sliderPlay();
           setWinner(isWinner);
         })
         .catch((err) => {

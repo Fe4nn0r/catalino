@@ -14,7 +14,7 @@ import SuccessEmail from "../Success/Email";
 
 function Home() {
   return (
-    <div className="home-container">
+    <div id="home-container">
       <div className="logo">
         <Link to="/">
           <img src={carrefour} />

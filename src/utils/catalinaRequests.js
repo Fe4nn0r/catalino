@@ -1,7 +1,7 @@
 import CryptoJS from "crypto-js";
 import request from "./request";
 
-const apiHost = "https://cmfr-test.azure-api.net/s-a-p-test/";
+const apiHost = "https://uat-it.cwallet.couponnetwork.fr/api/v1/";
 const partner_key = "9589ba2c8fef6759f96a7c2726c7d8a0";
 const partner_secret = "3c1931161ae51ef1a168a82fe7f0eba3";
 const partner_id = 9;
@@ -21,12 +21,10 @@ export function getCryptedAuthentication(body, retailerId, offerId, holderRef) {
     localStorage.setItem("Authorization", result.access_token);
   });
 }
-//to dev
-export function getOffer() {
-  return httpGet(
-    apiHost + "/members/" + localStorage.getItem("memberId") + "/wallet",
-    "/members/" + localStorage.getItem("memberId") + "/wallet"
-  ).then((results) => {});
+
+export function getOffer(offerId) {
+  const actionPath = "/offers/" + offerId;
+  return httpGet(apiHost + actionPath, actionPath);
 }
 
 export async function applyBasket() {

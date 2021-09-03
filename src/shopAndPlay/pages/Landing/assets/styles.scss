@@ -39,7 +39,7 @@
     .game-period {
       font-style: normal;
       font-weight: 600;
-      font-size: 18px;
+      font-size: 17px;
       line-height: 25px;
       text-align: center;
       letter-spacing: 0.02em;
@@ -93,7 +93,7 @@
     background: url("../../../resources/assets/img/background-layer-mobile.png")
       no-repeat;
     position: absolute;
-    top: 60px;
+    top: 30px;
     background-size: 100% 100%;
   }
   @media (max-width: $smartphone-width) and (min-height: $smartphone-height) and (max-height: $iphone-x-height) {
