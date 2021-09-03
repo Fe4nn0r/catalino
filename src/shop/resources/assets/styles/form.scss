@@ -46,12 +46,13 @@ form {
     font-size: 22px;
     line-height: 27px;
     text-transform: uppercase;
-    color: #2e70de;
+    color: $color-primary;
     min-width: 160px;
     text-decoration: none;
     border: none;
     &:disabled,
     &[disabled] {
+      color: $color-grey;
       pointer-events: none;
     }
   }
@@ -62,12 +63,14 @@ form {
     margin-top: 51px;
     font-size: 13px;
     width: 75%;
+    color: $color-light-primary;
     .checkbox {
       box-sizing: border-box;
       width: 25px;
       margin: 0;
     }
     a {
+      color: $color-light-primary;
     }
   }
 }
