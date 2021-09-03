@@ -21,6 +21,9 @@
     @media (max-width: $smartphone-width) {
       position: inherit;
       padding-top: 10%;
+      img {
+        width: 65px;
+      }
     }
   }
 }

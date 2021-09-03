@@ -19,7 +19,7 @@ import screenSound3 from "../../resources/assets/sound/Screen3.mp3";
 const DURATION = 5000;
 
 function Screen({ animate, speed, screenNumber, winner, onFinish }) {
-  const defaultStyle = { top: "25%" };
+  const defaultStyle = { top: "30%" };
   let waitingTime = getWaitingTime();
   const [fruitStyle, setFruitStyle] = useState(defaultStyle);
   const [gameFinished, setGameFinished] = useState(false);

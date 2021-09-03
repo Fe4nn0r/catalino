@@ -11,13 +11,22 @@ export function getCryptedAuthentication(body, retailerId, offerId, holderRef) {
   localStorage.setItem("retailerId", retailerId);
   localStorage.setItem("holderRef", holderRef);
   localStorage.setItem("offerId", offerId);
-  const cryptedAuthUrl = apiHost + "members/crypted_authentication";
-  return httpPost(cryptedAuthUrl, "/members/crypted_authentication", body).then(
-    (result) => {
-      localStorage.setItem("memberId", result.id);
-      localStorage.setItem("Authorization", result.access_token);
-    }
-  );
+  const encryptedAuthUrl = apiHost + "members/crypted_authentication";
+  return httpPost(
+    encryptedAuthUrl,
+    "/members/crypted_authentication",
+    body
+  ).then((result) => {
+    localStorage.setItem("memberId", result.id);
+    localStorage.setItem("Authorization", result.access_token);
+  });
+}
+
+export function getOffer() {
+  return httpGet(
+    apiHost + "/members/" + localStorage.getItem("memberId") + "/wallet",
+    "/members/" + localStorage.getItem("memberId") + "/wallet"
+  ).then((results) => {});
 }
 
 export async function applyBasket() {
@@ -113,8 +122,7 @@ async function getHeaders(apiActionPath, methodRest, dataLength) {
 
 export function generateCryptedHolderRef(holder_ref) {
   const encodedWord = CryptoJS.enc.Utf8.parse(holder_ref); // encodedWord Array object
-  const encoded = CryptoJS.enc.Base64.stringify(encodedWord);
-  return encoded;
+  return CryptoJS.enc.Base64.stringify(encodedWord);
 }
 
 export function getEncryptedHolderRef(holder_ref) {

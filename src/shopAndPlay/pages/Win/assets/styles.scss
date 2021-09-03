@@ -1,3 +1,5 @@
+@import "../../../resources/assets/styles/variables";
+
 .win-content {
   display: flex;
   justify-content: center;
@@ -8,7 +10,6 @@
     left: 50%;
   }
   .title {
-    width: 50%;
     font-family: Righteous;
     font-style: normal;
     font-weight: normal;
@@ -17,6 +18,10 @@
     text-align: center;
     color: #ffffff;
     margin: auto;
+    @media (max-width: $smartphone-width) {
+      font-size: 50px;
+      width: 70%;
+    }
   }
   .description {
     margin: 5% auto;
@@ -29,6 +34,10 @@
     letter-spacing: 0.02em;
     color: #ffffff;
     text-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
+    @media (max-width: $smartphone-width) {
+      width: 90%;
+      margin-bottom: 10%;
+    }
   }
   .button-area {
     margin: auto;

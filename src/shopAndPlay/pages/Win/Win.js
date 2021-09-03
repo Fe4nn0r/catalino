@@ -39,7 +39,7 @@ function Win() {
           Your winning will be paid into your Carrefour fidelity account
         </div>
         <div className="button-area">
-          <Button text="GO ON CARREFOUR'S SITE" enable to="/" />{" "}
+          <Button text="NEXT" enable to="/" />{" "}
         </div>
       </div>
     );

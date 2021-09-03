@@ -37,6 +37,11 @@
         margin-top: 12%;
         padding: 0 25px;
       }
+      @media (max-width: $smartphone-width) and (max-height: $iphone-x-height) {
+        font-size: 25px;
+        margin-top: 12%;
+        padding: 10px 35px;
+      }
     }
 
     .slot-machine {
@@ -55,16 +60,20 @@
         position: absolute;
         width: 100%;
         margin-bottom: 20%;
+        background-size: 100% 100%;
       }
+
       .description {
         display: flex;
         flex-direction: column;
         padding: 0 0 5px;
         font-size: 17px;
+
         .or {
           opacity: 0.5;
         }
       }
+
       .screen-container {
         margin: 50px auto 40px auto;
         width: 591px;
@@ -82,7 +91,7 @@
         @media (max-width: $smartphone-width) {
           width: 350px;
           height: 150px;
-          margin: 20px 0 20px 0;
+          margin: auto auto 20px;
         }
 
         .screen-column {
@@ -99,10 +108,10 @@
           img {
             position: relative;
             margin: 9px;
-            top: 25%;
+            top: 30%;
             user-select: none;
             @media (max-width: $smartphone-width) {
-              width: 70px;
+              width: 60px;
             }
           }
 
@@ -128,9 +137,11 @@
         @media (min-width: $smartphone-width) {
           display: none;
         }
+
         img {
           margin-left: 35%;
         }
+
         .insert-coin {
           margin-left: 10%;
         }

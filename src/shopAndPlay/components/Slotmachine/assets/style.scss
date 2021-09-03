@@ -6,6 +6,11 @@
   align-items: center;
   height: 100vh;
   font-family: "Righteous";
+  @media (max-width: $smartphone-width) {
+    margin-top: 10%;
+    display: block;
+    height: 85vh;
+  }
 
   .slot-machine-content {
     position: relative;
@@ -23,6 +28,15 @@
       @media (max-height: $laptop-height) {
         background-size: 600px auto;
       }
+      @media (max-width: $smartphone-width) {
+        background: url("../../../resources/assets/img/slot-spot-mobile.png")
+          no-repeat center;
+        position: absolute;
+        width: 100%;
+        margin-bottom: 20%;
+        background-size: 100% 100%;
+      }
+
       .slot-machine-screen-content {
         display: flex;
         align-items: center;
@@ -33,6 +47,9 @@
     }
 
     .slot-machine-lever-support {
+      @media (max-width: $smartphone-width) {
+        display: none;
+      }
       position: absolute;
       width: 85px;
       height: 80px;
@@ -48,6 +65,9 @@
     }
 
     .slot-machine-lever {
+      @media (max-width: $smartphone-width) {
+        display: none;
+      }
       position: absolute;
       top: 26%;
       left: 755px;
@@ -64,6 +84,9 @@
     }
 
     .slot-machine-hand {
+      @media (max-width: $smartphone-width) {
+        display: none;
+      }
       position: absolute;
       top: 23%;
       left: 736px;
@@ -77,6 +100,7 @@
       }
     }
   }
+
   .shop-and-play-layer {
     pointer-events: none;
     position: fixed;
@@ -90,6 +114,13 @@
     @media (max-height: $laptop-height) {
       bottom: 50px;
       background-size: 1150px auto;
+    }
+    @media (max-width: $smartphone-width) {
+      background: url("../../../resources/assets/img/background-layer-mobile.png")
+        no-repeat;
+      position: absolute;
+      z-index: 1;
+      background-size: 100% 100%;
     }
   }
 }

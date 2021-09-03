@@ -38,11 +38,21 @@
     position: fixed;
     left: 35%;
     top: 45%;
+    @media (max-width: $smartphone-width) {
+      position: absolute;
+      left: 5%;
+      top: 30%;
+    }
   }
   .right-eye {
     position: fixed;
     right: 35%;
     top: 45%;
+    @media (max-width: $smartphone-width) {
+      position: absolute;
+      right: 5%;
+      top: 30%;
+    }
   }
   .lips {
     position: fixed;
@@ -55,6 +65,11 @@
     opacity: 0.3;
     @media (max-height: $laptop-height) {
       top: 74%;
+    }
+    @media (max-width: $smartphone-width) {
+      position: absolute;
+      right: 45%;
+      top: 85%;
     }
   }
 }
