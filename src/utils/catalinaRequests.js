@@ -21,7 +21,7 @@ export function getCryptedAuthentication(body, retailerId, offerId, holderRef) {
     localStorage.setItem("Authorization", result.access_token);
   });
 }
-
+//to dev
 export function getOffer() {
   return httpGet(
     apiHost + "/members/" + localStorage.getItem("memberId") + "/wallet",
