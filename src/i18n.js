@@ -1,8 +1,8 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
-import message_en from "./shopAndPlay/resources/i18n/en/message.json";
-import message_it from "./shopAndPlay/resources/i18n/it/message.json";
+import message_en from "./shop/resources/i18n/en/message.json";
+import message_it from "./shop/resources/i18n/it/message.json";
 
 i18n
   .use(LanguageDetector)

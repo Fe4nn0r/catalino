@@ -1,5 +1,4 @@
 @import "../../../resources/assets/styles/variables";
-@import "../../../../carrefour/resources/assets/styles/variables";
 
 form {
   font-family: "Open sans";
@@ -53,7 +52,6 @@ form {
     border: none;
     &:disabled,
     &[disabled] {
-      color: $color-grey;
       pointer-events: none;
     }
   }
@@ -64,14 +62,12 @@ form {
     margin-top: 51px;
     font-size: 13px;
     width: 75%;
-    color: $color-light-primary;
     .checkbox {
       box-sizing: border-box;
       width: 25px;
       margin: 0;
     }
     a {
-      color: $color-light-primary;
     }
   }
 }

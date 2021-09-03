@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./shopAndPlay/resources/assets/styles/index.scss";
+import "./shop/resources/assets/styles/index.scss";
 import App from "./App";
 import "./i18n";
 import reportWebVitals from "./reportWebVitals";

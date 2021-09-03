@@ -1,5 +1,5 @@
 import Moment from "moment";
-import appConfig from "../shopAndPlay/resources/config/config.json";
+import appConfig from "../shop/resources/config/config.json";
 
 export function getDatesAndApplyApiConfiguration(offer) {
   document.getElementById(appConfig.homePageId).style.backgroundColor =

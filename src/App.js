@@ -1,5 +1,5 @@
 import React from "react";
-import Home from "./shopAndPlay/pages/Home/Home";
+import Home from "./shop/pages/Home/Home";
 
 function App() {
   return (
