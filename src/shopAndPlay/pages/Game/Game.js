@@ -19,11 +19,13 @@ function Game() {
   let [isScreenFinished, setScreenFinished] = useState(false);
   const navigate = useNavigate();
   const [leverPulled] = useSound(leverSound, { volume: 0.05 });
+  const [sliderPlay, { stop }] = useSound(sliderSound, { volume: 0 });
   const [winSoundPlay] = useSound(winSound, { volume: 0.3 });
   const isMobile = useMediaQuery({ query: "(max-width: 414px)" });
 
   useEffect(() => {
     if (isScreenFinished) {
+      stop();
       setTimeout(() => {
         if (winner) {
           winSoundPlay();
@@ -37,15 +39,15 @@ function Game() {
 
   function play() {
     if (!animated) {
-      leverPulled();
-      setAnimated(true);
       getWallet()
         .then((isWinner) => {
+          leverPulled();
+          setAnimated(true);
+          sliderPlay();
           setWinner(isWinner);
         })
         .catch((err) => {
-          //navigate("/can-not-play"); not used because the setTimeOut keeps running even after redirect
-          window.location.href = "/can-not-play";
+          navigate("/can-not-play");
         });
     }
   }

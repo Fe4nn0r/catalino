@@ -24,6 +24,7 @@
     margin-bottom: 20%;
   }
   .go-to-game-content {
+    row-gap: inherit;
     display: flex;
     flex-direction: column;
     color: white;

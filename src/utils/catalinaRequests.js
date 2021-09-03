@@ -45,6 +45,18 @@ export async function applyBasket() {
   );
 }
 
+export async function sendEmailForRefund(email) {
+  const basketUrl = apiHost + "members/" + localStorage.getItem("memberId");
+  const body = {
+    email: email,
+  };
+  return httpPatch(
+    basketUrl,
+    "/members/" + localStorage.getItem("memberId"),
+    body
+  );
+}
+
 export async function getWallet() {
   return applyBasket().then(() => {
     return httpGet(
@@ -76,6 +88,16 @@ async function httpPost(url, apiActionPath, body) {
   let headers = await getHeaders(apiActionPath, "POST", payload.length);
   return request(apiHost + apiActionPath, {
     method: "POST",
+    headers: headers,
+    body: body,
+  });
+}
+
+async function httpPatch(url, apiActionPath, body) {
+  const payload = JSON.stringify(body);
+  let headers = await getHeaders(apiActionPath, "PATCH", payload.length);
+  return request(apiHost + apiActionPath, {
+    method: "PATCH",
     headers: headers,
     body: body,
   });

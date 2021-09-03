@@ -10,6 +10,7 @@ import Lost from "../Lost/Lost";
 import CanNotPlay from "../NotAllowed/CanNotPlay";
 import AlreadyPlayed from "../NotAllowed/AlreadyPlayed";
 import RefundIntro from "../Refund/RefundIntro";
+import SuccessEmail from "../Success/Email";
 
 function Home() {
   return (
@@ -27,6 +28,7 @@ function Home() {
         <CanNotPlay path="/can-not-play" />
         <AlreadyPlayed path="/already-played" />
         <RefundIntro path="/refund-intro" />
+        <SuccessEmail path="/success-email" />
       </Router>
       <Footer />
     </div>

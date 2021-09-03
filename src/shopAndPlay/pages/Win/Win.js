@@ -4,6 +4,7 @@ import SlotMachine from "../../components/Slotmachine/SlotMachine";
 import Confetti from "react-dom-confetti";
 import Button from "../../components/Button/Button";
 import appConfig from "../../resources/config/config.json";
+import { useTranslation } from "react-i18next";
 function Win() {
   const totalTime = 300;
   const [hurray, setHurray] = useState(false);
@@ -28,6 +29,8 @@ function Win() {
     colors: appConfig.celebrationConfig.colors,
   };
 
+  const { t } = useTranslation("message");
+
   function winContent() {
     return (
       <div className="win-content">
@@ -39,7 +42,7 @@ function Win() {
           Your winning will be paid into your Carrefour fidelity account
         </div>
         <div className="button-area">
-          <Button text="NEXT" enable to="/" />{" "}
+          <Button text={t("win.btn")} enable to="/refund-intro" />{" "}
         </div>
       </div>
     );
