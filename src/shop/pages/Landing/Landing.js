@@ -12,14 +12,13 @@ import {
   getOffer,
 } from "../../../utils/catalinaRequests";
 import Loading from "../../components/Loading/Loading";
-import { getDatesAndApplyApiConfiguration } from "../../../utils/appApiConfiguration";
+import { getAndApplyApiConfiguration } from "../../../utils/appApiConfiguration";
 
 function Landing({ offerId, retailerId, holderRef }) {
   const [t] = useTranslation("message");
   const [agreed, setAgreed] = useState(false);
   const [allowed, setAllowed] = useState(false);
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
+  const [landingInformation, setLandingInformation] = useState({});
 
   const navigate = useNavigate();
 
@@ -33,9 +32,7 @@ function Landing({ offerId, retailerId, holderRef }) {
         getOffer(offerId)
           .then((offer) => {
             Moment.locale();
-            const gameDates = getDatesAndApplyApiConfiguration(offer);
-            setStartDate(gameDates.startDate);
-            setEndDate(gameDates.endDate);
+            setLandingInformation(getAndApplyApiConfiguration(offer));
             setAllowed(true);
           })
           .catch((err) => {
@@ -57,9 +54,12 @@ function Landing({ offerId, retailerId, holderRef }) {
         <div className="go-to-game-content content">
           <div className="game-period">
             {" "}
-            {t("landing.gamePeriod", { start: startDate, end: endDate })}
+            {t("landing.gamePeriod", {
+              start: landingInformation.startDate,
+              end: landingInformation.endDate,
+            })}
           </div>
-          <div className="title">{t("landing.title")}</div>
+          <div className="title">{landingInformation.offerTitle}</div>
           <div className="description">{t("landing.description")}</div>
           <div className="agree">
             <Checkbox checkAction={agree} />

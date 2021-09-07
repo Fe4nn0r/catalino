@@ -1,16 +1,17 @@
 import React from "react";
 import "./assets/styles.scss";
-import { Link, Router } from "@reach/router";
+import { Router } from "@reach/router";
 import Game from "../Game/Game";
 import Landing from "../Landing/Landing";
 import Footer from "../../components/Footer/Footer";
-import logo from "../../resources/assets/img/logo.png";
 import Win from "../Win/Win";
 import Lost from "../Lost/Lost";
 import CanNotPlay from "../NotAllowed/CanNotPlay";
 import AlreadyPlayed from "../NotAllowed/AlreadyPlayed";
 import RefundIntro from "../Refund/RefundIntro";
 import SuccessEmail from "../Success/Email";
+import Cgu from "../Legals/Cgu";
+import Logo from "../../components/Logo/Logo";
 
 function Home() {
   const offerId = 4318; //TODO : to be sent by the offerId website
@@ -18,11 +19,7 @@ function Home() {
   const holderRef = "2"; //TODO : to be sent by the holderRef website
   return (
     <div id="home-container">
-      <div className="logo">
-        <Link to="/">
-          <img src={logo} />
-        </Link>
-      </div>
+      <Logo displayLogo />
       <Router>
         <Landing
           offerId={offerId}
@@ -37,6 +34,7 @@ function Home() {
         <AlreadyPlayed path="/already-played" />
         <RefundIntro path="/refund-intro" />
         <SuccessEmail path="/success-email" />
+        <Cgu path="legal/cgu" />
       </Router>
       <Footer />
     </div>

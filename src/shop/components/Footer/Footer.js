@@ -1,15 +1,16 @@
 import React from "react";
 import "./assets/style.scss";
+import { Link } from "@reach/router";
 
 function Footer() {
   return (
     <div className="footer">
       <div className="options">
-        <p>Help (FAQ)</p>
-        <p>General conditions</p>
-        <p>Legal notices</p>
-        <p>Data protection</p>
-        <p>Cookie</p>
+        <a>Help (FAQ)</a>
+        <Link to="legal/cgu">General conditions</Link>
+        <a>Legal notices</a>
+        <a>Data protection</a>
+        <a>Cookie</a>
       </div>
     </div>
   );

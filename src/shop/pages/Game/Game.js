@@ -9,6 +9,8 @@ import Screen from "./Screen";
 import Button from "../../components/Button/Button";
 import { getWallet } from "../../../utils/catalinaRequests";
 import mobileHand from "../../resources/assets/img/mobile-ico.png";
+import Logo from "../../components/Logo/Logo";
+import SlotMachine from "../../components/Slotmachine/SlotMachine";
 
 const REDIRECTING_TIME = 800;
 

@@ -6,6 +6,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+  z-index: 100;
   @media (max-width: $smartphone-width) {
     position: inherit;
   }
@@ -21,7 +22,8 @@
       background-color: $color-secondary;
     }
 
-    p {
+    a {
+      text-decoration: none;
       width: 120px;
       display: flex;
       align-items: center;
@@ -35,6 +37,8 @@
       color: #1e1717;
       opacity: 0.8;
       text-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
+      padding: 10px 0;
+      cursor: pointer;
     }
   }
 }
