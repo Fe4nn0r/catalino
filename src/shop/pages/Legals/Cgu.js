@@ -9,6 +9,7 @@ function Cgu() {
         <div className="legal-content">
           <Link className="back-button" to="/"></Link>
           <div className="legal-text">
+            <h2>Conditions générales d’utilisation</h2>
             1. objet Les présentes conditions générales d’utilisation (ci-après
             désignées « Conditions d’utilisation ») ont vocation à régir
             l’utilisation par les internautes du site www.catalinamarketing.fr
