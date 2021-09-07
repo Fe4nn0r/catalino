@@ -6,11 +6,6 @@
   align-items: center;
   height: 100vh;
   font-family: "Righteous";
-  @media (max-width: $smartphone-width) {
-    margin-top: 10%;
-    display: block;
-    height: 85vh;
-  }
 
   .slot-machine-content {
     position: relative;

@@ -7,21 +7,23 @@ function Lost() {
   function LostContent() {
     return (
       <div className="lost-content">
-        <div className="left-eye">
-          <img src={eye} />{" "}
-        </div>
-        <div className="right-eye">
-          <img src={eye} />
-        </div>
-        <div className="lips"></div>
-        <div className="title">
-          Sorry,
-          <br /> you lost
+        <div className="content-up">
+          <div className="left-eye">
+            <img src={eye} />{" "}
+          </div>
+          <div className="title">
+            Sorry,
+            <br /> you lost
+          </div>
+          <div className="right-eye">
+            <img src={eye} />
+          </div>
         </div>
         <div className="description">Try your luck next time</div>
         <div className="button-area">
           <Button text="GO ON CARREFOUR'S SITE" enable to="/" />{" "}
         </div>
+        <div className="lips"></div>
       </div>
     );
   }

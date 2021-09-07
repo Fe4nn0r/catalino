@@ -61,6 +61,7 @@
 @include mq($until: tablet-portrait) {
   .go-to-game-container {
     background: url("../../../resources/assets/img/spot.png") no-repeat center;
+    background-size: 550px;
     .go-to-game-content {
       max-width: 260px;
       .agree {
