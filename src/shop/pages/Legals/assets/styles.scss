@@ -1,0 +1,13 @@
+.legal-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .legal-content {
+    display: flex;
+    background-color: white;
+    width: 80%;
+    justify-content: center;
+    align-items: center;
+  }
+}

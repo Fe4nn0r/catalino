@@ -11,6 +11,7 @@ import CanNotPlay from "../NotAllowed/CanNotPlay";
 import AlreadyPlayed from "../NotAllowed/AlreadyPlayed";
 import RefundIntro from "../Refund/RefundIntro";
 import SuccessEmail from "../Success/Email";
+import Cgu from "../Legals/Cgu";
 
 function Home() {
   const offerId = 4318; //TODO : to be sent by the offerId website
@@ -37,6 +38,7 @@ function Home() {
         <AlreadyPlayed path="/already-played" />
         <RefundIntro path="/refund-intro" />
         <SuccessEmail path="/success-email" />
+        <Cgu path="/cgu" />
       </Router>
       <Footer />
     </div>
