@@ -2,12 +2,23 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
   .legal-content {
     display: flex;
     background-color: white;
     width: 80%;
+    height: 80%;
     justify-content: center;
-    align-items: center;
+    align-items: start;
+    flex-direction: column;
+    margin-bottom: 5%;
+    padding: 120px 107px;
+    z-index: 10000;
+
+    .back-button {
+      background: url("../../../resources/assets/img/back.png") no-repeat center;
+      width: 37px;
+      height: 23px;
+      margin-bottom: 5%;
+    }
   }
 }

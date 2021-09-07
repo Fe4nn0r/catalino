@@ -7,12 +7,5 @@
   z-index: 10;
   background-color: #e8f1fb;
   background-size: cover;
-  .logo {
-    width: 100%;
-    position: fixed;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top: 3%;
-  }
+  overflow: auto;
 }

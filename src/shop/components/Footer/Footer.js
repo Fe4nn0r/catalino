@@ -7,7 +7,7 @@ function Footer() {
     <div className="footer">
       <div className="options">
         <a>Help (FAQ)</a>
-        <Link to="cgu">General conditions</Link>
+        <Link to="legal/cgu">General conditions</Link>
         <a>Legal notices</a>
         <a>Data protection</a>
         <a>Cookie</a>
