@@ -1,73 +1,85 @@
 @import "../../../resources/assets/styles/variables";
 @import "~sass-mq";
 
-.go-to-game-container {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
-  z-index: 10;
-  background: url("../../../resources/assets/img/slot-spot.png") no-repeat
-    center;
-
-  .go-to-game-content {
-    row-gap: inherit;
-    display: flex;
-    flex-direction: column;
-    color: white;
-    align-items: center;
-    justify-content: center;
-    margin: auto;
+.part1 {
+  .go-to-game-container {
+    position: fixed;
+    width: 100%;
     height: 100%;
-    max-width: 430px;
+    left: 0;
+    top: 0;
+    z-index: 10;
+    background: url("../../../resources/assets/img/slot-spot.png") no-repeat
+      center;
 
-    .game-period {
-      font-style: normal;
-      font-weight: 600;
-      font-size: 17px;
-      line-height: 25px;
-      text-align: center;
-      letter-spacing: 0.02em;
-      opacity: 0.8;
-      text-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
-      padding-bottom: 20px;
-    }
-
-    .price {
-      margin: 10px;
-      font-size: 30px;
-      font-weight: bold;
-    }
-
-    .agree {
+    .go-to-game-content {
+      row-gap: inherit;
       display: flex;
-      font-style: normal;
-      font-weight: 600;
-      font-size: 13px;
-      line-height: 18px;
-      letter-spacing: 0.02em;
-      color: #a9c9ff;
-      margin-bottom: 20px;
-      a {
-        padding-left: 5px;
-        padding-right: 5px;
+      flex-direction: column;
+      color: white;
+      align-items: center;
+      justify-content: center;
+      margin: auto;
+      height: 100%;
+      max-width: 430px;
+
+      .game-period {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 17px;
+        line-height: 25px;
+        text-align: center;
+        letter-spacing: 0.02em;
+        opacity: 0.8;
+        text-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
+        padding-bottom: 20px;
+      }
+
+      .price {
+        margin: 10px;
+        font-size: 30px;
+        font-weight: bold;
+      }
+
+      .agree {
+        display: flex;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 13px;
+        line-height: 18px;
+        letter-spacing: 0.02em;
         color: #a9c9ff;
+        margin-bottom: 20px;
+        a {
+          padding-left: 5px;
+          padding-right: 5px;
+          color: #a9c9ff;
+        }
       }
     }
   }
 }
 
 @include mq($until: tablet-portrait) {
-  .go-to-game-container {
-    background: url("../../../resources/assets/img/spot.png") no-repeat center;
-    background-size: 550px;
-    position: inherit;
-    min-height: 1200px;
-    .go-to-game-content {
-      max-width: 340px;
-      .agree {
-        font-size: 12px;
+  .part1 {
+    margin-top: 138px;
+    min-height: 600px;
+    .go-to-game-container {
+      background: url("../../../resources/assets/img/spot-mobile.png") no-repeat
+        center;
+      background-size: 100%;
+      position: inherit;
+      .go-to-game-content {
+        max-width: 340px;
+        min-height: 445px;
+        .game-period,
+        .description {
+          padding: 10px;
+        }
+        .agree {
+          font-size: 12px;
+          margin-bottom: 10px;
+        }
       }
     }
   }

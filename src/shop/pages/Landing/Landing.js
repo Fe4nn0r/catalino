@@ -50,24 +50,26 @@ function Landing({ offerId, retailerId, holderRef }) {
 
   return allowed ? (
     <>
-      <div className="go-to-game-container">
-        <div className="go-to-game-content content">
-          <div className="game-period">
-            {" "}
-            {t("landing.gamePeriod", {
-              start: landingInformation.startDate,
-              end: landingInformation.endDate,
-            })}
+      <div className="part1">
+        <div className="go-to-game-container">
+          <div className="go-to-game-content content">
+            <div className="game-period">
+              {" "}
+              {t("landing.gamePeriod", {
+                start: landingInformation.startDate,
+                end: landingInformation.endDate,
+              })}
+            </div>
+            <div className="title">{landingInformation.offerTitle}</div>
+            <div className="description">{t("landing.description")}</div>
+            <div className="agree">
+              <Checkbox checkAction={agree} />
+              {t("landing.agreeP1")}
+              <Link to="game"> {t("landing.conditions")} </Link>{" "}
+              {t("landing.agreeP2")}
+            </div>
+            <Button text={t("landing.play")} enable={agreed} to={"/game"} />
           </div>
-          <div className="title">{landingInformation.offerTitle}</div>
-          <div className="description">{t("landing.description")}</div>
-          <div className="agree">
-            <Checkbox checkAction={agree} />
-            {t("landing.agreeP1")}
-            <Link to="game"> {t("landing.conditions")} </Link>{" "}
-            {t("landing.agreeP2")}
-          </div>
-          <Button text={t("landing.play")} enable={agreed} to={"/game"} />
         </div>
       </div>
       <div className="shop-and-play-layer" />
