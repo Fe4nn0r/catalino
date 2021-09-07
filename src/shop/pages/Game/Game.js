@@ -9,7 +9,6 @@ import Screen from "./Screen";
 import Button from "../../components/Button/Button";
 import { getWallet } from "../../../utils/catalinaRequests";
 import mobileHand from "../../resources/assets/img/mobile-ico.png";
-import { useMediaQuery } from "react-responsive";
 
 const REDIRECTING_TIME = 800;
 
@@ -20,7 +19,6 @@ function Game() {
   const navigate = useNavigate();
   const [leverPulled] = useSound(leverSound, { volume: 0.05 });
   const [winSoundPlay] = useSound(winSound, { volume: 0.3 });
-  const isMobile = useMediaQuery({ query: "(max-width: 414px)" });
 
   useEffect(() => {
     if (isScreenFinished) {
@@ -48,24 +46,7 @@ function Game() {
         });
     }
   }
-  function gameTitle() {
-    let title;
-    if (!isMobile) {
-      title = "Pull the handle or click to play!";
-    } else {
-      title = "Shake your phone or click to play!";
-    }
-    return title;
-  }
-  function gameDescription() {
-    if (isMobile) {
-      return (
-        <div className="description">
-          Shake to start the slot machine<span className="or"> or </span>
-        </div>
-      );
-    }
-  }
+
   function onScreenFinished() {
     setScreenFinished(true);
   }
@@ -74,7 +55,12 @@ function Game() {
     <div className="game-container">
       <div className="game-content">
         <div className="slot-machine">
-          <div className="title">{gameTitle()}</div>
+          <div className="title mobile-only">
+            Shake your phone or click to play!
+          </div>
+          <div className="title desktop-only">
+            Pull the handle or click to play!
+          </div>
           <div className="screen-container">
             <Screen
               animate={animated}
@@ -102,7 +88,9 @@ function Game() {
               <div className="coin-line" />
             </div>
           </div>
-          {gameDescription()}
+          <div className="description mobile-only">
+            Shake to start the slot machine<span className="or"> or </span>
+          </div>
           <div className="buttons-area">
             <Button text="Play" enable={!animated} doAction={play} />
             <div className="insert-coin">

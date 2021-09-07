@@ -1,24 +1,16 @@
 @import "../../../resources/assets/styles/variables";
+@import "~sass-mq";
 
 .game-container {
   display: flex;
   justify-items: center;
   align-items: center;
   height: 100vh;
-  font-family: "Righteous";
-  @media (max-width: $smartphone-width) {
-    margin-top: 10%;
-    display: block;
-    height: 85vh;
-  }
 
   .game-content {
     position: relative;
     z-index: 10;
     margin: auto;
-    @media (max-width: $smartphone-width) {
-      position: inherit;
-    }
 
     .title {
       width: 100%;
@@ -32,16 +24,6 @@
       letter-spacing: 0.03em;
       color: #ffffff;
       text-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
-      @media (max-height: $laptop-height) {
-        font-size: 25px;
-        margin-top: 12%;
-        padding: 0 25px;
-      }
-      @media (max-width: $smartphone-width) and (max-height: $iphone-x-height) {
-        font-size: 25px;
-        margin-top: 12%;
-        padding: 10px 35px;
-      }
     }
 
     .slot-machine {
@@ -51,17 +33,6 @@
       z-index: 10;
       background: url("../../../resources/assets/img/slot-spot.png") no-repeat
         center;
-      @media (max-height: $laptop-height) {
-        background-size: 600px auto;
-      }
-      @media (max-width: $smartphone-width) {
-        background: url("../../../resources/assets/img/slot-spot-mobile.png")
-          no-repeat center;
-        position: absolute;
-        width: 100%;
-        margin-bottom: 20%;
-        background-size: 100% 100%;
-      }
 
       .description {
         display: flex;
@@ -83,16 +54,6 @@
         box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.7);
         display: flex;
         overflow: hidden;
-        @media (max-height: $laptop-height) {
-          width: 500px;
-          height: 35%;
-          margin: 30px auto 20px auto;
-        }
-        @media (max-width: $smartphone-width) {
-          width: 350px;
-          height: 150px;
-          margin: auto auto 20px;
-        }
 
         .screen-column {
           display: flex;
@@ -110,9 +71,6 @@
             margin: 9px;
             top: 30%;
             user-select: none;
-            @media (max-width: $smartphone-width) {
-              width: 60px;
-            }
           }
 
           @keyframes spinIt {
@@ -131,12 +89,9 @@
       }
 
       .shake-phone {
-        display: flex;
+        display: none;
         justify-content: center;
         margin-bottom: 5%;
-        @media (min-width: $smartphone-width) {
-          display: none;
-        }
 
         img {
           margin-left: 35%;
@@ -150,25 +105,10 @@
       .buttons-area {
         display: flex;
         margin-left: 38%;
-        @media (max-width: $smartphone-width) {
-          flex-direction: column;
-          margin: auto;
-          justify-content: center;
-          align-items: center;
-        }
-
-        .insert-coin {
-          @media (max-width: $smartphone-width) {
-            display: none;
-          }
-        }
       }
     }
 
     .slot-lever-support {
-      @media (max-width: $smartphone-width) {
-        display: none;
-      }
       position: absolute;
       width: 85px;
       height: 80px;
@@ -178,16 +118,9 @@
       background: url("../../../resources/assets/img/slot-lever-support.png")
         no-repeat center;
       cursor: pointer;
-      @media (max-height: $laptop-height) {
-        top: 310px;
-        left: 650px;
-      }
     }
 
     .slot-lever {
-      @media (max-width: $smartphone-width) {
-        display: none;
-      }
       position: absolute;
       top: 26%;
       left: 755px;
@@ -196,12 +129,6 @@
       background-color: $color-machine-levier;
       z-index: 5;
       cursor: pointer;
-      @media (max-height: $laptop-height) {
-        top: 25%;
-        left: 695px;
-        width: 12px;
-        height: 180px;
-      }
     }
 
     .lever-slide {
@@ -222,9 +149,6 @@
     }
 
     .slot-hand {
-      @media (max-width: $smartphone-width) {
-        display: none;
-      }
       position: absolute;
       top: 23%;
       left: 736px;
@@ -234,9 +158,6 @@
       border-radius: 50%;
       z-index: 15;
       cursor: pointer;
-      @media (max-height: $laptop-height) {
-        left: 676px;
-      }
     }
 
     .hand-slide {
@@ -253,26 +174,8 @@
     }
   }
   .shop-and-play-layer {
-    pointer-events: none;
-    position: fixed;
-    width: 100%;
-    height: 100%;
     z-index: 2;
     opacity: 0.4;
-    background: url("../../../resources/assets/img/background-layer.png")
-      no-repeat center;
-    background-size: 1600px 800px;
-    @media (max-height: $laptop-height) {
-      bottom: 50px;
-      background-size: 1150px auto;
-    }
-    @media (max-width: $smartphone-width) {
-      background: url("../../../resources/assets/img/background-layer-mobile.png")
-        no-repeat;
-      position: absolute;
-      z-index: 1;
-      background-size: 100% 100%;
-    }
   }
 }
 
@@ -293,5 +196,61 @@
     height: 0px;
     border-radius: 9px;
     border: 4px solid rgba(0, 0, 0, 0.4);
+  }
+}
+
+@include mq($until: tablet-portrait) {
+  .game-container {
+    margin-top: 10%;
+    display: block;
+    height: 85vh;
+
+    .game-content {
+      display: flex;
+      align-items: center;
+      height: 100%;
+
+      .title {
+        font-size: 25px;
+        margin-top: 12%;
+        padding: 10px 35px;
+      }
+
+      .slot-machine {
+        background: url("../../../resources/assets/img/slot-spot-mobile.png")
+          no-repeat center;
+        position: absolute;
+        width: 100%;
+        margin-bottom: 20%;
+        background-size: 100% 100%;
+        .screen-container {
+          width: 350px;
+          height: 150px;
+          margin: auto auto 20px;
+        }
+        .screen-column {
+          img {
+            width: 60px;
+          }
+        }
+        .shake-phone {
+          display: flex;
+        }
+        .buttons-area {
+          flex-direction: column;
+          margin: auto;
+          justify-content: center;
+          align-items: center;
+          .insert-coin {
+            display: none;
+          }
+        }
+      }
+      .slot-lever,
+      .slot-lever-support,
+      .slot-hand {
+        display: none;
+      }
+    }
   }
 }
