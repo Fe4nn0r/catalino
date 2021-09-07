@@ -62,8 +62,10 @@
   .go-to-game-container {
     background: url("../../../resources/assets/img/spot.png") no-repeat center;
     background-size: 550px;
+    position: inherit;
+    min-height: 1200px;
     .go-to-game-content {
-      max-width: 260px;
+      max-width: 340px;
       .agree {
         font-size: 12px;
       }
