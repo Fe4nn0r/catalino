@@ -1,3 +1,6 @@
+@import "../../../resources/assets/styles/variables";
+@import "~sass-mq";
+
 .legal-container {
   display: flex;
   justify-content: center;
@@ -26,8 +29,6 @@
       font-weight: normal;
       font-size: 28px;
       line-height: 30px;
-      /* identical to box height, or 107% */
-
       letter-spacing: 0.03em;
     }
     .back-button {
@@ -35,6 +36,17 @@
       width: 37px;
       height: 23px;
       margin-bottom: 5%;
+    }
+  }
+}
+@include mq($until: tablet-portrait) {
+  .legal-container {
+    font-size: 12px;
+    .legal-content {
+      padding: 70px 30px;
+      h2 {
+        font-size: 22px;
+      }
     }
   }
 }
