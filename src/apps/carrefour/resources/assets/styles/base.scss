@@ -44,3 +44,25 @@ body {
   width: 493px;
   row-gap: 50px;
 }
+
+.shop-and-play-layer {
+  pointer-events: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 30;
+  background: url("../../../resources/assets/img/background-layer.png")
+    no-repeat center;
+  background-size: 1200px 600px;
+}
+
+@include mq($until: tablet-portrait) {
+  .shop-and-play-layer {
+    background: url("../../../resources/assets/img/background-layer-mobile.png")
+      no-repeat;
+    position: absolute;
+    top: 30px;
+    background-size: 100%;
+    min-width: 580px;
+  }
+}

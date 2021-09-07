@@ -1,4 +1,5 @@
 @import "../../../resources/assets/styles/variables";
+@import "~sass-mq";
 
 .go-to-game-container {
   position: fixed;
@@ -9,18 +10,7 @@
   z-index: 10;
   background: url("../../../resources/assets/img/slot-spot.png") no-repeat
     center;
-  @media (max-width: $smartphone-width) {
-    background: url("../../../resources/assets/img/spot.png") no-repeat center;
-    position: inherit;
-    height: 500px;
-    margin-bottom: 20%;
-  }
-  @media (max-height: $laptop-height) {
-    background-size: 530px auto;
-  }
-  @media (max-width: $smartphone-width) and (max-height: $iphone-x-height) {
-    background-size: 470px auto;
-  }
+
   .go-to-game-content {
     row-gap: inherit;
     display: flex;
@@ -31,9 +21,7 @@
     margin: auto;
     height: 100%;
     max-width: 430px;
-    @media (max-width: $smartphone-width) {
-      max-width: 260px;
-    }
+
     .game-period {
       font-style: normal;
       font-weight: 600;
@@ -61,10 +49,6 @@
       letter-spacing: 0.02em;
       color: #a9c9ff;
       margin-bottom: 20px;
-      @media (max-width: $smartphone-width) {
-        margin-bottom: 10px;
-        font-size: 12px;
-      }
       a {
         padding-left: 5px;
         padding-right: 5px;
@@ -73,28 +57,15 @@
     }
   }
 }
-.shop-and-play-layer {
-  pointer-events: none;
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  z-index: 30;
-  background: url("../../../resources/assets/img/background-layer.png")
-    no-repeat center;
-  background-size: 1200px 600px;
 
-  @media screen and (max-height: $laptop-height) and (min-width: $smartphone-width) {
-    bottom: 2%;
-    background-size: 1150px auto;
-  }
-  @media (max-width: $smartphone-width) {
-    background: url("../../../resources/assets/img/background-layer-mobile.png")
-      no-repeat;
-    position: absolute;
-    top: 30px;
-    background-size: 100% 100%;
-  }
-  @media (max-width: $smartphone-width) and (min-height: $smartphone-height) and (max-height: $iphone-x-height) {
-    background-size: 100%;
+@include mq($until: tablet-portrait) {
+  .go-to-game-container {
+    background: url("../../../resources/assets/img/spot.png") no-repeat center;
+    .go-to-game-content {
+      max-width: 260px;
+      .agree {
+        font-size: 12px;
+      }
+    }
   }
 }

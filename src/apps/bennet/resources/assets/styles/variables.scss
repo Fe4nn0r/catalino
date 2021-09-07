@@ -13,3 +13,28 @@ $laptop-height: 720px;
 $smartphone-height: 641px;
 $iphone-x-height: 823px;
 $smartphone-width: 414px;
+
+// Breakpoint
+$mq-breakpoints: (
+  mobile-sm: 350px,
+  mobile: 375px,
+  tablet-portrait: 768px,
+  tablet: 1024px,
+  desktop-sm: 1366px,
+  desktop: 1440px,
+  desktop-large: 1600px,
+  desktop-xlarge: 1681px,
+);
+
+$mq-show-breakpoints: (
+  mobile-sm,
+  mobile,
+  tablet-portrait,
+  tablet,
+  desktop-sm,
+  desktop,
+  desktop-large,
+  desktop-xlarge
+);
+
+$breakpoints-shown: (mobile, mobileLandscape, tablet, desktop, wide);
