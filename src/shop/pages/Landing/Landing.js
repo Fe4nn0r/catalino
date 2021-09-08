@@ -12,13 +12,20 @@ import {
   getOffer,
 } from "../../../utils/catalinaRequests";
 import Loading from "../../components/Loading/Loading";
-import { getAndApplyApiConfiguration } from "../../../utils/appApiConfiguration";
+import {
+  getAndApplyApiConfiguration,
+  getDesktopBackgroundLayer,
+  getMobileBackgroundLayer,
+} from "../../../utils/appApiConfiguration";
 
 function Landing({ offerId, retailerId, holderRef }) {
   const [t] = useTranslation("message");
   const [agreed, setAgreed] = useState(false);
   const [allowed, setAllowed] = useState(false);
   const [landingInformation, setLandingInformation] = useState({});
+  const [desktopBackgroundImgLayer, setDesktopBackgroundImgLayer] =
+    useState("");
+  const [mobileBackgroundImgLayer, setMobileBackgroundImgLayer] = useState("");
 
   const navigate = useNavigate();
 
@@ -33,6 +40,13 @@ function Landing({ offerId, retailerId, holderRef }) {
           .then((offer) => {
             Moment.locale();
             setLandingInformation(getAndApplyApiConfiguration(offer));
+            getDesktopBackgroundLayer().then((res) =>
+              setDesktopBackgroundImgLayer(res)
+            );
+            getMobileBackgroundLayer().then((res) =>
+              setMobileBackgroundImgLayer(res)
+            );
+
             setAllowed(true);
           })
           .catch((err) => {
@@ -72,7 +86,10 @@ function Landing({ offerId, retailerId, holderRef }) {
           </div>
         </div>
       </div>
-      <div className="shop-and-play-layer" />
+      <div
+        className="shop-and-play-layer"
+        style={{ backgroundImage: "url(" + desktopBackgroundImgLayer + ")" }}
+      />
     </>
   ) : (
     <Loading />

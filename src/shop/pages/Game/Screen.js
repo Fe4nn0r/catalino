@@ -10,11 +10,13 @@ import ico6 from "../../resources/assets/img/ico6.png";
 import ico7 from "../../resources/assets/img/ico7.png";
 import ico8 from "../../resources/assets/img/ico8.png";
 import ico9 from "../../resources/assets/img/ico9.png";
-import icoWin from "../../resources/assets/img/icoWin.png";
+import defaultIcoWin from "../../resources/assets/img/icoWin.png";
+
 import useSound from "use-sound";
 import screenSound1 from "../../resources/assets/sound/Screen1.mp3";
 import screenSound2 from "../../resources/assets/sound/Screen2.mp3";
 import screenSound3 from "../../resources/assets/sound/Screen3.mp3";
+import { getWinIcon } from "../../../utils/appApiConfiguration";
 
 const DURATION = 5000;
 
@@ -27,7 +29,15 @@ function Screen({ animate, speed, screenNumber, winner, onFinish }) {
   const [screenSound1Play] = useSound(screenSound1, { volume: 0.1 });
   const [screenSound2Play] = useSound(screenSound2, { volume: 0.1 });
   const [screenSound3Play] = useSound(screenSound3, { volume: 0.1 });
-
+  const [icoWin, setIcoWin] = useState(defaultIcoWin);
+  useEffect(() => {
+    getWinIcon()
+      .then((res) => {
+        setIcoWin(res);
+        console.log(res);
+      })
+      .catch(setIcoWin(defaultIcoWin));
+  }, []);
   useEffect(() => {
     if (animate) {
       animateFruits(true);
