@@ -29,7 +29,7 @@
     .slot-machine {
       position: relative;
       width: 750px;
-      height: 530px;
+      min-height: 530px;
       z-index: 10;
       background: url("../../../resources/assets/img/slot-spot.png") no-repeat
         center;
@@ -218,16 +218,15 @@
       }
 
       .slot-machine {
-        background: url("../../../resources/assets/img/slot-spot-mobile.png")
-          no-repeat center;
+        background: url("../../../resources/assets/img/slot-spot.png") no-repeat
+          center;
         position: absolute;
         width: 100%;
-        margin-bottom: 20%;
-        background-size: 100% 100%;
+        background-size: 125% 95%;
         .screen-container {
           width: 350px;
-          height: 150px;
-          margin: auto auto 20px;
+          height: 127px;
+          margin: 5px auto;
         }
         .screen-column {
           img {
@@ -255,17 +254,16 @@
     }
   }
 }
-
-@include mq($from: mobile-sm, $until: mobile) {
+@include mq($until: mobile-sm) {
   .game-container {
     .game-content {
       .slot-machine {
-        background: url("../../../resources/assets/img/slot-spot-mobile.png")
-          no-repeat center;
-        position: absolute;
-        width: 100%;
-        margin-bottom: 0;
-        background-size: 100% 94%;
+        min-height: 450px;
+        .screen-container {
+          width: 260px;
+          height: 105px;
+          margin: auto;
+        }
       }
     }
   }
