@@ -41,9 +41,18 @@
     font-size: 6.14vh;
     line-height: initial;
     max-width: 60%;
+    margin: 0 auto;
   }
   .description {
-    font-size: 2.25vh;
     padding: 0px;
+    font-size: 3vh;
+    max-width: 80%;
+    margin: 0 auto;
+  }
+}
+@include mq($until: tablet-portrait) {
+  .description {
+    font-size: 2.5vh;
+    margin: 0 auto;
   }
 }

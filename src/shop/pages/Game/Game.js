@@ -41,7 +41,7 @@ function Game() {
       setAnimated(true);
       getWallet()
         .then((isWinner) => {
-          setWinner(true);
+          setWinner(isWinner);
         })
         .catch((err) => {
           navigate("/can-not-play");

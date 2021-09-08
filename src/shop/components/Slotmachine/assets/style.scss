@@ -3,63 +3,23 @@
 
 .slot-machine-container {
   display: flex;
-  justify-items: center;
-  align-items: center;
-  height: 100vh;
   font-family: "Righteous";
 
-  .slot-machine-content {
+  .slot-machine-screen {
+    display: flex;
     position: relative;
+    width: 100%;
+    height: 100vh;
     z-index: 10;
-    margin: auto;
-
-    .slot-machine-screen {
+    background: url("../../../resources/assets/img/slot-machine-spot.png")
+      no-repeat center;
+    background-position-x: 54%;
+    background-size: auto 480px;
+    .slot-machine-screen-content {
       display: flex;
-      position: relative;
-      width: 750px;
-      min-height: 530px;
-      z-index: 10;
-      background: url("../../../resources/assets/img/slot-spot.png") no-repeat
-        center;
-
-      .slot-machine-screen-content {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: auto;
-      }
-    }
-
-    .slot-machine-lever-support {
-      position: absolute;
-      width: 85px;
-      height: 80px;
-      top: 350px;
-      left: 710px;
-      z-index: 8;
-      background: url("../../../resources/assets/img/slot-lever-support.png")
-        no-repeat center;
-    }
-
-    .slot-machine-lever {
-      position: absolute;
-      top: 26%;
-      left: 755px;
-      width: 13px;
-      height: 218px;
-      background-color: $color-machine-levier;
-      z-index: 5;
-    }
-
-    .slot-machine-hand {
-      position: absolute;
-      top: 23%;
-      left: 736px;
-      width: 52px;
-      height: 52px;
-      background-color: $color-machine-head;
-      border-radius: 50%;
-      z-index: 15;
+      align-items: center;
+      justify-content: center;
+      margin: auto;
     }
   }
 
@@ -69,45 +29,55 @@
   }
 }
 
+@include mq(
+  $from: tablet-portrait,
+  $and: mq($until: mobileLandscape, $media-feature: height)
+) {
+  .slot-machine-container {
+    .slot-machine-screen {
+      background-size: auto 60%;
+      background-position-x: 52%;
+    }
+  }
+}
+
 @include mq($until: tablet-portrait) {
   .slot-machine-container {
+    position: initial;
     margin-top: 10%;
     display: block;
     height: 85vh;
 
-    .slot-machine-content {
-      display: flex;
-      align-items: center;
-      height: 100%;
+    .title {
+      font-size: 50px;
+      margin: auto;
+      max-width: 90%;
+    }
 
-      .title {
-        font-size: 50px;
-      }
-      .slot-machine-screen {
-        background: url("../../../resources/assets/img/slot-spot.png") no-repeat
-          center;
-        position: absolute;
-        width: 100%;
-        background-size: 125% 95%;
-      }
-      .slot-machine-lever,
-      .slot-machine-lever-support,
-      .slot-machine-hand {
-        display: none;
-      }
+    .slot-machine-screen {
+      background: url("../../../resources/assets/img/slot-spot.png") no-repeat
+        center;
+      position: absolute;
+      width: 100%;
+      background-size: 120% 65%;
+      top: 0;
     }
   }
 }
+
 @include mq($until: mobile-sm) {
   .slot-machine-container {
-    .slot-machine-content {
-      .slot-machine-screen {
-        min-height: 450px;
-        .screen-container {
-          width: 260px;
-          height: 105px;
-          margin: auto;
-        }
+    .slot-machine-screen {
+      min-height: 450px;
+
+      .title {
+        max-width: 85%;
+      }
+
+      .screen-container {
+        width: 260px;
+        height: 105px;
+        margin: auto;
       }
     }
   }
