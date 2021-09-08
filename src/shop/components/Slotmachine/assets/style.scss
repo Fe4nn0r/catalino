@@ -80,6 +80,9 @@
       align-items: center;
       height: 100%;
 
+      .title {
+        font-size: 50px;
+      }
       .slot-machine-screen {
         background: url("../../../resources/assets/img/slot-spot.png") no-repeat
           center;
