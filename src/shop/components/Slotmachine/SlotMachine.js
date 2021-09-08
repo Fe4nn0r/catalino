@@ -6,13 +6,13 @@ function SlotMachine({ content }) {
     <div className="slot-machine-container">
       <div className="slot-machine-content">
         <div className="slot-machine-screen">
-          <div className="slot-machine-screen-content">{content}</div>
+          <div className="slot-machine-screen-content content">{content}</div>
         </div>
         <div className="slot-machine-lever-support" />
         <div className="slot-machine-lever" />
         <div className="slot-machine-hand" />
       </div>
-      <div className="shop-and-play-layer"></div>
+      <div className="shop-and-play-layer" />
     </div>
   );
 }
