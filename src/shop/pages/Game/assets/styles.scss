@@ -1,5 +1,5 @@
 @import "../../../resources/assets/styles/variables";
-@import "~sass-mq";
+@import "~@mcaskill/sass-mq";
 
 .game-container {
   display: flex;
@@ -71,6 +71,7 @@
             margin: 9px;
             top: 30%;
             user-select: none;
+            width: 50%;
           }
 
           @keyframes spinIt {

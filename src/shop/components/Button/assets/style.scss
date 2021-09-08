@@ -1,4 +1,5 @@
 @import "../../../resources/assets/styles/variables";
+@import "~@mcaskill/sass-mq";
 
 .play-button {
   font-family: "Righteous";
@@ -19,4 +20,10 @@
 .disabled {
   opacity: 0.5;
   pointer-events: none;
+}
+@include mq($until: mobileLandscape, $media-feature: height) {
+  .play-button {
+    padding: 8px;
+    font-size: 4vh;
+  }
 }

@@ -5,6 +5,7 @@ import Button from "../../components/Button/Button";
 import { Link, useNavigate } from "@reach/router";
 import { useTranslation } from "react-i18next";
 import Moment from "moment";
+import { useMediaQuery } from "react-responsive";
 
 import {
   getCryptedAuthentication,
@@ -26,8 +27,23 @@ function Landing({ offerId, retailerId, holderRef }) {
   const [desktopBackgroundImgLayer, setDesktopBackgroundImgLayer] =
     useState("");
   const [mobileBackgroundImgLayer, setMobileBackgroundImgLayer] = useState("");
-
+  const [backgroundLayerStyle, setBackgroundLayerStyle] = useState({
+    backgroundImage: desktopBackgroundImgLayer,
+  });
   const navigate = useNavigate();
+  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+
+  useEffect(() => {
+    if (isMobile) {
+      setBackgroundLayerStyle({
+        backgroundImage: "url(" + mobileBackgroundImgLayer + ")",
+      });
+    } else {
+      setBackgroundLayerStyle({
+        backgroundImage: "url(" + desktopBackgroundImgLayer + ")",
+      });
+    }
+  }, [isMobile, desktopBackgroundImgLayer, mobileBackgroundImgLayer]);
 
   useEffect(() => {
     const body = {
@@ -86,10 +102,7 @@ function Landing({ offerId, retailerId, holderRef }) {
           </div>
         </div>
       </div>
-      <div
-        className="shop-and-play-layer"
-        style={{ backgroundImage: "url(" + desktopBackgroundImgLayer + ")" }}
-      />
+      <div className="shop-and-play-layer" style={backgroundLayerStyle} />
     </>
   ) : (
     <Loading />

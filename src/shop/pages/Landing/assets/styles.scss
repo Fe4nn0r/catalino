@@ -1,5 +1,5 @@
 @import "../../../resources/assets/styles/variables";
-@import "~sass-mq";
+@import "~@mcaskill/sass-mq";
 
 .part1 {
   .go-to-game-container {
@@ -11,6 +11,7 @@
     z-index: 10;
     background: url("../../../resources/assets/img/slot-spot.png") no-repeat
       center;
+    background-size: auto 480px;
 
     .go-to-game-content {
       row-gap: inherit;
@@ -50,6 +51,7 @@
         letter-spacing: 0.02em;
         color: #a9c9ff;
         margin-bottom: 20px;
+
         a {
           padding-left: 5px;
           padding-right: 5px;
@@ -64,21 +66,64 @@
   .part1 {
     margin-top: 138px;
     min-height: 600px;
+
     .go-to-game-container {
-      background: url("../../../resources/assets/img/spot-mobile.png") no-repeat
-        center;
-      background-size: 100% 95%;
+      background: url("../../../resources/assets/img/spot.png") no-repeat center;
+      background-size: auto 95%;
       position: inherit;
+
       .go-to-game-content {
         max-width: 340px;
         min-height: 445px;
+        .title {
+          font-size: 6vh;
+          max-width: 95%;
+          line-height: initial;
+        }
         .game-period,
         .description {
-          padding: 10px;
+          padding: 5px;
+          font-size: 2vh;
         }
+
         .agree {
           font-size: 12px;
           margin-bottom: 10px;
+        }
+      }
+    }
+  }
+}
+
+@include mq(
+  $from: tablet-portrait,
+  $and: mq($until: mobileLandscape, $media-feature: height)
+) {
+  .part1 {
+    .go-to-game-container {
+      background-size: auto 60%;
+
+      .go-to-game-content {
+        .game-period {
+          font-size: 2vh;
+          padding-bottom: 0;
+        }
+        .agree {
+          font-size: 2vh;
+          margin: 3% auto;
+        }
+      }
+    }
+  }
+}
+@include mq($until: mobile-sm) {
+  .part1 {
+    overflow: hidden;
+    .go-to-game-container {
+      .go-to-game-content {
+        .title {
+          font-size: 6vh;
+          max-width: 85%;
         }
       }
     }

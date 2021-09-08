@@ -1,5 +1,5 @@
 @import "../../../resources/assets/styles/variables";
-@import "~sass-mq";
+@import "~@mcaskill/sass-mq";
 
 .logo {
   width: 100%;
@@ -10,7 +10,10 @@
   top: 3%;
 }
 
-@include mq($until: tablet-portrait) {
+@include mq(
+  $until: tablet-portrait,
+  $or: mq($until: mobileLandscape, $media-feature: height)
+) {
   .logo {
     text-align: center;
     position: absolute;

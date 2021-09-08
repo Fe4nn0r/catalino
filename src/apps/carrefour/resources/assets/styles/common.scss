@@ -21,7 +21,7 @@
   z-index: 30;
   background: url("../../../resources/assets/img/background-layer.png")
     no-repeat center;
-  background-size: 1200px 600px;
+  background-size: 1440px 90%;
 }
 
 @include mq($until: tablet-portrait) {
@@ -30,12 +30,12 @@
       no-repeat;
     position: absolute;
     top: 5%;
-    background-size: 100% 85%;
+    background-size: 100% 622px;
   }
 }
-@include mq($from: mobile-sm, $until: mobile) {
+@include mq($until: mobile-sm) {
   .shop-and-play-layer {
-    top: 8%;
-    background-size: 100% 95%;
+    top: 13%;
+    background-size: 100% 590px;
   }
 }

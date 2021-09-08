@@ -8,7 +8,7 @@ $color-machine-levier: #7cabf9;
 $color-machine-head: #023587;
 $color-machine-border: #2b6cd6;
 //WEB RESPONSIVE
-$laptop-height: 720px;
+$mobile-height: 500px;
 $smartphone-height: 641px;
 $iphone-x-height: 823px;
 $smartphone-width: 414px;
@@ -23,6 +23,7 @@ $mq-breakpoints: (
   desktop: 1440px,
   desktop-large: 1600px,
   desktop-xlarge: 1681px,
+  mobileLandscape: 645px,
 );
 
 $mq-show-breakpoints: (
@@ -33,5 +34,6 @@ $mq-show-breakpoints: (
   desktop-sm,
   desktop,
   desktop-large,
-  desktop-xlarge
+  desktop-xlarge,
+  mobileLandscape
 );

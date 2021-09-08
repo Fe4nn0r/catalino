@@ -2618,6 +2618,11 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
+"@mcaskill/sass-mq@^5.0.1":
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/@mcaskill/sass-mq/-/sass-mq-5.0.1.tgz#a8c2b27c3300eb737356f0d6621d15440493e67d"
+  integrity sha512-/XkVfkfEw5kSSdAy5687JqQt5uQoxlhUaigMyfvy6q6bidIzJHSttWGts1L1Ckie3XEnXirmS88/3xv+R+56lg==
+
 "@nicolo-ribaudo/chokidar-2@2.1.8-no-fsevents.2":
   version "2.1.8-no-fsevents.2"
   resolved "https://registry.yarnpkg.com/@nicolo-ribaudo/chokidar-2/-/chokidar-2-2.1.8-no-fsevents.2.tgz#e324c0a247a5567192dd7180647709d7e2faf94b"
@@ -11929,11 +11934,6 @@ sass-loader@^10.0.5:
     neo-async "^2.6.2"
     schema-utils "^3.0.0"
     semver "^7.3.2"
-
-sass-mq@^5.0.1:
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/sass-mq/-/sass-mq-5.0.1.tgz#42c711e657d884ff6a1bb4d405dfb6f08a7dc622"
-  integrity sha512-ugSVZO5fzasSFrGfKCtY02spnkOOfo9U9sXuzCuSXoCl1CgcoqdJRdNmigZkhvRVph1GKM6o0pgI00Jjc445CA==
 
 sax@~1.2.4:
   version "1.2.4"
