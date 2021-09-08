@@ -254,3 +254,18 @@
     }
   }
 }
+
+@include mq($from: mobile-sm, $until: mobile) {
+  .game-container {
+    .game-content {
+      .slot-machine {
+        background: url("../../../resources/assets/img/slot-spot-mobile.png")
+          no-repeat center;
+        position: absolute;
+        width: 100%;
+        margin-bottom: 0;
+        background-size: 100% 90%;
+      }
+    }
+  }
+}

@@ -24,6 +24,15 @@
   background-size: 1200px 600px;
 }
 
+@include mq($from: mobile, $until: tablet-portrait) {
+  .shop-and-play-layer {
+    background: url("../../../resources/assets/img/background-layer-mobile.png")
+      no-repeat;
+    position: absolute;
+    top: 5%;
+    background-size: 100% 85%;
+  }
+}
 @include mq($until: tablet-portrait) {
   .shop-and-play-layer {
     background: url("../../../resources/assets/img/background-layer-mobile.png")
@@ -31,5 +40,11 @@
     position: absolute;
     top: 5%;
     background-size: 100% 85%;
+  }
+}
+@include mq($from: mobile-sm, $until: mobile) {
+  .shop-and-play-layer {
+    top: 8%;
+    background-size: 100% 95%;
   }
 }
