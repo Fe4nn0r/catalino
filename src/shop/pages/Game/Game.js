@@ -91,7 +91,8 @@ function Game() {
             </div>
           </div>
           <div className="description mobile-only">
-            Shake to start the slot machine<span className="or"> or </span>
+            Shake to start the slot machine <br />{" "}
+            <span className="or"> or </span>
           </div>
           <div className="buttons-area">
             <Button text="Play" enable={!animated} doAction={play} />
