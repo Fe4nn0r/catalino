@@ -49,9 +49,10 @@
     height: 85vh;
 
     .title {
-      font-size: 50px;
-      margin: 0 auto;
+      font-size: 7vh;
+      margin: 20px auto;
       max-width: 90%;
+      line-height: initial;
     }
 
     .slot-machine-screen {
@@ -83,5 +84,11 @@
         margin: auto;
       }
     }
+  }
+}
+
+@media only screen and (min-device-width: $tablet-portrait) and (max-device-width: $tablet-landscape) and (orientation: portrait) {
+  .slot-machine-container .slot-machine-screen {
+    background-position-x: 85%;
   }
 }

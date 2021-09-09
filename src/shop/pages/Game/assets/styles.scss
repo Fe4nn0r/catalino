@@ -278,7 +278,7 @@
   }
 }
 
-@media only screen and (min-device-width: $tablet-portrait) and (max-device-width: 1024px) and (orientation: portrait) {
+@media only screen and (min-device-width: $tablet-portrait) and (max-device-width: $tablet-landscape) and (orientation: portrait) {
   .game-container .game-content {
     .slot-machine {
       background-size: 80%;
