@@ -23,10 +23,15 @@
 
 @include mq($until: tablet-portrait) {
   .refund-content {
+    max-width: 350px;
+
+    @media screen and (orientation: landscape) {
+      max-width: 250px;
+    }
     .subtitle {
       font-size: 3.5vh;
       margin: 0 auto;
-      width: 65%;
+      width: 100%;
       line-height: inherit;
     }
     form {
@@ -34,9 +39,11 @@
         width: 60%;
       }
       input[type="text"] {
-        font-size: 3.2vh;
+        font-size: 2.5vh;
+        padding: 5px;
       }
       label {
+        font-size: 2vh;
         width: 60%;
         line-height: inherit;
       }
@@ -45,7 +52,7 @@
         font-size: 2.5vh;
         .text {
           line-height: 2.5vh;
-          font-size: 2vh;
+          font-size: 1.5vh;
         }
       }
     }
