@@ -40,7 +40,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "prepare": "husky install",
-    "compile:script": "babel scripts -d buildScript"
+    "compile:script": "babel retailer-scripts -d buildScript"
   },
   "eslintConfig": {
     "extends": [
