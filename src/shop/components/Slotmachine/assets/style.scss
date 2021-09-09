@@ -61,6 +61,9 @@
       width: 100%;
       background-size: 120% 65%;
       top: 0;
+      @media screen and (orientation: landscape) {
+        background-size: auto 60%;
+      }
     }
   }
 }
