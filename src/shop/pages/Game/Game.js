@@ -9,14 +9,12 @@ import Screen from "./Screen";
 import Button from "../../components/Button/Button";
 import { getWallet } from "../../../utils/catalinaRequests";
 import mobileHand from "../../resources/assets/img/mobile-ico.png";
-import Logo from "../../components/Logo/Logo";
-import SlotMachine from "../../components/Slotmachine/SlotMachine";
 
 const REDIRECTING_TIME = 800;
 
 function Game() {
   const [animated, setAnimated] = useState(false);
-  let [winner, setWinner] = useState(false);
+  let [winner, setWinner] = useState(true);
   let [isScreenFinished, setScreenFinished] = useState(false);
   const navigate = useNavigate();
   const [leverPulled] = useSound(leverSound, { volume: 0.05 });
@@ -44,7 +42,7 @@ function Game() {
           setWinner(isWinner);
         })
         .catch((err) => {
-          window.location.href = "/can-not-play";
+          //window.location.href = "/can-not-play";
           //navigate("/can-not-play");
         });
     }

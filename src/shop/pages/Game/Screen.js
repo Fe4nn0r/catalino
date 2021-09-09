@@ -34,7 +34,6 @@ function Screen({ animate, speed, screenNumber, winner, onFinish }) {
     getWinIcon()
       .then((res) => {
         setIcoWin(res);
-        console.log(res);
       })
       .catch(setIcoWin(defaultIcoWin));
   }, []);

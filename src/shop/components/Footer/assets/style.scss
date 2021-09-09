@@ -8,7 +8,9 @@
   display: flex;
   flex-direction: column;
   z-index: 100;
-
+  .sponsors {
+    display: none;
+  }
   .options {
     width: 100%;
     display: flex;
@@ -39,6 +41,13 @@
 
 @include mq($until: tablet-portrait) {
   .footer {
+    .sponsors {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      background-color: #ffffff;
+    }
     position: absolute;
     bottom: inherit;
     .options {
