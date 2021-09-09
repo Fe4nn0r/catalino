@@ -1,6 +1,10 @@
 @import "../../../resources/assets/styles/variables";
 @import "~@mcaskill/sass-mq";
 
+.refund-content {
+  padding-top: 15%;
+}
+
 @include mq(
   $from: tablet-portrait,
   $and: mq($until: mobileLandscape, $media-feature: height)
