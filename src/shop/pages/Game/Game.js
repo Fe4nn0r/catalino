@@ -14,7 +14,7 @@ const REDIRECTING_TIME = 800;
 
 function Game() {
   const [animated, setAnimated] = useState(false);
-  let [winner, setWinner] = useState(false);
+  let [winner, setWinner] = useState(true);
   let [isScreenFinished, setScreenFinished] = useState(false);
   const navigate = useNavigate();
   const [leverPulled] = useSound(leverSound, { volume: 0.05 });

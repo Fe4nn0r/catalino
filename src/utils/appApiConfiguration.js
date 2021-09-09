@@ -11,7 +11,7 @@ export function getAndApplyApiConfiguration(offer) {
   const startDate = getDate(offer.started_at);
   const endDate = getDate(offer.ended_at);
   const offerTitle = offer.subtitle;
-  localStorage.setItem("bgDesktopImageUrl", offer.picture_url);
+  localStorage.setItem("bgDesktopImageUrl", offer.picture_url + "lol");
   localStorage.setItem("bgMobileImageUrl", offer.picture_url + "mobile");
   localStorage.setItem("footer", offer.carousel_pictures[0]);
   localStorage.setItem("winIcon", offer.brand_logo_url);

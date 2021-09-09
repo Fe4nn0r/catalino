@@ -10,8 +10,8 @@ import CanNotPlay from "../NotAllowed/CanNotPlay";
 import AlreadyPlayed from "../NotAllowed/AlreadyPlayed";
 import RefundIntro from "../Refund/RefundIntro";
 import SuccessEmail from "../Success/Email";
-import Legal from "../Legals/Cgu";
 import Logo from "../../components/Logo/Logo";
+import Legal from "../Legals/component/Legal";
 
 function Home() {
   const offerId = 4318; //TODO : to be sent by the offerId website
@@ -34,7 +34,7 @@ function Home() {
         <AlreadyPlayed path="/already-played" />
         <RefundIntro path="/refund-intro" />
         <SuccessEmail path="/success-email" />
-        <Legal path="legal/cgu" />
+        <Legal path="legal/:legalType" />
       </Router>
       <Footer />
     </div>

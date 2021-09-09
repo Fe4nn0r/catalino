@@ -23,11 +23,11 @@ function Footer() {
     <div className="footer">
       {getSponsors()}
       <div className="options">
-        <a>Help (FAQ)</a>
-        <Link to="legal/cgu">General conditions</Link>
-        <a>Legal notices</a>
-        <a>Data protection</a>
-        <a>Cookie</a>
+        <Link to="legal/help">Help (FAQ)</Link>
+        <Link to="legal/generalConditions">General conditions</Link>
+        <Link to="legal/legalNotices">Legal notices</Link>
+        <Link to="legal/dataProtection">Data protection</Link>
+        <Link to="legal/cookie">Cookie</Link>
       </div>
     </div>
   );
