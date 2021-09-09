@@ -44,6 +44,7 @@ function Game() {
           setWinner(isWinner);
         })
         .catch((err) => {
+          //TODO : change when good
           //window.location.href = "/can-not-play";
           //navigate("/can-not-play");
         });
