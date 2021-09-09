@@ -12,13 +12,15 @@ $mobile-height: 500px;
 $smartphone-height: 641px;
 $iphone-x-height: 823px;
 $smartphone-width: 414px;
+$tablet-portrait: 768px;
+$tablet-landscape: 1024px;
 
 // Breakpoint
 $mq-breakpoints: (
   mobile-sm: 350px,
   mobile: 375px,
-  tablet-portrait: 768px,
-  tablet: 1024px,
+  tablet-portrait: $tablet-portrait,
+  tablet: $tablet-landscape,
   desktop-sm: 1366px,
   desktop: 1440px,
   desktop-large: 1600px,

@@ -1,25 +1,26 @@
-$color-primary: #ff0003;
+$color-primary: #2e70de;
 $color-light-primary: #a9c9ff;
 $color-secondary: #ffffff;
 $color-grey: #c4c4c4;
 
 //SLOT MACHINE
-$color-machine-levier: #c4c4c4;
-$color-machine-head: #000000;
-$color-machine-border: #de0504;
-
+$color-machine-levier: #7cabf9;
+$color-machine-head: #023587;
+$color-machine-border: #2b6cd6;
 //WEB RESPONSIVE
-$laptop-height: 720px;
+$mobile-height: 500px;
 $smartphone-height: 641px;
 $iphone-x-height: 823px;
 $smartphone-width: 414px;
+$tablet-portrait: 768px;
+$tablet-landscape: 1024px;
 
 // Breakpoint
 $mq-breakpoints: (
   mobile-sm: 350px,
   mobile: 375px,
-  tablet-portrait: 768px,
-  tablet: 1024px,
+  tablet-portrait: $tablet-portrait,
+  tablet: $tablet-landscape,
   desktop-sm: 1366px,
   desktop: 1440px,
   desktop-large: 1600px,

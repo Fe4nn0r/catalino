@@ -4,7 +4,6 @@ import Checkbox from "../../components/Checkbox/Checkbox";
 import Button from "../../components/Button/Button";
 import { Link, useNavigate } from "@reach/router";
 import { useTranslation } from "react-i18next";
-import Moment from "moment";
 import { useMediaQuery } from "react-responsive";
 
 import {
@@ -31,7 +30,7 @@ function Landing({ offerId, retailerId, holderRef }) {
     backgroundImage: desktopBackgroundImgLayer,
   });
   const navigate = useNavigate();
-  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+  const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
 
   useEffect(() => {
     if (isMobile) {

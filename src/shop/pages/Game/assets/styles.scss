@@ -174,6 +174,7 @@
       }
     }
   }
+
   .shop-and-play-layer {
     z-index: 2;
     opacity: 0.4;
@@ -223,29 +224,35 @@
         position: absolute;
         width: 100%;
         background-size: 125% 95%;
+
         .screen-container {
           width: 350px;
           height: 127px;
           margin: 5px auto;
         }
+
         .screen-column {
           img {
             width: 60px;
           }
         }
+
         .shake-phone {
           display: flex;
         }
+
         .buttons-area {
           flex-direction: column;
           margin: auto;
           justify-content: center;
           align-items: center;
+
           .insert-coin {
             display: none;
           }
         }
       }
+
       .slot-lever,
       .slot-lever-support,
       .slot-hand {
@@ -254,17 +261,52 @@
     }
   }
 }
+
 @include mq($until: mobile-sm) {
   .game-container {
     .game-content {
       .slot-machine {
         min-height: 450px;
+
         .screen-container {
           width: 260px;
           height: 105px;
           margin: auto;
         }
       }
+    }
+  }
+}
+
+@media only screen and (min-device-width: $tablet-portrait) and (max-device-width: 1024px) and (orientation: portrait) {
+  .game-container .game-content {
+    .slot-machine {
+      background-size: 80%;
+
+      .screen-container {
+        margin: 30px auto;
+        width: 470px;
+        height: 180px;
+      }
+    }
+
+    .title {
+      padding-top: 13%;
+    }
+
+    .slot-hand {
+      top: 19%;
+      left: 675px;
+    }
+
+    .slot-lever {
+      top: 21%;
+      left: 694px;
+    }
+
+    .slot-lever-support {
+      top: 60%;
+      left: 86%;
     }
   }
 }

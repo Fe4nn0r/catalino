@@ -21,7 +21,7 @@
   z-index: 30;
   background: url("../../../resources/assets/img/background-layer.png")
     no-repeat center;
-  background-size: auto 90%;
+  background-size: auto 85%;
 }
 
 @include mq($until: tablet-portrait) {
