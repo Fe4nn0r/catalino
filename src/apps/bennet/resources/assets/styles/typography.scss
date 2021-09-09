@@ -33,9 +33,26 @@
   text-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
 }
 
-@include mq($until: tablet-portrait) {
+@include mq(
+  $from: tablet-portrait,
+  $and: mq($until: mobileLandscape, $media-feature: height)
+) {
   .title {
-    font-size: 50px;
-    line-height: 55px;
+    font-size: 6.14vh;
+    line-height: initial;
+    max-width: 60%;
+    margin: 0 auto;
+  }
+  .description {
+    padding: 0px;
+    font-size: 3vh;
+    max-width: 80%;
+    margin: 0 auto;
+  }
+}
+@include mq($until: tablet-portrait) {
+  .description {
+    font-size: 2.5vh;
+    margin: 0 auto;
   }
 }

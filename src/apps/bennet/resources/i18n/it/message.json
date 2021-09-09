@@ -30,5 +30,8 @@
       "description": "You wining has been sent to Bennet and will be validated depending on your effective order under 3 or 4 days",
       "btn": "Go on Bennet’s site"
     }
+  },
+  "general": {
+    "btnGoToSite": "GO ON BENNET'S SITE"
   }
 }

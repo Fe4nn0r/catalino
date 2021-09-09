@@ -9,7 +9,7 @@
   justify-content: center;
   flex-direction: column;
   text-align: center;
-  width: 493px;
+  max-width: 493px;
   row-gap: 50px;
 }
 
@@ -21,7 +21,7 @@
   z-index: 30;
   background: url("../../../resources/assets/img/background-layer.png")
     no-repeat center;
-  background-size: 1200px 600px;
+  background-size: 1440px 90%;
 }
 
 @include mq($until: tablet-portrait) {
@@ -29,7 +29,13 @@
     background: url("../../../resources/assets/img/background-layer-mobile.png")
       no-repeat;
     position: absolute;
-    top: 30px;
-    background-size: 100%;
+    top: 5%;
+    background-size: 100% 622px;
+  }
+}
+@include mq($until: mobile-sm) {
+  .shop-and-play-layer {
+    top: 13%;
+    background-size: 100% 590px;
   }
 }

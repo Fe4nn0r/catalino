@@ -24,6 +24,7 @@ $mq-breakpoints: (
   desktop: 1440px,
   desktop-large: 1600px,
   desktop-xlarge: 1681px,
+  mobileLandscape: 645px,
 );
 
 $mq-show-breakpoints: (
@@ -34,7 +35,6 @@ $mq-show-breakpoints: (
   desktop-sm,
   desktop,
   desktop-large,
-  desktop-xlarge
+  desktop-xlarge,
+  mobileLandscape
 );
-
-$breakpoints-shown: (mobile, mobileLandscape, tablet, desktop, wide);
