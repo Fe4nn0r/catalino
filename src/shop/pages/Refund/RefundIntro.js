@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import Checkbox from "../../components/Checkbox/Checkbox";
 import { Link, useNavigate } from "@reach/router";
 import { sendEmailForRefund } from "../../../utils/catalinaRequests";
+import "./assets/styles.scss";
 
 function RefundIntro() {
   const {
@@ -37,7 +38,7 @@ function RefundIntro() {
 
   function RefundIntroContent() {
     return (
-      <div className="content">
+      <div className="refund-content">
         <div className="subtitle">{t("refund.intro.title")}</div>
         <form onSubmit={handleSubmit(onSubmit)}>
           <input
@@ -67,7 +68,7 @@ function RefundIntro() {
 
           <div className="agree">
             <Checkbox checkAction={agree} />
-            <div>
+            <div className="text">
               {t("refund.intro.agree")}
               <Link to="/conditions"> {t("refund.intro.agreeLink")} </Link>{" "}
             </div>

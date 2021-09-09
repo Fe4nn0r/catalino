@@ -43,6 +43,13 @@
     max-width: 60%;
     margin: 0 auto;
   }
+  .subtitle {
+    padding: 0px;
+    font-size: 3vh;
+    line-height: initial;
+    max-width: 60%;
+    margin: 0 auto;
+  }
   .description {
     padding: 0px;
     font-size: 3vh;
@@ -52,6 +59,11 @@
 }
 @include mq($until: tablet-portrait) {
   .description {
+    font-size: 2.5vh;
+    margin: 0 auto;
+    padding: 0;
+  }
+  .subtitle {
     font-size: 2.5vh;
     margin: 0 auto;
   }

@@ -37,12 +37,14 @@ function Game() {
     if (!animated) {
       leverPulled();
       setAnimated(true);
+      setWinner(true);
+
       applyBasketAndGetWallet()
         .then((isWinner) => {
           setWinner(isWinner);
         })
         .catch((err) => {
-          window.location.href = "/can-not-play";
+          // window.location.href = "/can-not-play";
           //navigate("/can-not-play");
         });
     }
