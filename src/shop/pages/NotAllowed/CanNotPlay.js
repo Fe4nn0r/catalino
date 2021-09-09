@@ -8,9 +8,7 @@ function CanNotPlay() {
     return (
       <div className="not-allowed-content">
         <div className="title">Sorry, you can’t play</div>
-        <div className="description">
-          None of the product you build is eligible to play to this game{" "}
-        </div>
+        <div className="description">The offer is no longer available </div>
         <div className="button-area">
           <Button text="GO ON CARREFOUR'S SITE" enable to="/" />{" "}
         </div>

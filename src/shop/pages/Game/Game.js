@@ -44,7 +44,8 @@ function Game() {
           setWinner(isWinner);
         })
         .catch((err) => {
-          navigate("/can-not-play");
+          window.location.href = "/can-not-play";
+          //navigate("/can-not-play");
         });
     }
   }
