@@ -33,5 +33,18 @@
   },
   "general": {
     "btnGoToSite": "GO ON CARREFOUR'S SITE"
+  },
+  "lost": {
+    "sorry": "Sorry,",
+    "lost": "you lost",
+    "description": "Try your luck next time"
+  },
+  "already": {
+    "sorry": "Sorry, you have already play",
+    "description": "You can’t play again, try your luck next time"
+  },
+  "cannot": {
+    "sorry": "Sorry, you can’t play",
+    "description": "The offer is no longer available"
   }
 }

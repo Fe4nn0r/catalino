@@ -14,16 +14,22 @@ function Lost() {
             <img src={eye} />{" "}
           </div>
           <div className="title">
-            Sorry,
-            <br /> you lost
+            {t("lost.sorry")}
+            <br /> {t("lost.lost")}
           </div>
           <div className="right-eye">
             <img src={eye} />
           </div>
         </div>
-        <div className="description">Try your luck next time</div>
+        <div className="description">{t("lost.description")}</div>
         <div className="button-area">
-          <Button text={t("general.btnGoToSite")} enable to="/" />{" "}
+          <Button
+            text={t("general.btnGoToSite")}
+            enable
+            doAction={() =>
+              (document.location = process.env.REACT_APP_HOME_SHOPPING_URL)
+            }
+          />{" "}
         </div>
         <div className="lips"></div>
       </div>

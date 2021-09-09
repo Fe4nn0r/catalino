@@ -9,10 +9,16 @@ function CanNotPlay() {
   function CanNotPlayContent() {
     return (
       <div className="not-allowed-content">
-        <div className="title">Sorry, you can’t play</div>
-        <div className="description">The offer is no longer available </div>
+        <div className="title">{t("cannot.sorry")}</div>
+        <div className="description">{t("cannot.description")}</div>
         <div className="button-area">
-          <Button text={t("general.btnGoToSite")} enable to="/" />{" "}
+          <Button
+            text={t("general.btnGoToSite")}
+            enable
+            doAction={() =>
+              (document.location = process.env.REACT_APP_HOME_SHOPPING_URL)
+            }
+          />{" "}
         </div>
       </div>
     );

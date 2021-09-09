@@ -9,12 +9,16 @@ function AlreadyPlayed() {
   function AlreadyPlayedContent() {
     return (
       <div className="not-allowed-content">
-        <div className="title">Sorry, you have already play</div>
-        <div className="description">
-          You can’t play again, try your luck next time
-        </div>
+        <div className="title">{t("already.sorry")}</div>
+        <div className="description">{t("already.description")}</div>
         <div className="button-area">
-          <Button text={t("general.btnGoToSite")} enable to="/" />{" "}
+          <Button
+            text={t("general.btnGoToSite")}
+            enable
+            doAction={() =>
+              (document.location = process.env.REACT_APP_HOME_SHOPPING_URL)
+            }
+          />{" "}
         </div>
       </div>
     );
