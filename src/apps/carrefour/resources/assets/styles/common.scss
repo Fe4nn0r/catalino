@@ -32,6 +32,9 @@
     top: 5%;
     background-size: 100% 622px;
   }
+  .content {
+    row-gap: 15px;
+  }
 }
 @include mq($until: mobile-sm) {
   .shop-and-play-layer {
