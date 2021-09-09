@@ -55,25 +55,28 @@ export async function sendEmailForRefund(email) {
   );
 }
 
-export async function getWallet() {
+export async function applyBasketAndGetWallet() {
   return applyBasket().then(() => {
-    return httpGet(
-      apiHost + "/members/" + localStorage.getItem("memberId") + "/wallet",
-      "/members/" + localStorage.getItem("memberId") + "/wallet"
-    ).then((results) => {
-      let lotteryId = 0;
-      if (results.lottery_rejected && results.lottery_rejected.length > 0) {
-        lotteryId = results.lottery_rejected[0].id;
-      }
-      return (
-        results.validated &&
-        results.validated.length > 0 &&
-        results.validated[0].id > lotteryId
-      );
-    });
+    return getWallet();
   });
 }
 
+export async function getWallet() {
+  return httpGet(
+    apiHost + "/members/" + localStorage.getItem("memberId") + "/wallet",
+    "/members/" + localStorage.getItem("memberId") + "/wallet"
+  ).then((results) => {
+    let lotteryId = 0;
+    if (results.lottery_rejected && results.lottery_rejected.length > 0) {
+      lotteryId = results.lottery_rejected[0].id;
+    }
+    return (
+      results.validated &&
+      results.validated.length > 0 &&
+      results.validated[0].id > lotteryId
+    );
+  });
+}
 async function httpGet(url, apiActionPath) {
   let headers = await getHeaders(apiActionPath, "GET", 0);
   return request(url, {

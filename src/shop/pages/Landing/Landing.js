@@ -54,7 +54,6 @@ function Landing({ offerId, retailerId, holderRef }) {
       .then(() => {
         getOffer(offerId)
           .then((offer) => {
-            Moment.locale();
             setLandingInformation(getAndApplyApiConfiguration(offer));
             getDesktopBackgroundLayer().then((res) =>
               setDesktopBackgroundImgLayer(res)
@@ -62,7 +61,6 @@ function Landing({ offerId, retailerId, holderRef }) {
             getMobileBackgroundLayer().then((res) =>
               setMobileBackgroundImgLayer(res)
             );
-
             setAllowed(true);
           })
           .catch((err) => {

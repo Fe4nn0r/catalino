@@ -10,7 +10,7 @@ import CanNotPlay from "../NotAllowed/CanNotPlay";
 import AlreadyPlayed from "../NotAllowed/AlreadyPlayed";
 import RefundIntro from "../Refund/RefundIntro";
 import SuccessEmail from "../Success/Email";
-import Cgu from "../Legals/Cgu";
+import Legal from "../Legals/Cgu";
 import Logo from "../../components/Logo/Logo";
 
 function Home() {
@@ -34,7 +34,7 @@ function Home() {
         <AlreadyPlayed path="/already-played" />
         <RefundIntro path="/refund-intro" />
         <SuccessEmail path="/success-email" />
-        <Cgu path="legal/cgu" />
+        <Legal path="legal/cgu" />
       </Router>
       <Footer />
     </div>

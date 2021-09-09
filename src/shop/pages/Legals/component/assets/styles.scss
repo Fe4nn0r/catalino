@@ -1,4 +1,4 @@
-@import "../../../resources/assets/styles/variables";
+@import "../../../../resources/assets/styles/variables";
 @import "~@mcaskill/sass-mq";
 
 .legal-container {
@@ -32,7 +32,8 @@
       letter-spacing: 0.03em;
     }
     .back-button {
-      background: url("../../../resources/assets/img/back.png") no-repeat center;
+      background: url("../../../../resources/assets/img/back.png") no-repeat
+        center;
       width: 37px;
       height: 23px;
       margin-bottom: 5%;

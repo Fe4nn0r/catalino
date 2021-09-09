@@ -65,7 +65,7 @@
 @include mq($until: tablet-portrait) {
   .part1 {
     margin-top: 138px;
-    min-height: 600px;
+    min-height: 500px;
 
     .go-to-game-container {
       background: url("../../../resources/assets/img/spot.png") no-repeat center;

@@ -23,6 +23,6 @@
 }
 @include mq($until: mobileLandscape, $media-feature: height) {
   .play-button {
-    font-size: 4vh;
+    font-size: 3.2vh;
   }
 }

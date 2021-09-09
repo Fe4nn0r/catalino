@@ -7,14 +7,14 @@ import winSound from "../../resources/assets/sound/Win.mp3";
 import "./assets/styles.scss";
 import Screen from "./Screen";
 import Button from "../../components/Button/Button";
-import { getWallet } from "../../../utils/catalinaRequests";
+import { applyBasketAndGetWallet } from "../../../utils/catalinaRequests";
 import mobileHand from "../../resources/assets/img/mobile-ico.png";
 
 const REDIRECTING_TIME = 800;
 
 function Game() {
   const [animated, setAnimated] = useState(false);
-  let [winner, setWinner] = useState(true);
+  let [winner, setWinner] = useState(false);
   let [isScreenFinished, setScreenFinished] = useState(false);
   const navigate = useNavigate();
   const [leverPulled] = useSound(leverSound, { volume: 0.05 });
@@ -37,12 +37,12 @@ function Game() {
     if (!animated) {
       leverPulled();
       setAnimated(true);
-      getWallet()
+      applyBasketAndGetWallet()
         .then((isWinner) => {
           setWinner(isWinner);
         })
         .catch((err) => {
-          //window.location.href = "/can-not-play";
+          window.location.href = "/can-not-play";
           //navigate("/can-not-play");
         });
     }
