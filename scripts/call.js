@@ -10,7 +10,7 @@ var classNameElementSearchElement = 'js-search-content';
 var config = [
     {
         name: 'homepage',
-        url: 'www.in-tact.fr',
+        url: 'http://www.in-tact.fr',
         style: 'width:100%;',
         xpath: "//*[@id=\"maincontent\"]/div[3]/div",
         condition:  (pageViewData) => {
@@ -19,7 +19,7 @@ var config = [
     },
     {
         name: 'categories',
-        url: 'www.in-tact.fr',
+        url: 'http://www.in-tact.fr',
         style: 'width:100%;',
         xpath: "//div[contains(@class, 'product-grid js-search-content')]",
         condition:  (pageViewData, codePromoArray) => {
@@ -28,7 +28,7 @@ var config = [
     },
     {
         name: 'search',
-        url: 'www.in-tact.fr',
+        url: 'http://www.in-tact.fr',
         style: 'width:100%;',
         xpath: "//div[contains(@class, 'product-grid js-search-content')]",
         condition:  (pageViewData, codePromoArray) => {
@@ -37,7 +37,7 @@ var config = [
     },
     {
         name: 'cart',
-        url: 'www.in-tact.fr',
+        url: 'http://www.in-tact.fr',
         style: 'width:100%;margin-top:10px;',
         xpath: "//div[contains(@class, 'line-item-card-wrapper')]",
         condition:  (pageViewData, codePromoArray) => {
@@ -143,7 +143,7 @@ function showOrHideBanner(data, pageViewData, codePromoArray ) {
     config.forEach(currentConfig => {
         if(isBannerShown()) return;
         if(currentConfig.condition(pageViewData, codePromoArray)) {
-            addBanner(currentConfig.xpath, data[0].picture_url, currentConfig.url, currentConfig.style);
+            addBanner(currentConfig.xpath, data[0].carousel_pictures[1], currentConfig.url, currentConfig.style);
             console.log('show banner : ', currentConfig.name, currentConfig.style);
         }
     });
