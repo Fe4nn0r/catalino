@@ -10,8 +10,7 @@ export function getAndApplyApiConfiguration(offer) {
   const startDate = getDate(offer.started_at);
   const endDate = getDate(offer.ended_at);
   const offerTitle = offer.subtitle;
-  localStorage.setItem("bgDesktopImageUrl", offer.picture_url + "lol");
-  localStorage.setItem("bgMobileImageUrl", offer.picture_url + "mobile");
+  localStorage.setItem("bgDesktopImageUrl", offer.picture_url);
   localStorage.setItem("footer", offer.carousel_pictures[0]);
   localStorage.setItem("winIcon", offer.brand_logo_url);
   return { offerTitle: offerTitle, startDate: startDate, endDate: endDate };
@@ -23,15 +22,18 @@ export async function getDesktopBackgroundLayer() {
     desktopBackgroundLayer
   );
 }
+
 export async function getWinIcon() {
   return getImageIfExistOrReturnDefault(
     localStorage.getItem("winIcon"),
     icoWin
   );
 }
+
 export async function getFooterImage() {
   return getImageIfExistOrReturnDefault(localStorage.getItem("footer"), null);
 }
+
 async function getImageIfExistOrReturnDefault(imgUrl, defaultUrl) {
   return await fetch(imgUrl, { method: "HEAD" })
     .then((res) => {
