@@ -3,7 +3,6 @@ import Moment from "moment";
 import appConfig from "../shop/resources/config/config.json";
 import icoWin from "../shop/resources/assets/img/icoWin.png";
 import desktopBackgroundLayer from "../shop/resources/assets/img/background-layer.png";
-import mobileBackgroundLayer from "../shop/resources/assets/img/background-layer-mobile.png";
 
 export function getAndApplyApiConfiguration(offer) {
   document.getElementById(appConfig.homePageId).style.backgroundColor =
@@ -24,13 +23,6 @@ export async function getDesktopBackgroundLayer() {
     desktopBackgroundLayer
   );
 }
-export async function getMobileBackgroundLayer() {
-  return getImageIfExistOrReturnDefault(
-    localStorage.getItem("bgMobileImageUrl"),
-    mobileBackgroundLayer
-  );
-}
-
 export async function getWinIcon() {
   return getImageIfExistOrReturnDefault(
     localStorage.getItem("winIcon"),
@@ -49,7 +41,10 @@ async function getImageIfExistOrReturnDefault(imgUrl, defaultUrl) {
         return defaultUrl;
       }
     })
-    .catch((err) => console.log("Error:", err));
+    .catch((err) => {
+      console.error("Error:", err);
+      return defaultUrl;
+    });
 }
 
 function getDate(date) {

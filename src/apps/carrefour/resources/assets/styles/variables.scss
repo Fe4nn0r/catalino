@@ -8,7 +8,7 @@ $color-machine-levier: #7cabf9;
 $color-machine-head: #023587;
 $color-machine-border: #2b6cd6;
 //WEB RESPONSIVE
-$mobile-height: 500px;
+$mobile-landscape: 645px;
 $smartphone-height: 641px;
 $iphone-x-height: 823px;
 $smartphone-width: 414px;
@@ -18,14 +18,14 @@ $tablet-landscape: 1024px;
 // Breakpoint
 $mq-breakpoints: (
   mobile-sm: 350px,
-  mobile: 375px,
+  mobile: $mobile-landscape,
   tablet-portrait: $tablet-portrait,
   tablet: $tablet-landscape,
   desktop-sm: 1366px,
   desktop: 1440px,
   desktop-large: 1600px,
   desktop-xlarge: 1681px,
-  mobileLandscape: 645px,
+  mobileLandscape: $mobile-landscape,
 );
 
 $mq-show-breakpoints: (

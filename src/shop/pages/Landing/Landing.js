@@ -5,6 +5,7 @@ import Button from "../../components/Button/Button";
 import { Link, useNavigate } from "@reach/router";
 import { useTranslation } from "react-i18next";
 import { useMediaQuery } from "react-responsive";
+import mobileBackgroundLayer from "../../resources/assets/img/background-layer-mobile.png";
 
 import {
   getCryptedAuthentication,
@@ -15,7 +16,6 @@ import Loading from "../../components/Loading/Loading";
 import {
   getAndApplyApiConfiguration,
   getDesktopBackgroundLayer,
-  getMobileBackgroundLayer,
 } from "../../../utils/appApiConfiguration";
 
 function Landing({ offerId, retailerId, holderRef }) {
@@ -25,7 +25,6 @@ function Landing({ offerId, retailerId, holderRef }) {
   const [landingInformation, setLandingInformation] = useState({});
   const [desktopBackgroundImgLayer, setDesktopBackgroundImgLayer] =
     useState("");
-  const [mobileBackgroundImgLayer, setMobileBackgroundImgLayer] = useState("");
   const [backgroundLayerStyle, setBackgroundLayerStyle] = useState({
     backgroundImage: desktopBackgroundImgLayer,
   });
@@ -35,14 +34,14 @@ function Landing({ offerId, retailerId, holderRef }) {
   useEffect(() => {
     if (isMobile) {
       setBackgroundLayerStyle({
-        backgroundImage: "url(" + mobileBackgroundImgLayer + ")",
+        backgroundImage: "url(" + mobileBackgroundLayer + ")",
       });
     } else {
       setBackgroundLayerStyle({
         backgroundImage: "url(" + desktopBackgroundImgLayer + ")",
       });
     }
-  }, [isMobile, desktopBackgroundImgLayer, mobileBackgroundImgLayer]);
+  }, [isMobile, desktopBackgroundImgLayer]);
 
   useEffect(() => {
     const body = {
@@ -51,16 +50,17 @@ function Landing({ offerId, retailerId, holderRef }) {
     };
     getCryptedAuthentication(body, retailerId, offerId, holderRef)
       .then(() => {
-        getOffer(offerId)
+        getOffer(offerId, retailerId)
           .then((offer) => {
-            setLandingInformation(getAndApplyApiConfiguration(offer));
-            getDesktopBackgroundLayer().then((res) =>
-              setDesktopBackgroundImgLayer(res)
-            );
-            getMobileBackgroundLayer().then((res) =>
-              setMobileBackgroundImgLayer(res)
-            );
-            setAllowed(true);
+            if (offer) {
+              setLandingInformation(getAndApplyApiConfiguration(offer));
+              getDesktopBackgroundLayer().then((res) =>
+                setDesktopBackgroundImgLayer(res)
+              );
+              setAllowed(true);
+            } else {
+              navigate("/can-not-play");
+            }
           })
           .catch((err) => {
             navigate("/can-not-play");
