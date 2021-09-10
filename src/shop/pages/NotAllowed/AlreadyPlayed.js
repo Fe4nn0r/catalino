@@ -1,5 +1,4 @@
 import React from "react";
-import "./assets/styles.scss";
 import SlotMachine from "../../components/Slotmachine/SlotMachine";
 import Button from "../../components/Button/Button";
 import { useTranslation } from "react-i18next";
@@ -8,8 +7,11 @@ function AlreadyPlayed() {
   const { t } = useTranslation("message");
   function AlreadyPlayedContent() {
     return (
-      <div className="not-allowed-content">
-        <div className="title">{t("already.sorry")}</div>
+      <div className="content">
+        <div className="title">
+          {t("general.sorry")}
+          <br /> {t("already.alreadyPlayed")}
+        </div>
         <div className="description">{t("already.description")}</div>
         <div className="button-area">
           <Button

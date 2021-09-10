@@ -1,16 +1,26 @@
 import React from "react";
-import "./assets/styles.scss";
 import SlotMachine from "../../components/Slotmachine/SlotMachine";
 import Button from "../../components/Button/Button";
 import { useTranslation } from "react-i18next";
+import eye from "../Lost/assets/image/eye.png";
 
 function CanNotPlay() {
   const { t } = useTranslation("message");
   function CanNotPlayContent() {
     return (
-      <div className="not-allowed-content">
-        <div className="title">{t("cannot.sorry")}</div>
+      <div className="sad-content">
+        <div className="content-up">
+          <img src={eye} />{" "}
+          <div className="title">
+            {t("general.sorry")}
+            <br /> {t("cannot.canNotPlay")}
+          </div>
+          <img src={eye} />
+        </div>
         <div className="description">{t("cannot.description")}</div>
+
+        <div className="lips" />
+
         <div className="button-area">
           <Button
             text={t("general.btnGoToSite")}
