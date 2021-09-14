@@ -14,9 +14,14 @@ import Logo from "../../components/Logo/Logo";
 import Legal from "../Legals/component/Legal";
 
 function Home() {
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const holderRef = urlParams.get("holderRef")
+    ? urlParams.get("holderRef")
+    : "4";
+  console.log(holderRef);
   const offerId = 4318; //TODO : to be sent by the offerId website
   const retailerId = 1; //TODO : to be sent by the retaler website
-  const holderRef = "2"; //TODO : to be sent by the holderRef website
   return (
     <div id="home-container">
       <Logo displayLogo />

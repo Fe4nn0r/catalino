@@ -53,6 +53,12 @@
     row-gap: 15px;
   }
   .sad-content {
+    .content-up {
+      img {
+        margin: 5%;
+      }
+    }
+
     .lips {
       width: 50px;
       height: 10px;
@@ -68,5 +74,26 @@
   .shop-and-play-layer {
     top: 13%;
     background-size: 100% 590px;
+  }
+}
+
+@include mq($until: mobileLandscape, $media-feature: height) {
+  .sad-content {
+    .content-up {
+      align-items: center;
+
+      img {
+        width: 30px;
+      }
+    }
+
+    .lips {
+      width: 30px;
+      height: 4px;
+      border-radius: 30px;
+      background-color: black;
+      opacity: 0.3;
+      margin: 10px auto 0;
+    }
   }
 }
