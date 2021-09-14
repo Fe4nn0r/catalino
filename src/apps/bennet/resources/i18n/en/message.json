@@ -17,6 +17,12 @@
       "btn": "Validate",
       "agree": "I agree that my data wil be used for reimbursement purpose in accordance with the ",
       "agreeLink": "general condition of use"
+    },
+    "choices": {
+      "description": "Chose how to receive you winnings",
+      "bank": "On my bank account",
+      "paypal": "Via Paypal",
+      "later": "Fill my information later and receive a reminder by mail"
     }
   },
   "win": {
@@ -33,7 +39,8 @@
   },
   "general": {
     "btnGoToSite": "GO ON BENNET'S SITE",
-    "sorry": "Sorry,"
+    "sorry": "Sorry,",
+    "validate": "VALIDATE"
   },
   "lost": {
     "lost": "you lost",

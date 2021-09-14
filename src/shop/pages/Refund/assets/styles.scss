@@ -4,7 +4,14 @@
 .refund-content {
   padding-top: 15%;
 }
-
+.refund-options {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: self-start;
+  font-family: Open Sans;
+  row-gap: 20px;
+}
 @include mq(
   $from: tablet-portrait,
   $and: mq($until: mobileLandscape, $media-feature: height)
@@ -59,6 +66,16 @@
           font-size: 1.5vh;
         }
       }
+    }
+  }
+}
+@include mq($until: mobileLandscape, $media-feature: height) {
+  .content {
+    grid-row-gap: initial;
+    row-gap: initial;
+    .refund-options {
+      grid-row-gap: 5px;
+      row-gap: 5px;
     }
   }
 }

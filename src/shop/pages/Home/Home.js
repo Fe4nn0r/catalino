@@ -12,6 +12,7 @@ import RefundIntro from "../Refund/RefundIntro";
 import SuccessEmail from "../Success/Email";
 import Logo from "../../components/Logo/Logo";
 import Legal from "../Legals/component/Legal";
+import RefundChoices from "../Refund/RefundChoices";
 
 function Home() {
   const queryString = window.location.search;
@@ -19,7 +20,6 @@ function Home() {
   const holderRef = urlParams.get("holderRef")
     ? urlParams.get("holderRef")
     : "4";
-  console.log(holderRef);
   const offerId = 4318; //TODO : to be sent by the offerId website
   const retailerId = 1; //TODO : to be sent by the retaler website
   return (
@@ -40,6 +40,7 @@ function Home() {
         <RefundIntro path="/refund-intro" />
         <SuccessEmail path="/success-email" />
         <Legal path="legal/:legalType" />
+        <RefundChoices path="refund-choices" />
       </Router>
       <Footer />
     </div>
