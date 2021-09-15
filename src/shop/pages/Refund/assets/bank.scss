@@ -1,0 +1,25 @@
+.refund-bank {
+  .subtitle {
+    margin-bottom: 0px;
+  }
+  form {
+    .agree {
+      color: #e8f1fb !important;
+      width: 100%;
+      margin-top: 15px;
+      font-size: 11px;
+      line-height: 14px;
+    }
+    .button-area {
+      padding: 0;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: row;
+      column-gap: 20px;
+    }
+    .error-messages {
+      display: flex;
+      column-gap: 15px;
+    }
+  }
+}
