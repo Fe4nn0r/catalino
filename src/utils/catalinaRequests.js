@@ -62,6 +62,9 @@ export async function sendEmailForRefund(email) {
     body
   );
 }
+export async function sendPaypalInformation(email) {
+  return true;
+}
 
 export async function applyBasketAndGetWallet() {
   return applyBasket().then(() => {

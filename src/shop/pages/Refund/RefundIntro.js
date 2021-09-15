@@ -6,6 +6,7 @@ import Checkbox from "../../components/Checkbox/Checkbox";
 import { Link, useNavigate } from "@reach/router";
 import { sendEmailForRefund } from "../../../utils/catalinaRequests";
 import "./assets/styles.scss";
+import Button from "../../components/Button/Button";
 
 function RefundIntro() {
   const {
@@ -29,11 +30,6 @@ function RefundIntro() {
         setRequestError(true);
       });
   }
-
-  function agree() {
-    setAgreed(!agreed);
-  }
-  const [agreed, setAgreed] = useState(false);
   const [requestError, setRequestError] = useState(false);
 
   function RefundIntroContent() {
@@ -65,18 +61,8 @@ function RefundIntro() {
               {t("refund.intro.errorRequest")}
             </label>
           )}
-
-          <div className="agree">
-            <Checkbox checkAction={agree} />
-            <div className="text">
-              {t("refund.intro.agree")}
-              <Link to="/conditions"> {t("refund.intro.agreeLink")} </Link>{" "}
-            </div>
-          </div>
           <div className="button-area">
-            <button disabled={!isValid || !agreed}>
-              {t("refund.intro.btn")}
-            </button>
+            <button disabled={!isValid}>{t("refund.intro.btn")}</button>
           </div>
         </form>
       </div>
