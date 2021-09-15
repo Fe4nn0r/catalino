@@ -3,32 +3,46 @@ import SlotMachine from "../../components/Slotmachine/SlotMachine";
 import Button from "../../components/Button/Button";
 import { useTranslation } from "react-i18next";
 import RadioButton from "../../components/Radio/RadioButton";
+import { useNavigate } from "@reach/router";
 
 function RefundChoices() {
   const [bank, setBank] = useState(false);
   const [paypal, setPaypal] = useState(false);
   const [later, setLater] = useState(false);
+  const navigate = useNavigate();
 
   function chooseRefund(choice) {
     switch (choice) {
       case "bank":
-        console.log("bank");
         setBank(true);
         setPaypal(false);
         setLater(false);
         break;
       case "paypal":
-        console.log("paypal");
         setBank(false);
         setPaypal(true);
         setLater(false);
         break;
       case "later":
-        console.log("Later");
         setBank(false);
         setPaypal(false);
         setLater(true);
         break;
+      default:
+        setBank(false);
+        setPaypal(false);
+        setLater(false);
+    }
+  }
+  function navigateToChoice() {
+    if (bank) {
+      navigate("/refund-bank");
+    }
+    if (paypal) {
+      navigate("/refund-paypal");
+    }
+    if (later) {
+      navigate("refund-later");
     }
   }
   const { t } = useTranslation("message");
@@ -58,9 +72,7 @@ function RefundChoices() {
           <Button
             text={t("general.validate")}
             enable={later || bank || paypal}
-            doAction={() =>
-              (document.location = process.env.REACT_APP_HOME_SHOPPING_URL)
-            }
+            doAction={() => navigateToChoice()}
           />{" "}
         </div>
         <div className="lips" />
