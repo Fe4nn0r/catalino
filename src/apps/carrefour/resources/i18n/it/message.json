@@ -23,6 +23,13 @@
       "bank": "On my bank account",
       "paypal": "Via Paypal",
       "later": "Fill my information later and receive a reminder by mail"
+    },
+    "bank": {
+      "title": "Please, enter your banking information",
+      "name": "Name",
+      "iban": "IBAN",
+      "bic": "BIC",
+      "description": "La procédure est sécurisée, vos données sont protégées.\nL’enregistrement de vos coordonnées bancaires vous permet de percevoir directement le règlement des offres validées. SOGEC Gestion est chargé de ces remboursements pour le compte de Catalina. Catalina s’engage à assurer un service sécurisé pour protéger l’accès à ces informations.\n"
     }
   },
   "win": {
@@ -40,7 +47,9 @@
   "general": {
     "btnGoToSite": "GO ON CARREFOUR'S SITE",
     "sorry": "Sorry,",
-    "validate": "VALIDATE"
+    "validate": "VALIDATE",
+    "back": "back",
+    "next": "next"
   },
   "lost": {
     "lost": "you lost",

@@ -13,6 +13,7 @@ import SuccessEmail from "../Success/Email";
 import Logo from "../../components/Logo/Logo";
 import Legal from "../Legals/component/Legal";
 import RefundChoices from "../Refund/RefundChoices";
+import RefundBank from "../Refund/RefundBank";
 
 function Home() {
   const queryString = window.location.search;
@@ -41,6 +42,7 @@ function Home() {
         <SuccessEmail path="/success-email" />
         <Legal path="legal/:legalType" />
         <RefundChoices path="refund-choices" />
+        <RefundBank path="refund-bank" />
       </Router>
       <Footer />
     </div>

@@ -7,7 +7,7 @@ import { Link, useNavigate } from "@reach/router";
 import { sendEmailForRefund } from "../../../utils/catalinaRequests";
 import "./assets/styles.scss";
 
-function RefundIntro() {
+function RefundBank() {
   const {
     register,
     handleSubmit,
@@ -39,7 +39,7 @@ function RefundIntro() {
   function RefundIntroContent() {
     return (
       <div className="refund-content">
-        <div className="subtitle">{t("refund.intro.title")}</div>
+        <div className="subtitle">{t("refund.bank.title")}</div>
         <form onSubmit={handleSubmit(onSubmit)}>
           <input
             autoFocus={true}
@@ -86,4 +86,4 @@ function RefundIntro() {
   return <SlotMachine content={RefundIntroContent()} />;
 }
 
-export default RefundIntro;
+export default RefundBank;
