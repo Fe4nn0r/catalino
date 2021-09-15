@@ -30,6 +30,15 @@
       "email": "Email",
       "confirmEmail": "Confirm your email",
       "error": "(the emails are not identical)"
+    },
+    "bank": {
+      "title": "Please, enter your banking information",
+      "name": "Name",
+      "iban": "IBAN",
+      "ibanerror": "format IBAN invalid",
+      "bic": "BIC",
+      "bicerror": "format BIC invalid",
+      "description": "La procédure est sécurisée, vos données sont protégées.\nL’enregistrement de vos coordonnées bancaires vous permet de percevoir directement le règlement des offres validées. SOGEC Gestion est chargé de ces remboursements pour le compte de Catalina. Catalina s’engage à assurer un service sécurisé pour protéger l’accès à ces informations.\n"
     }
   },
   "win": {

@@ -14,6 +14,7 @@ import Logo from "../../components/Logo/Logo";
 import Legal from "../Legals/component/Legal";
 import RefundChoices from "../Refund/RefundChoices";
 import RefundPaypal from "../Refund/RefundPayPal";
+import RefundBank from "../Refund/RefundBank";
 
 function Home() {
   const queryString = window.location.search;
@@ -43,6 +44,7 @@ function Home() {
         <Legal path="legal/:legalType" />
         <RefundChoices path="refund-choices" />
         <RefundPaypal path="refund-paypal" />
+        <RefundBank path="refund-bank" />
       </Router>
       <Footer />
     </div>
