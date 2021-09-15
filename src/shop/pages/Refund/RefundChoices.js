@@ -47,7 +47,7 @@ function RefundChoices() {
   }
   const { t } = useTranslation("message");
 
-  function LostContent() {
+  function refundChoiceContent() {
     return (
       <div className="content">
         <div className="description">{t("refund.choices.description")}</div>
@@ -70,7 +70,7 @@ function RefundChoices() {
         </div>
         <div className="button-area">
           <Button
-            text={t("general.validate")}
+            text={t("general.next")}
             enable={later || bank || paypal}
             doAction={() => navigateToChoice()}
           />{" "}
@@ -80,7 +80,7 @@ function RefundChoices() {
     );
   }
 
-  return <SlotMachine content={LostContent()} />;
+  return <SlotMachine content={refundChoiceContent()} />;
 }
 
 export default RefundChoices;

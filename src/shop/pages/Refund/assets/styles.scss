@@ -4,6 +4,7 @@
 .refund-content {
   padding-top: 15%;
 }
+
 .refund-options {
   display: flex;
   flex-direction: column;
@@ -11,6 +12,26 @@
   align-items: self-start;
   font-family: Open Sans;
   row-gap: 20px;
+
+  .info {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 11px;
+    line-height: 15px;
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: $color-info;
+    margin-top: 10px;
+  }
+}
+.description {
+  padding: 50px 0 20px 0;
+}
+.content {
+  grid-row-gap: initial;
+}
+.errors {
+  min-height: 20px;
 }
 @include mq(
   $from: tablet-portrait,
@@ -21,9 +42,11 @@
       input {
         width: 60%;
       }
+
       input[type="text"] {
         font-size: 3.2vh;
       }
+
       .agree {
         margin-top: 15px;
         font-size: 2.5vh;
@@ -39,28 +62,34 @@
     @media screen and (orientation: landscape) {
       max-width: 250px;
     }
+
     .subtitle {
       font-size: 3.5vh;
       margin: 0 auto;
       width: 100%;
       line-height: inherit;
     }
+
     form {
       input {
         width: 60%;
       }
+
       input[type="text"] {
         font-size: 2.5vh;
         padding: 5px;
       }
+
       label {
         font-size: 2vh;
         width: 60%;
         line-height: inherit;
       }
+
       .agree {
         margin-top: 15px;
         font-size: 2.5vh;
+
         .text {
           line-height: 2.5vh;
           font-size: 1.5vh;
@@ -69,10 +98,12 @@
     }
   }
 }
+
 @include mq($until: mobileLandscape, $media-feature: height) {
   .content {
     grid-row-gap: initial;
     row-gap: initial;
+
     .refund-options {
       grid-row-gap: 5px;
       row-gap: 5px;
