@@ -3,27 +3,26 @@ import SlotMachine from "../../components/Slotmachine/SlotMachine";
 import Button from "../../components/Button/Button";
 import { useTranslation } from "react-i18next";
 import RadioButton from "../../components/Radio/RadioButton";
-import { useNavigate } from "@reach/router";
+import { refundPages } from "./RefundPagesEnum";
 
-function RefundChoices() {
+function RefundChoices({ selectPage }) {
   const [bank, setBank] = useState(false);
   const [paypal, setPaypal] = useState(false);
   const [later, setLater] = useState(false);
-  const navigate = useNavigate();
 
   function chooseRefund(choice) {
     switch (choice) {
-      case "bank":
+      case refundPages.BANK:
         setBank(true);
         setPaypal(false);
         setLater(false);
         break;
-      case "paypal":
+      case refundPages.PAYPAL:
         setBank(false);
         setPaypal(true);
         setLater(false);
         break;
-      case "later":
+      case refundPages.LATER:
         setBank(false);
         setPaypal(false);
         setLater(true);
@@ -36,13 +35,13 @@ function RefundChoices() {
   }
   function navigateToChoice() {
     if (bank) {
-      navigate("/refund-bank");
+      selectPage(refundPages.BANK);
     }
     if (paypal) {
-      navigate("/refund-paypal");
+      selectPage(refundPages.PAYPAL);
     }
     if (later) {
-      navigate("refund-later");
+      selectPage(refundPages.LATER);
     }
   }
   const { t } = useTranslation("message");
@@ -54,17 +53,17 @@ function RefundChoices() {
         <div className="refund-options">
           <RadioButton
             checked={bank}
-            checkAction={() => chooseRefund("bank")}
+            checkAction={() => chooseRefund(refundPages.BANK)}
             title={t("refund.choices.bank")}
           />
           <RadioButton
             checked={paypal}
-            checkAction={() => chooseRefund("paypal")}
+            checkAction={() => chooseRefund(refundPages.PAYPAL)}
             title={t("refund.choices.paypal")}
           />
           <RadioButton
             checked={later}
-            checkAction={() => chooseRefund("later")}
+            checkAction={() => chooseRefund(refundPages.LATER)}
             title={t("refund.choices.later")}
           />
         </div>

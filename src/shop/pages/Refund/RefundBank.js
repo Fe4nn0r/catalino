@@ -1,14 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import SlotMachine from "../../components/Slotmachine/SlotMachine";
 import { useTranslation } from "react-i18next";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "@reach/router";
-import { sendEmailForRefund } from "../../../utils/catalinaRequests";
+import { useNavigate } from "@reach/router";
 import "./assets/styles.scss";
 import "./assets/bank.scss";
-import cx from "classnames";
 
-function RefundBank() {
+function RefundBank({ selectPage }) {
   const {
     register,
     handleSubmit,

@@ -1,7 +1,7 @@
 import React from "react";
 import SlotMachine from "../../../components/Slotmachine/SlotMachine";
 import Button from "../../../components/Button/Button";
-import eye from "./assets/image/eye.png";
+import eye from "../../../resources/assets/img/eye.png";
 import { useTranslation } from "react-i18next";
 function Lost() {
   const { t } = useTranslation("message");

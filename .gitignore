@@ -26,3 +26,4 @@ yarn-error.log*
 .firebaserc
 .firebase/*
 firebase.json
+.firebase/hosting.YnVpbGQ.cache

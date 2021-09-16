@@ -5,8 +5,9 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "@reach/router";
 import { useForm } from "react-hook-form";
 import { sendPaypalInformation } from "../../../utils/catalinaRequests";
+import { refundPages } from "./RefundPagesEnum";
 
-function RefundPaypal() {
+function RefundPaypal({ selectPage }) {
   const {
     register,
     formState: { isValid, errors },
@@ -21,7 +22,6 @@ function RefundPaypal() {
   const [confirmEmailValid, setConfirmEmailValid] = useState(false);
 
   function onSubmit() {
-    console.log("Email", email);
     sendPaypalInformation(email)
       .then(() => {
         navigate("/success-email");
@@ -30,10 +30,12 @@ function RefundPaypal() {
         setRequestError(true);
       });
   }
+
   function handleEmail(email) {
     setEmail(email);
     console.log(email);
   }
+
   function handleConfirmEmail(confirmEmail) {
     if (confirmEmail === email) {
       setConfirmEmailValid(true);
@@ -41,6 +43,7 @@ function RefundPaypal() {
       setConfirmEmailValid(false);
     }
   }
+
   function refundPaypalContent() {
     return (
       <div className="content">
@@ -101,7 +104,11 @@ function RefundPaypal() {
           </form>
         </div>
         <div className="button-area">
-          <Button text={t("general.back")} enable to="/refund-choices" />
+          <Button
+            text={t("general.back")}
+            enable
+            doAction={() => selectPage(refundPages.CHOICES)}
+          />
           <Button
             type="submit"
             text={t("general.next")}

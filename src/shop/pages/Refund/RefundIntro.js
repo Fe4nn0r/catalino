@@ -2,13 +2,11 @@ import React, { useState } from "react";
 import SlotMachine from "../../components/Slotmachine/SlotMachine";
 import { useTranslation } from "react-i18next";
 import { useForm } from "react-hook-form";
-import Checkbox from "../../components/Checkbox/Checkbox";
-import { Link, useNavigate } from "@reach/router";
 import { sendEmailForRefund } from "../../../utils/catalinaRequests";
+import { refundPages } from "./RefundPagesEnum";
 import "./assets/styles.scss";
-import Button from "../../components/Button/Button";
 
-function RefundIntro() {
+function RefundIntro({ selectPage }) {
   const {
     register,
     handleSubmit,
@@ -18,13 +16,12 @@ function RefundIntro() {
     reValidateMode: "onChange",
   });
   const { t } = useTranslation("message");
-  const navigate = useNavigate();
 
   function onSubmit(data) {
     setRequestError(false);
     sendEmailForRefund(data.email)
       .then(() => {
-        navigate("/refund-choices");
+        selectPage(refundPages.CHOICES);
       })
       .catch((err) => {
         setRequestError(true);

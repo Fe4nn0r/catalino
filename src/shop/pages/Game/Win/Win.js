@@ -40,7 +40,7 @@ function Win() {
         <div className="title">{t("win.title")}</div>
         <div className="description">{t("win.description")}</div>
         <div className="button-area">
-          <Button text={t("win.btn")} enable to="/refund-intro" />{" "}
+          <Button text={t("win.btn")} enable to="/refund" />{" "}
         </div>
       </div>
     );

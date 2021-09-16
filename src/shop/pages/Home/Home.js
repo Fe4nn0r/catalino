@@ -14,6 +14,7 @@ import RefundChoices from "../Refund/RefundChoices";
 import RefundPaypal from "../Refund/RefundPayPal";
 import RefundBank from "../Refund/RefundBank";
 import RefundLater from "../Success/RefundLater";
+import Refund from "../Refund/Refund";
 
 function Home() {
   const queryString = window.location.search;
@@ -36,13 +37,9 @@ function Home() {
         <Game path="game" />
         <CanNotPlay path="/can-not-play" />
         <AlreadyPlayed path="/already-played" />
-        <RefundIntro path="/refund-intro" />
+        <Refund path="/refund" />
         <SuccessEmail path="/success-email" />
         <Legal path="legal/:legalType" />
-        <RefundChoices path="refund-choices" />
-        <RefundPaypal path="refund-paypal" />
-        <RefundBank path="refund-bank" />
-        <RefundLater path="refund-later" />
       </Router>
       <Footer />
     </div>

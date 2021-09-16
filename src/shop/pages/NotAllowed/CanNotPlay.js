@@ -2,7 +2,7 @@ import React from "react";
 import SlotMachine from "../../components/Slotmachine/SlotMachine";
 import Button from "../../components/Button/Button";
 import { useTranslation } from "react-i18next";
-import eye from "./image/eye.png";
+import eye from "../../resources/assets/img/eye.png";
 
 function CanNotPlay() {
   const { t } = useTranslation("message");
