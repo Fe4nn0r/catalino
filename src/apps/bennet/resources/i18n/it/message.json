@@ -49,9 +49,13 @@
   "success": {
     "email": {
       "title": "Thanks for your information",
-      "description": "You wining has been sent to Bennet and will be validated depending on your effective order under 3 or 4 days",
-      "btn": "Go on Bennet’s site"
-    }
+      "description": "You wining has been sent to Carrefour and will be validated depending on your effective order under 3 or 4 days"
+    },
+    "later": {
+      "title": "Thanks for your participation",
+      "description": "You’ll receive an email to enter you refund information in few days"
+    },
+    "btn": "Go on Carrefour’s site"
   },
   "general": {
     "btnGoToSite": "GO ON BENNET'S SITE",

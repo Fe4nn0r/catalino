@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./assets/styles.scss";
-import SlotMachine from "../../components/Slotmachine/SlotMachine";
+import SlotMachine from "../../../components/Slotmachine/SlotMachine";
 import Confetti from "react-dom-confetti";
-import Button from "../../components/Button/Button";
-import appConfig from "../../resources/config/config.json";
+import Button from "../../../components/Button/Button";
+import appConfig from "../../../resources/config/config.json";
 import { useTranslation } from "react-i18next";
 function Win() {
   const totalTime = 300;

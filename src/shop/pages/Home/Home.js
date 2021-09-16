@@ -4,8 +4,6 @@ import { Router } from "@reach/router";
 import Game from "../Game/Game";
 import Landing from "../Landing/Landing";
 import Footer from "../../components/Footer/Footer";
-import Win from "../Win/Win";
-import Lost from "../Lost/Lost";
 import CanNotPlay from "../NotAllowed/CanNotPlay";
 import AlreadyPlayed from "../NotAllowed/AlreadyPlayed";
 import RefundIntro from "../Refund/RefundIntro";
@@ -15,6 +13,7 @@ import Legal from "../Legals/component/Legal";
 import RefundChoices from "../Refund/RefundChoices";
 import RefundPaypal from "../Refund/RefundPayPal";
 import RefundBank from "../Refund/RefundBank";
+import RefundLater from "../Success/RefundLater";
 
 function Home() {
   const queryString = window.location.search;
@@ -35,8 +34,6 @@ function Home() {
           path="/"
         />
         <Game path="game" />
-        <Win path="win" />
-        <Lost path="lost" />
         <CanNotPlay path="/can-not-play" />
         <AlreadyPlayed path="/already-played" />
         <RefundIntro path="/refund-intro" />
@@ -45,6 +42,7 @@ function Home() {
         <RefundChoices path="refund-choices" />
         <RefundPaypal path="refund-paypal" />
         <RefundBank path="refund-bank" />
+        <RefundLater path="refund-later" />
       </Router>
       <Footer />
     </div>

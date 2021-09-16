@@ -55,6 +55,12 @@ export async function sendEmailForRefund(email) {
   const basketUrl = apiHost + "members/" + localStorage.getItem("memberId");
   const body = {
     email: email,
+    holders: [
+      {
+        ref: localStorage.getItem("holderRef"),
+        retailer_id: Number(localStorage.getItem("retailerId")),
+      },
+    ],
   };
   return httpPatch(
     basketUrl,
@@ -63,7 +69,15 @@ export async function sendEmailForRefund(email) {
   );
 }
 export async function sendPaypalInformation(email) {
-  return true;
+  const basketUrl = apiHost + "members/" + localStorage.getItem("memberId");
+  const body = {
+    paypal_id: email,
+  };
+  return httpPatch(
+    basketUrl,
+    "/members/" + localStorage.getItem("memberId"),
+    body
+  );
 }
 
 export async function applyBasketAndGetWallet() {

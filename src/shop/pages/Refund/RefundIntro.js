@@ -24,7 +24,7 @@ function RefundIntro() {
     setRequestError(false);
     sendEmailForRefund(data.email)
       .then(() => {
-        navigate("/success-email");
+        navigate("/refund-choices");
       })
       .catch((err) => {
         setRequestError(true);
