@@ -6,15 +6,11 @@ import Landing from "../Landing/Landing";
 import Footer from "../../components/Footer/Footer";
 import CanNotPlay from "../NotAllowed/CanNotPlay";
 import AlreadyPlayed from "../NotAllowed/AlreadyPlayed";
-import RefundIntro from "../Refund/RefundIntro";
 import SuccessEmail from "../Success/Email";
 import Logo from "../../components/Logo/Logo";
 import Legal from "../Legals/component/Legal";
-import RefundChoices from "../Refund/RefundChoices";
-import RefundPaypal from "../Refund/RefundPayPal";
-import RefundBank from "../Refund/RefundBank";
-import RefundLater from "../Success/RefundLater";
 import Refund from "../Refund/Refund";
+import { refundPages } from "../Refund/RefundPagesEnum";
 
 function Home() {
   const queryString = window.location.search;
@@ -38,6 +34,7 @@ function Home() {
         <CanNotPlay path="/can-not-play" />
         <AlreadyPlayed path="/already-played" />
         <Refund path="/refund" />
+        <Refund path="/refund-choices" page={refundPages.CHOICES} />
         <SuccessEmail path="/success-email" />
         <Legal path="legal/:legalType" />
       </Router>

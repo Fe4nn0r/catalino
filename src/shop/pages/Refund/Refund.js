@@ -6,8 +6,8 @@ import { refundPages } from "./RefundPagesEnum";
 import RefundLater from "../Success/RefundLater";
 import RefundBank from "./RefundBank";
 
-function Refund() {
-  const [chosenPage, setChosenPage] = useState("emailPage");
+function Refund({ page }) {
+  const [chosenPage, setChosenPage] = useState(page);
 
   function selectPage(page) {
     setChosenPage(page);
