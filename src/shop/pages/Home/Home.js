@@ -18,8 +18,10 @@ function Home() {
   const holderRef = urlParams.get("holderRef")
     ? urlParams.get("holderRef")
     : "4";
-  const offerId = 4318; //TODO : to be sent by the offerId website
-  const retailerId = 1; //TODO : to be sent by the retaler website
+  const offerId = urlParams.get("offer") ? urlParams.get("offer") : 4315;
+  const retailerId = urlParams.get("retailerId")
+    ? urlParams.get("retailerId")
+    : 1;
   return (
     <div id="home-container">
       <Logo displayLogo />

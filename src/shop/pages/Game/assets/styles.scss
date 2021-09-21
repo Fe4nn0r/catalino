@@ -69,11 +69,24 @@
           img {
             position: relative;
             margin: 9px;
-            top: 30%;
             user-select: none;
+            top: 30%;
             width: 50%;
+            //IE
+            @media screen and (-ms-high-contrast: active),
+              screen and (-ms-high-contrast: none) {
+              top: -480%;
+            }
           }
 
+          @keyframes spinItIE {
+            from {
+              top: -600%;
+            }
+            to {
+              top: 0%;
+            }
+          }
           @keyframes spinIt {
             from {
               top: -200%;

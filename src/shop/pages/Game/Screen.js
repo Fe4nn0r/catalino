@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { isIE } from "react-device-detect";
 
 import "./assets/styles.scss";
 import ico1 from "../../resources/assets/img/ico1.png";
@@ -21,7 +22,7 @@ import { getWinIcon } from "../../../utils/appApiConfiguration";
 const DURATION = 5000;
 
 function Screen({ animate, speed, screenNumber, winner, onFinish }) {
-  const defaultStyle = { top: "30%" };
+  const defaultStyle = { top: isIE ? "-480%" : "30%" };
   let waitingTime = getWaitingTime();
   const [fruitStyle, setFruitStyle] = useState(defaultStyle);
   const [gameFinished, setGameFinished] = useState(false);
@@ -54,7 +55,11 @@ function Screen({ animate, speed, screenNumber, winner, onFinish }) {
     if (isAnimated) {
       newStyle = {
         animation:
-          speed + "s linear " + waitingTime + "s  infinite running spinIt",
+          speed +
+          "s linear " +
+          waitingTime +
+          "s infinite " +
+          (isIE ? "spinItIE" : "spinIt"),
       };
     }
     setFruitStyle(newStyle);

@@ -116,7 +116,6 @@ function RefundPaypal({ selectPage }) {
             doAction={() => onSubmit()}
           />
         </div>
-        <div className="lips" />
       </div>
     );
   }

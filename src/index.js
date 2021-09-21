@@ -1,4 +1,5 @@
 import React from "react";
+import "core-js/stable";
 import ReactDOM from "react-dom";
 import "./shop/resources/assets/styles/index.scss";
 import App from "./App";

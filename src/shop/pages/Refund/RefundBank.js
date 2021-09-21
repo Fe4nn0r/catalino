@@ -5,6 +5,8 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "@reach/router";
 import "./assets/styles.scss";
 import "./assets/bank.scss";
+import Button from "../../components/Button/Button";
+import { refundPages } from "./RefundPagesEnum";
 
 function RefundBank({ selectPage }) {
   const {
@@ -103,15 +105,23 @@ function RefundBank({ selectPage }) {
               {t("refund.intro.errorRequest")}
             </label>
           )}
-
           <div className="agree">
             <div className="text">{t("refund.bank.description")}</div>
           </div>
-          <div className="button-area">
-            <button>{t("general.back")}</button>
-            <button disabled={!isValid}>{t("general.next")}</button>
-          </div>
         </form>
+        <div className="button-area">
+          <Button
+            text={t("general.back")}
+            enable
+            doAction={() => selectPage(refundPages.CHOICES)}
+          />
+          <Button
+            type="submit"
+            text={t("general.next")}
+            enable={isValid}
+            doAction={() => onSubmit()}
+          />
+        </div>
       </div>
     );
   }
