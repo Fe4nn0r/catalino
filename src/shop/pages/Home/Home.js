@@ -11,27 +11,28 @@ import Logo from "../../components/Logo/Logo";
 import Legal from "../Legals/component/Legal";
 import Refund from "../Refund/Refund";
 import { refundPages } from "../Refund/RefundPagesEnum";
+import {
+  encodeToDO,
+  encodeToRemove,
+  retrieveGameInformationFromToken,
+} from "../../../utils/catalinaRequests";
+import InStore from "../InStore/InStore";
 
 function Home() {
-  const queryString = window.location.search;
-  const urlParams = new URLSearchParams(queryString);
-  const holderRef = urlParams.get("holderRef")
-    ? urlParams.get("holderRef")
-    : "4";
-  const offerId = urlParams.get("offer") ? urlParams.get("offer") : 4315;
-  const retailerId = urlParams.get("retailerId")
-    ? urlParams.get("retailerId")
-    : 1;
+  //TODO : remove this function
+  /*const encodeInfo = {
+    holderRef : 4
+    offerId : 4315,
+    retailerId :1
+  }
+  const token = encodeToRemove(encodeInfo);
+  */
+
   return (
     <div id="home-container">
       <Logo displayLogo />
       <Router>
-        <Landing
-          offerId={offerId}
-          retailerId={retailerId}
-          holderRef={holderRef}
-          path="/"
-        />
+        <Landing path="/" />
         <Game path="game" />
         <CanNotPlay path="/can-not-play" />
         <AlreadyPlayed path="/already-played" />
@@ -39,6 +40,7 @@ function Home() {
         <Refund path="/refund-choices" page={refundPages.CHOICES} />
         <SuccessEmail path="/success-email" />
         <Legal path="legal/:legalType" />
+        <InStore path="in-store" />
       </Router>
       <Footer />
     </div>

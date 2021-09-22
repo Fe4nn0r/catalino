@@ -7,6 +7,10 @@ import "./assets/styles.scss";
 import "./assets/bank.scss";
 import Button from "../../components/Button/Button";
 import { refundPages } from "./RefundPagesEnum";
+import {
+  sendBankInformation,
+  sendPaypalInformation,
+} from "../../../utils/catalinaRequests";
 
 function RefundBank({ selectPage }) {
   const {
@@ -19,8 +23,6 @@ function RefundBank({ selectPage }) {
   });
   const { t } = useTranslation("message");
   const navigate = useNavigate();
-
-  function onSubmit(data) {}
 
   useEffect(() => {
     const labels = document.querySelectorAll(".form-control label");
@@ -37,20 +39,34 @@ function RefundBank({ selectPage }) {
     });
   }, []);
 
-  const [agreed, setAgreed] = useState(false);
+  const [name, setName] = useState("");
+  const [iban, setIban] = useState("");
+  const [bic, setBic] = useState("");
+
   const [requestError, setRequestError] = useState(false);
+
+  function onSubmit() {
+    sendBankInformation(name, iban, bic)
+      .then(() => {
+        navigate("/success-email");
+      })
+      .catch((err) => {
+        setRequestError(true);
+      });
+  }
 
   function RefundIntroContent() {
     return (
       <div className="refund-content refund-bank">
         <div className="subtitle">{t("refund.bank.title")}</div>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form>
           <div className="form-control">
             <input
               type="text"
               autoComplete="off"
               {...register("name", {
                 required: true,
+                validate: (name) => setName(name),
               })}
               required
             />
@@ -66,6 +82,7 @@ function RefundBank({ selectPage }) {
                   value:
                     /^[a-zA-Z]{2}[0-9]{2}\s?[a-zA-Z0-9]{4}\s?[0-9]{4}\s?[0-9]{3}([a-zA-Z0-9]\s?[a-zA-Z0-9]{0,4}\s?[a-zA-Z0-9]{0,4}\s?[a-zA-Z0-9]{0,4}\s?[a-zA-Z0-9]{0,3})?$/i,
                 },
+                validate: (iban) => setIban(iban),
               })}
               required
             />
@@ -80,6 +97,7 @@ function RefundBank({ selectPage }) {
                 pattern: {
                   value: /^[A-Z]{6,6}[A-Z2-9][A-NP-Z0-9]([A-Z0-9]{3,3}){0,1}$/i,
                 },
+                validate: (bic) => setBic(bic),
               })}
               required
             />

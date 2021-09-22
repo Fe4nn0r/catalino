@@ -39,12 +39,9 @@
 ) {
   .refund-content {
     form {
-      input {
-        width: 60%;
-      }
-
       input[type="text"] {
         font-size: 3.2vh;
+        padding: inherit;
       }
 
       .agree {
@@ -71,19 +68,15 @@
     }
 
     form {
-      input {
-        width: 60%;
-      }
-
       input[type="text"] {
         font-size: 2.5vh;
-        padding: 5px;
+        padding-bottom: 1px;
       }
 
       label {
         font-size: 2vh;
-        width: 60%;
         line-height: inherit;
+        top: 0;
       }
 
       .agree {

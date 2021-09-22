@@ -9,8 +9,8 @@ import mobileBackgroundLayer from "../../resources/assets/img/background-layer-m
 
 import {
   getCryptedAuthentication,
-  getEncryptedHolderRef,
   getOffer,
+  retrieveGameInformationFromToken,
 } from "../../../utils/catalinaRequests";
 import Loading from "../../components/Loading/Loading";
 import {
@@ -18,7 +18,7 @@ import {
   getDesktopBackgroundLayer,
 } from "../../../utils/appApiConfiguration";
 
-function Landing({ offerId, retailerId, holderRef }) {
+function Landing() {
   const [t] = useTranslation("message");
   const [agreed, setAgreed] = useState(false);
   const [allowed, setAllowed] = useState(false);
@@ -30,6 +30,8 @@ function Landing({ offerId, retailerId, holderRef }) {
   });
   const navigate = useNavigate();
   const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
 
   useEffect(() => {
     if (isMobile) {
@@ -44,13 +46,23 @@ function Landing({ offerId, retailerId, holderRef }) {
   }, [isMobile, desktopBackgroundImgLayer]);
 
   useEffect(() => {
-    const body = {
-      retailer_id: 1,
-      holder_ref: getEncryptedHolderRef(holderRef),
-    };
-    getCryptedAuthentication(body, retailerId, offerId, holderRef)
+    const token = urlParams.get("info");
+    if (token) {
+      retrieveGameInformationFromToken(token);
+      authenticate();
+    } else {
+      if (!localStorage.getItem("holderRef")) {
+        navigate("/in-store");
+      } else {
+        authenticate();
+      }
+    }
+  }, []);
+
+  function authenticate() {
+    getCryptedAuthentication()
       .then(() => {
-        getOffer(offerId, retailerId)
+        getOffer()
           .then((offer) => {
             if (offer) {
               setLandingInformation(getAndApplyApiConfiguration(offer));
@@ -69,7 +81,7 @@ function Landing({ offerId, retailerId, holderRef }) {
       .catch((err) => {
         navigate("/can-not-play");
       });
-  }, []);
+  }
 
   function agree() {
     setAgreed(!agreed);

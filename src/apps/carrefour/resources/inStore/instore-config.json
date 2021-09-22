@@ -1,0 +1,53 @@
+{
+  "steps": [
+    {
+      "title": "Title page (1/3)",
+      "inputs": [
+        {
+          "type": "text",
+          "attribute": "code_member"
+        },
+        {
+          "type": "upload",
+          "attribute": "ticket"
+        }
+      ]
+    },
+    {
+      "title": "Title page (2/3)",
+      "inputs": [
+        {
+          "type": "text",
+          "attribute": "email"
+        },
+        {
+          "type": "text",
+          "attribute": "param1"
+        }
+      ]
+    },
+    {
+      "title": "Title page (3/3)",
+      "inputs": [
+        {
+          "type": "upload",
+          "attribute": "param2"
+        },
+        {
+          "type": "text",
+          "attribute": "param3"
+        }
+      ]
+    }
+  ],
+  "inStoreBody": {
+    "code_member": "",
+    "ticket": "",
+    "email": "",
+    "param1": "",
+    "param2": "",
+    "param3": ""
+  },
+  "inStoreRetailerId": 1,
+  "inStoreOfferId": 4318
+}

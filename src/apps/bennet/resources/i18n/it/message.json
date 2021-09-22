@@ -43,7 +43,7 @@
   },
   "win": {
     "title": "Well done, you won !",
-    "description": "You winning will be paid into your Bennet fidelity account",
+    "description": "Your winning will be paid into your Bennet fidelity account",
     "btn": "Claim your reward"
   },
   "success": {

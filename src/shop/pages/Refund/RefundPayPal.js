@@ -33,7 +33,6 @@ function RefundPaypal({ selectPage }) {
 
   function handleEmail(email) {
     setEmail(email);
-    console.log(email);
   }
 
   function handleConfirmEmail(confirmEmail) {

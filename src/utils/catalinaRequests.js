@@ -1,5 +1,10 @@
 import CryptoJS from "crypto-js";
 import request from "./request";
+import jwt from "jwt-simple";
+import {
+  inStoreRetailerId,
+  inStoreOfferId,
+} from "../shop/resources/inStore/instore-config.json";
 
 const apiHost = "https://cmfr-test.azure-api.net/s-a-p-test/";
 const partner_key = "9589ba2c8fef6759f96a7c2726c7d8a0";
@@ -7,10 +12,26 @@ const partner_secret = "3c1931161ae51ef1a168a82fe7f0eba3";
 const partner_id = 9;
 const subscriptionKey = "2fb179f5556c471f8ea8ea9c77dd2e50";
 
-export function getCryptedAuthentication(body, retailerId, offerId, holderRef) {
-  localStorage.setItem("retailerId", retailerId);
-  localStorage.setItem("holderRef", holderRef);
-  localStorage.setItem("offerId", offerId);
+export function encodeToRemove(body) {
+  const token = jwt.encode(body, partner_secret);
+  retrieveGameInformationFromToken(token);
+}
+
+export function retrieveGameInformationFromToken(token) {
+  const decodedInfo = jwt.decode(token, partner_secret);
+  localStorage.setItem("retailerId", decodedInfo.retailerId.toString());
+  localStorage.setItem(
+    "holderRef",
+    getEncryptedHolderRef(decodedInfo.holderRef.toString())
+  );
+  localStorage.setItem("offerId", decodedInfo.offerId.toString());
+}
+
+export function getCryptedAuthentication() {
+  const body = {
+    retailer_id: Number(localStorage.getItem("retailer_id")),
+    holder_ref: localStorage.getItem("holderRef"),
+  };
   const encryptedAuthUrl = apiHost + "members/crypted_authentication";
   return httpPost(
     encryptedAuthUrl,
@@ -22,19 +43,26 @@ export function getCryptedAuthentication(body, retailerId, offerId, holderRef) {
   });
 }
 
-export function getOffer(offerId, retailerId) {
-  const actionPath = "/ecommerce/offers?retailer_id=" + retailerId;
+export function getOffer() {
+  const actionPath =
+    "/ecommerce/offers?retailer_id=" + localStorage.getItem("retailerId");
   return httpGet(apiHost + actionPath, actionPath).then((offers) => {
-    return extractOffer(offers, offerId);
+    return extractOffer(offers);
   });
 }
-function extractOffer(offers, offerId) {
+
+function extractOffer(offers) {
+  const offerId = localStorage.getItem("offerId");
   let availableOffer = null;
   offers.forEach((offer) => {
-    if (offer.id === offerId) availableOffer = offer;
+    console.log(offer.id.toString(), offerId);
+    if (offer.id.toString() === offerId) {
+      availableOffer = offer;
+    }
   });
   return availableOffer;
 }
+
 export async function applyBasket() {
   const basketUrl =
     apiHost + "members/" + localStorage.getItem("memberId") + "/basket";
@@ -68,10 +96,26 @@ export async function sendEmailForRefund(email) {
     body
   );
 }
+
 export async function sendPaypalInformation(email) {
   const basketUrl = apiHost + "members/" + localStorage.getItem("memberId");
   const body = {
     paypal_id: email,
+  };
+  return httpPatch(
+    basketUrl,
+    "/members/" + localStorage.getItem("memberId"),
+    body
+  );
+}
+
+export async function sendBankInformation(name, iban, bic) {
+  const basketUrl = apiHost + "members/" + localStorage.getItem("memberId");
+  const body = {
+    firstname: name.substr(0, name.indexOf(" ")),
+    lastname: name.substr(name.indexOf(" ") + 1),
+    bank_iban: iban,
+    bank_bic: bic,
   };
   return httpPatch(
     basketUrl,
@@ -102,6 +146,7 @@ export async function getWallet() {
     );
   });
 }
+
 async function httpGet(url, apiActionPath) {
   let headers = await getHeaders(apiActionPath, "GET", 0);
   return request(url, {
@@ -184,4 +229,21 @@ export function getEncryptedHolderRef(holder_ref) {
   );
 
   return encrypted_source.toString();
+}
+
+export function sendInStoreInformation(body) {
+  localStorage.setItem("retailerId", inStoreRetailerId);
+  localStorage.setItem(
+    "holderRef",
+    getEncryptedHolderRef(body.code_member.toString())
+  );
+  localStorage.setItem("offerId", inStoreOfferId);
+  const inStoreUrl =
+    apiHost + "members/" + localStorage.getItem("memberId") + "/basket";
+  return true;
+  /*return httpPost(
+        inStoreUrl,
+        "/members/" + localStorage.getItem("memberId") + "/basket",
+        body
+    );*/
 }
