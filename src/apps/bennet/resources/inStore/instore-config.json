@@ -5,10 +5,12 @@
       "inputs": [
         {
           "type": "text",
+          "label": "Code member",
           "attribute": "code_member"
         },
         {
           "type": "upload",
+          "label": "Some upload",
           "attribute": "ticket"
         }
       ]
@@ -18,10 +20,12 @@
       "inputs": [
         {
           "type": "text",
+          "label": "Email",
           "attribute": "email"
         },
         {
           "type": "text",
+          "label": "Some input",
           "attribute": "param1"
         }
       ]
@@ -31,10 +35,12 @@
       "inputs": [
         {
           "type": "upload",
+          "label": "Some upload",
           "attribute": "param2"
         },
         {
           "type": "text",
+          "label": "Some input",
           "attribute": "param3"
         }
       ]

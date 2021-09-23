@@ -5,7 +5,7 @@ import {
 } from "../../resources/inStore/instore-config.json";
 import Stepper from "./component/Stepper";
 import { sendInStoreInformation } from "../../../utils/catalinaRequests";
-import { navigate, useNavigate } from "@reach/router";
+import { useNavigate } from "@reach/router";
 
 function InStore() {
   const stepperPages = steps;

@@ -1,16 +1,88 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./assets/style.scss";
+import upload from "../../../resources/assets/img/upload.png";
+import deleteImg from "../../../resources/assets/img/delete.png";
 
-function StepperInput({ type, attribute, fillData }) {
+import { useForm } from "react-hook-form";
+
+function StepperInput({ label, type, attribute, fillData, defaultValue }) {
+  const {
+    register,
+    formState: { isValid, errors },
+  } = useForm({
+    mode: "onChange",
+    reValidateMode: "onChange",
+  });
+  const [uploadedFileName, setUploadedFileName] = useState();
+  useEffect(() => {
+    if (type === "upload" && defaultValue) {
+      setUploadedFileName(defaultValue);
+    }
+  }, []);
+
   function handleInput(value) {
     fillData(attribute, value);
+    setUploadedFileName(value[0].name);
   }
 
-  return type === "upload" ? (
-    <div>UPLOAD {attribute}</div>
-  ) : (
-    <div onClick={() => handleInput("6")}>INPUT {attribute}</div>
-  );
+  function emptyUploadedFile() {
+    fillData(attribute, "");
+    setUploadedFileName(null);
+  }
+
+  function onUploadFile() {
+    document.getElementById(attribute).click();
+  }
+
+  function getInput() {
+    return type === "upload" ? (
+      <>
+        <div className="inputFile">
+          <div
+            onClick={onUploadFile}
+            className="uploadFile"
+            style={{ display: uploadedFileName ? "none" : "flex" }}
+          >
+            <img className="uploadImg" src={upload} />
+            <div className="uploadLabel">Upload your receipt</div>
+          </div>
+          <div
+            className="uploadedFileText"
+            style={{ display: !uploadedFileName ? "none" : "flex" }}
+          >
+            {uploadedFileName}
+            <div className="deleteImg" onClick={emptyUploadedFile}>
+              <img src={deleteImg} />
+            </div>
+          </div>
+        </div>
+        <input
+          id={attribute}
+          style={{ display: "none" }}
+          type="file"
+          placeholder={label}
+          autoComplete="off"
+          {...register(label, {
+            required: true,
+            validate: handleInput,
+          })}
+        />
+      </>
+    ) : (
+      <input
+        autoFocus={true}
+        type="text"
+        placeholder={label}
+        autoComplete="off"
+        {...register(label, {
+          required: true,
+          validate: handleInput,
+        })}
+      />
+    );
+  }
+
+  return <form>{getInput()}</form>;
 }
 
 export default StepperInput;

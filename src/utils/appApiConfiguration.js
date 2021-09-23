@@ -35,13 +35,9 @@ export async function getFooterImage() {
 }
 
 async function getImageIfExistOrReturnDefault(imgUrl, defaultUrl) {
-  return await fetch(imgUrl, { method: "HEAD" })
-    .then((res) => {
-      if (res.ok) {
-        return imgUrl;
-      } else {
-        return defaultUrl;
-      }
+  return await fetch(imgUrl, { method: "HEAD", mode: "no-cors" })
+    .then(() => {
+      return imgUrl;
     })
     .catch((err) => {
       console.error("Error:", err);

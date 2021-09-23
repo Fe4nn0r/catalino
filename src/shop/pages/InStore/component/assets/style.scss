@@ -1,2 +1,52 @@
 .stepper-inputs {
+  display: flex;
+  flex-direction: column;
+  row-gap: 69px;
+
+  form {
+    .inputFile {
+      .uploadFile {
+        display: flex;
+        flex-direction: row;
+        gap: 16px;
+        .uploadImg {
+          border: 1px solid white;
+          padding: 15px;
+          border-radius: 54px;
+        }
+
+        .uploadLabel {
+          color: #ffffff;
+          left: 25.55%;
+          right: 0%;
+          top: 24.07%;
+          bottom: 25.93%;
+          font-family: Righteous;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 22px;
+          line-height: 27px;
+          display: flex;
+          align-items: center;
+        }
+      }
+    }
+
+    .uploadedFileText {
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+      left: 41.88%;
+      right: 45%;
+      top: 53.12%;
+      bottom: 43.5%;
+      font-family: Open Sans;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 27px;
+      letter-spacing: 0.02em;
+      color: #ffffff;
+    }
+  }
 }

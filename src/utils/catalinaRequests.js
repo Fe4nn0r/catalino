@@ -29,7 +29,7 @@ export function retrieveGameInformationFromToken(token) {
 
 export function getCryptedAuthentication() {
   const body = {
-    retailer_id: Number(localStorage.getItem("retailer_id")),
+    retailer_id: Number(localStorage.getItem("retailerId")),
     holder_ref: localStorage.getItem("holderRef"),
   };
   const encryptedAuthUrl = apiHost + "members/crypted_authentication";

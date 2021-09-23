@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SlotMachine from "../../../components/Slotmachine/SlotMachine";
 import { useTranslation } from "react-i18next";
 import Button from "../../../components/Button/Button";
@@ -17,6 +17,22 @@ function Stepper({
 }) {
   const { t } = useTranslation("message");
   const [data, setData] = useState([]);
+  const [canNext, setCanNext] = useState(false);
+
+  useEffect(() => {
+    let activateNext = true;
+    console.log(data);
+    if (data.length === inputs.length) {
+      data.forEach((element) => {
+        if (!element.value) {
+          activateNext = false;
+        }
+      });
+    } else {
+      activateNext = false;
+    }
+    setCanNext(activateNext);
+  }, [data]);
 
   function navigateToStep(stepId) {
     stepperNavigation(stepId);
@@ -27,7 +43,7 @@ function Stepper({
       return (
         <Button
           text={t("general.next")}
-          enable
+          enable={canNext}
           doAction={() => submit(id + 1)}
         />
       );
@@ -51,7 +67,7 @@ function Stepper({
       return (
         <Button
           text={t("general.validate")}
-          enable
+          enable={canNext}
           doAction={() => submit(attribute, value)}
         />
       );
@@ -77,8 +93,15 @@ function Stepper({
       newData.push({ attribute: attribute, value: value });
     }
     setData(newData);
+    console.log(newData);
   }
-
+  function getValueByAttribute(attribute) {
+    data.forEach((element) => {
+      if (element.attribute === attribute) {
+        return element.value;
+      }
+    });
+  }
   function StepperContent() {
     return (
       <div className="success-email-content content">
@@ -86,6 +109,7 @@ function Stepper({
         <div className="stepper-inputs">
           {inputs.map((stepInput) => (
             <StepperInput
+              label={stepInput.label}
               type={stepInput.type}
               attribute={stepInput.attribute}
               fillData={fillData}
