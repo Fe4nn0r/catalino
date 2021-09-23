@@ -21,7 +21,6 @@ function Stepper({
 
   useEffect(() => {
     let activateNext = true;
-    console.log(data);
     if (data.length === inputs.length) {
       data.forEach((element) => {
         if (!element.value) {
@@ -93,18 +92,19 @@ function Stepper({
       newData.push({ attribute: attribute, value: value });
     }
     setData(newData);
-    console.log(newData);
   }
   function getValueByAttribute(attribute) {
+    let value;
     data.forEach((element) => {
       if (element.attribute === attribute) {
-        return element.value;
+        value = element.value;
       }
     });
+    return value;
   }
   function StepperContent() {
     return (
-      <div className="success-email-content content">
+      <>
         <div className="title">{title}</div>
         <div className="stepper-inputs">
           {inputs.map((stepInput) => (
@@ -113,6 +113,7 @@ function Stepper({
               type={stepInput.type}
               attribute={stepInput.attribute}
               fillData={fillData}
+              defaultValue={getValueByAttribute(stepInput.attribute)}
             />
           ))}
         </div>
@@ -121,7 +122,7 @@ function Stepper({
           {nextButton()}
           {validateButton()}
         </div>
-      </div>
+      </>
     );
   }
 
