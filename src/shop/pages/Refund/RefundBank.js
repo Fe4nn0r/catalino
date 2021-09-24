@@ -3,7 +3,6 @@ import SlotMachine from "../../components/Slotmachine/SlotMachine";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "@reach/router";
 import "./assets/styles.scss";
-import "./assets/bank.scss";
 import Button from "../../components/Button/Button";
 import { refundPages } from "./RefundPagesEnum";
 import { sendBankInformation } from "../../../utils/catalinaRequests";

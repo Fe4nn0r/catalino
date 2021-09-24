@@ -33,7 +33,7 @@
 }
 @include mq($until: m-height, $media-feature: height) {
   .title {
-    font-size: 45px;
+    font-size: 40px;
     line-height: inherit;
     max-width: 270px;
   }

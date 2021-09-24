@@ -1,3 +1,6 @@
+@import "../../../../resources/assets/styles/variables";
+@import "~@mcaskill/sass-mq";
+
 .stepper-inputs {
   display: flex;
   flex-direction: column;
@@ -9,11 +12,13 @@
         display: flex;
         flex-direction: row;
         gap: 16px;
+
         .uploadImg {
           border: 1px solid white;
           padding: 15px;
           border-radius: 54px;
         }
+
         .uploadLabel {
           color: #ffffff;
           left: 25.55%;
@@ -48,4 +53,36 @@
       color: #ffffff;
     }
   }
+}
+
+@include mq($until: m-height, $media-feature: height) {
+}
+
+@include mq($until: s-height, $media-feature: height) {
+  .stepper-inputs {
+    grid-row-gap: 10px;
+    row-gap: 10px;
+    margin-bottom: 10px;
+    form {
+      .inputFile .uploadFile {
+        gap: 10px;
+
+        .uploadImg {
+          padding: 5px;
+          width: 30px;
+          height: 30px;
+        }
+
+        .uploadLabel {
+          font-size: 13px;
+        }
+      }
+      .uploadedFileText {
+        font-size: 13px;
+      }
+    }
+  }
+}
+
+@include mq($until: xs-height, $media-feature: height) {
 }

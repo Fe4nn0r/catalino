@@ -33,8 +33,6 @@
 }
 
 @include mq($until: m-height, $media-feature: height) {
-  .lips {
-  }
 }
 @include mq($until: s-height, $media-feature: height) {
   .content-up {

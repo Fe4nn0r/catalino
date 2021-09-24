@@ -14,6 +14,7 @@ form {
     outline: none;
     font-size: 20px;
     width: 378.83px;
+    text-align: center;
   }
   input::-webkit-input-placeholder {
     color: $color-secondary;
@@ -22,6 +23,7 @@ form {
     line-height: 19px;
     letter-spacing: 0.02em;
     opacity: 0.6;
+    text-align: left;
   }
   .error-message {
     color: $input-error-color;
@@ -33,15 +35,84 @@ form {
     width: 378.83px;
   }
   label {
-    font-family: Open Sans;
     font-style: normal;
     font-weight: normal;
     font-size: 13px;
     line-height: 18px;
     text-align: center;
     letter-spacing: 0.02em;
-    color: rgba(255, 255, 255, 0.6);
+    color: $input-info-color;
     margin: 12px auto;
     text-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .info {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 11px;
+    line-height: 15px;
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: $color-info;
+    margin-top: 10px;
+  }
+  .loading-container {
+    position: relative;
+  }
+}
+
+@include mq($until: m-height, $media-feature: height) {
+}
+@include mq($until: s-height, $media-feature: height) {
+  form {
+    input[type="text"] {
+      padding: inherit;
+      padding-bottom: 5px;
+      max-width: 230px;
+      font-size: 9px;
+    }
+    .error-message {
+      max-width: 230px;
+    }
+    .input-error-message {
+      font-size: 7px;
+      img {
+        bottom: 17px;
+      }
+    }
+    label {
+    }
+    .info {
+      font-size: 9px;
+      max-width: 270px;
+      margin: 0;
+    }
+  }
+}
+@include mq($until: xs-height, $media-feature: height) {
+  form {
+    input[type="text"] {
+      padding: inherit;
+      padding-bottom: 5px;
+      max-width: 170px;
+      font-size: 9px;
+    }
+    .error-message {
+      max-width: 170px;
+    }
+    .input-error-message {
+      font-size: 5px;
+      img {
+        width: 10px;
+        bottom: 17px;
+      }
+    }
+    label {
+    }
+    .info {
+      font-size: 5px;
+      max-width: 170px;
+      margin: 0;
+    }
   }
 }
