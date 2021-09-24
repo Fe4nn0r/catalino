@@ -2,12 +2,14 @@ import React from "react";
 import SlotMachine from "../../../components/Slotmachine/SlotMachine";
 import Button from "../../../components/Button/Button";
 import eye from "../../../resources/assets/img/eye.png";
+import lips from "../../../resources/assets/img/lips.png";
+
 import { useTranslation } from "react-i18next";
 function Lost() {
   const { t } = useTranslation("message");
   function LostContent() {
     return (
-      <div className="sad-content">
+      <>
         <div className="content-up">
           <img src={eye} />{" "}
           <div className="title">
@@ -26,8 +28,8 @@ function Lost() {
             }
           />{" "}
         </div>
-        <div className="lips" />
-      </div>
+        <img className="lips" src={lips} />
+      </>
     );
   }
 

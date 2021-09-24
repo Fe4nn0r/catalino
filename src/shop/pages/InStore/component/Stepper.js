@@ -105,7 +105,7 @@ function Stepper({
   function StepperContent() {
     return (
       <>
-        <div className="title">{title}</div>
+        <div className="subtitle">{title}</div>
         <div className="stepper-inputs">
           {inputs.map((stepInput) => (
             <StepperInput

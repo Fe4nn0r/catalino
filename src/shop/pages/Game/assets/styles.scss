@@ -11,44 +11,41 @@
     position: relative;
     z-index: 10;
     margin: auto;
-
-    .title {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      padding-top: 70px;
-      font-size: 28px;
-      font-style: normal;
-      line-height: 30px;
-      text-align: center;
-      letter-spacing: 0.03em;
-      color: #ffffff;
-      text-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
-    }
-
+    display: flex;
     .slot-machine {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       position: relative;
       width: 750px;
       min-height: 530px;
       z-index: 10;
       background: url("../../../resources/assets/img/slot-spot.png") no-repeat
         center;
-      background-size: 87%;
+      background-size: 720px 530px;
+      row-gap: 33px;
+      .title {
+        font-size: 28px;
+        line-height: 30px;
+        text-align: center;
+        letter-spacing: 0.03em;
+        min-width: 527px;
+      }
+
       .description {
         display: flex;
         flex-direction: column;
         padding: 0 0 5px;
         font-size: 17px;
-
         .or {
           opacity: 0.5;
         }
       }
 
       .screen-container {
-        margin: 50px auto 40px auto;
-        width: 550px;
-        height: 200px;
+        width: 615px;
+        height: 231px;
         border-radius: 150px;
         border: solid 12px $color-machine-border;
         box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.7);
@@ -118,7 +115,7 @@
 
       .buttons-area {
         display: flex;
-        margin-left: 38%;
+        margin-left: 15%;
       }
     }
 
@@ -127,7 +124,7 @@
       width: 85px;
       height: 80px;
       top: 350px;
-      left: 670px;
+      left: 705px;
       z-index: 8;
       background: url("../../../resources/assets/img/slot-lever-support.png")
         no-repeat center;
@@ -137,7 +134,7 @@
     .slot-lever {
       position: absolute;
       top: 26%;
-      left: 715px;
+      left: 750px;
       width: 13px;
       height: 218px;
       background-color: $color-machine-levier;
@@ -165,7 +162,7 @@
     .slot-hand {
       position: absolute;
       top: 23%;
-      left: 697px;
+      left: 732px;
       width: 52px;
       height: 52px;
       background-color: $color-machine-head;

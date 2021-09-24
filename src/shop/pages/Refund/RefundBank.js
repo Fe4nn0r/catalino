@@ -7,10 +7,7 @@ import "./assets/styles.scss";
 import "./assets/bank.scss";
 import Button from "../../components/Button/Button";
 import { refundPages } from "./RefundPagesEnum";
-import {
-  sendBankInformation,
-  sendPaypalInformation,
-} from "../../../utils/catalinaRequests";
+import { sendBankInformation } from "../../../utils/catalinaRequests";
 
 function RefundBank({ selectPage }) {
   const {
@@ -57,7 +54,7 @@ function RefundBank({ selectPage }) {
 
   function RefundIntroContent() {
     return (
-      <div className="refund-content refund-bank">
+      <>
         <div className="subtitle">{t("refund.bank.title")}</div>
         <form>
           <div className="form-control">
@@ -140,7 +137,7 @@ function RefundBank({ selectPage }) {
             doAction={() => onSubmit()}
           />
         </div>
-      </div>
+      </>
     );
   }
 

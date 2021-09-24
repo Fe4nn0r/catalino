@@ -1,7 +1,7 @@
 @import "../../../resources/assets/styles/variables";
 @import "~@mcaskill/sass-mq";
 
-.part1 {
+.info-part {
   .go-to-game-container {
     position: fixed;
     width: 100%;
@@ -11,10 +11,8 @@
     z-index: 10;
     background: url("../../../resources/assets/img/slot-spot.png") no-repeat
       center;
-    background-size: auto 480px;
-
+    background-size: 719.6px 530px;
     .go-to-game-content {
-      row-gap: inherit;
       display: flex;
       flex-direction: column;
       color: white;
@@ -22,24 +20,17 @@
       justify-content: center;
       margin: auto;
       height: 100%;
-      max-width: 430px;
+      row-gap: 25px;
 
       .game-period {
+        font-family: Open Sans;
         font-style: normal;
         font-weight: 600;
-        font-size: 17px;
+        font-size: 18px;
         line-height: 25px;
         text-align: center;
         letter-spacing: 0.02em;
         opacity: 0.8;
-        text-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
-        padding-bottom: 20px;
-      }
-
-      .price {
-        margin: 10px;
-        font-size: 30px;
-        font-weight: bold;
       }
 
       .agree {
@@ -49,19 +40,65 @@
         font-size: 13px;
         line-height: 18px;
         letter-spacing: 0.02em;
-        color: #a9c9ff;
-        margin-bottom: 20px;
-
+        color: $color-light-primary;
+        gap: 5px;
         a {
-          padding-left: 5px;
-          padding-right: 5px;
-          color: #a9c9ff;
+          color: $color-light-primary;
+        }
+      }
+    }
+  }
+}
+@include mq($until: m-height, $media-feature: height) {
+  .info-part {
+    .go-to-game-container {
+      background-size: 550px auto;
+      .go-to-game-content {
+        row-gap: 10px;
+        .game-period {
+          font-size: 12px;
+        }
+        .agree {
+          font-size: 13px;
+          a {
+            color: $color-light-primary;
+          }
+        }
+      }
+    }
+  }
+}
+@include mq($until: s-height, $media-feature: height) {
+  .info-part {
+    .go-to-game-container {
+      background-size: 300px auto;
+      .go-to-game-content {
+        row-gap: 5px;
+        .game-period {
+          font-size: 9px;
+        }
+        .agree {
+          font-size: 9px;
+          a {
+            color: $color-light-primary;
+          }
         }
       }
     }
   }
 }
 
+@include mq($until: xs-height, $media-feature: height) {
+  .info-part {
+    .go-to-game-container {
+      background-size: 250px auto;
+      .go-to-game-content {
+        row-gap: 3px;
+      }
+    }
+  }
+}
+/*
 @include mq($until: tablet-portrait) {
   .part1 {
     margin-top: 138px;
@@ -128,4 +165,4 @@
       }
     }
   }
-}
+}*/

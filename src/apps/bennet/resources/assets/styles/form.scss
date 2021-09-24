@@ -15,6 +15,7 @@ form {
     text-align: center;
     margin-top: 12px;
     color: transparentize($color-secondary, 0.2);
+
     &.info {
       font-style: italic;
       font-size: 11px;
@@ -35,7 +36,7 @@ form {
   input::-webkit-input-placeholder {
     color: $color-secondary;
     font-weight: 600;
-    font-size: 2vh;
+    font-size: 1.6vh;
     line-height: 19px;
     letter-spacing: 0.02em;
     opacity: 0.6;
@@ -58,6 +59,7 @@ form {
     min-width: 160px;
     text-decoration: none;
     border: none;
+
     &:disabled,
     &[disabled] {
       color: $color-grey;
@@ -68,15 +70,16 @@ form {
   .agree {
     display: flex;
     align-items: center;
-    margin-top: 51px;
+    margin-top: 10px;
     font-size: 13px;
-    width: 75%;
     color: $color-light-primary;
+
     .checkbox {
       box-sizing: border-box;
       width: 25px;
       margin: 0;
     }
+
     a {
       color: $color-light-primary;
     }
@@ -110,7 +113,7 @@ form {
     width: 100%;
     padding-bottom: 5px;
     transition: 0.1s ease-in;
-    font-size: 20pxs;
+    font-size: 20px;
   }
 
   .form-control input:focus,

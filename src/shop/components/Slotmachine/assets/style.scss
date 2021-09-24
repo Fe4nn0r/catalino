@@ -13,13 +13,18 @@
     z-index: 10;
     background: url("../../../resources/assets/img/slot-machine-spot.png")
       no-repeat center;
-    background-position-x: 54%;
-    background-size: auto 480px;
+    background-position-x: 53%;
+    background-size: 787px 530px;
     .slot-machine-screen-content {
       display: flex;
-      align-items: center;
       justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      align-items: center;
       margin: auto;
+      row-gap: 40px;
+      max-width: 496px;
+      padding-left: 1%;
     }
   }
 
@@ -29,6 +34,41 @@
   }
 }
 
+@include mq($until: m-height, $media-feature: height) {
+  .slot-machine-container {
+    .slot-machine-screen {
+      background-size: 600px auto;
+      .slot-machine-screen-content {
+        padding-left: 1%;
+        row-gap: 30px;
+      }
+    }
+  }
+}
+@include mq($until: s-height, $media-feature: height) {
+  .slot-machine-container {
+    .slot-machine-screen {
+      background-position-x: 51%;
+      background-size: 330px auto;
+      .slot-machine-screen-content {
+        row-gap: 20px;
+      }
+    }
+  }
+}
+
+@include mq($until: xs-height, $media-feature: height) {
+  .slot-machine-container {
+    .slot-machine-screen {
+      background-size: 250px auto;
+      .slot-machine-screen-content {
+        row-gap: 0;
+      }
+    }
+  }
+}
+
+/*
 @include mq(
   $from: tablet-portrait,
   $and: mq($until: mobileLandscape, $media-feature: height)
@@ -92,3 +132,4 @@
     background-position-x: 85%;
   }
 }
+*/

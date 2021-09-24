@@ -7,21 +7,46 @@
   text-align: center;
   border-radius: 30px;
   cursor: pointer;
-  background-color: #ffffff;
-  padding: 13px;
+  background-color: $color-secondary;
+  padding: 15px;
   font-style: normal;
   font-weight: normal;
   font-size: 22px;
   line-height: 27px;
   text-transform: uppercase;
   color: $color-primary;
-  min-width: 160px;
   text-decoration: none;
+  min-width: 170.67px;
+  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.2);
 }
 .disabled {
   opacity: 0.5;
   pointer-events: none;
 }
+
+@include mq($until: m-height, $media-feature: height) {
+  .button-area,
+  .play-button {
+    font-size: 17px;
+    padding: 10px 15px;
+  }
+}
+@include mq($until: s-height, $media-feature: height) {
+  .button-area,
+  .play-button {
+    font-size: 10px;
+    padding: 0 15px;
+    min-width: 80px;
+  }
+}
+
+@include mq($until: xs-height, $media-feature: height) {
+  .button-area,
+  .play-button {
+    font-size: 8px;
+  }
+}
+/*
 @include mq($until: mobileLandscape, $media-feature: height) {
   .button-area button,
   .play-button {
@@ -31,3 +56,4 @@
     margin-top: 5px;
   }
 }
+*/

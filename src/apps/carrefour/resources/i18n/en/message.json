@@ -74,6 +74,6 @@
   },
   "cannot": {
     "canNotPlay": "you can’t play",
-    "description": "The offer is no longer available"
+    "description": "You already played, none of the product you buy are eligible or the game is no longer available."
   }
 }

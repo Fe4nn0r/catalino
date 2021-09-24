@@ -9,20 +9,20 @@
   line-height: 60px;
   text-align: center;
   color: $color-secondary;
+  max-width: 389px;
 }
 
 .subtitle {
   font-family: Righteous;
   font-style: normal;
   font-weight: normal;
-  font-size: 22px;
+  font-size: 24px;
   line-height: 30px;
   text-align: center;
+  letter-spacing: 0.02em;
   color: $color-secondary;
 }
-
 .description {
-  padding: 6% 0 8% 0;
   font-style: normal;
   font-weight: bold;
   font-size: 22px;
@@ -30,9 +30,52 @@
   text-align: center;
   letter-spacing: 0.02em;
   color: $color-secondary;
-  text-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
+}
+@include mq($until: m-height, $media-feature: height) {
+  .title {
+    font-size: 45px;
+    line-height: inherit;
+    max-width: 270px;
+  }
+  .subtitle {
+    font-size: 18px;
+    line-height: inherit;
+    max-width: 350px;
+  }
+  .description {
+    font-size: 15px;
+    line-height: inherit;
+    max-width: 350px;
+  }
+}
+@include mq($until: s-height, $media-feature: height) {
+  .title {
+    font-size: 25px;
+  }
+  .subtitle {
+    font-size: 13px;
+    max-width: 200px;
+  }
+  .description {
+    font-size: 10px;
+    max-width: 200px;
+  }
+}
+@include mq($until: xs-height, $media-feature: height) {
+  .title {
+    font-size: 20px;
+    max-width: 170px;
+  }
+  .subtitle {
+    font-size: 10px;
+    max-width: 170px;
+  }
+  .description {
+    max-width: 170px;
+  }
 }
 
+/*
 @include mq(
   $from: tablet-portrait,
   $and: mq($until: mobileLandscape, $media-feature: height)
@@ -68,3 +111,4 @@
     margin: 0 auto;
   }
 }
+*/

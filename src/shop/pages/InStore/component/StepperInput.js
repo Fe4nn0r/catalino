@@ -18,8 +18,13 @@ function StepperInput({ label, type, attribute, fillData, defaultValue }) {
   }, []);
 
   function handleInput(value) {
-    fillData(attribute, value);
-    setUploadedFileName(value[0].name);
+    if (value) {
+      fillData(attribute, value);
+      setUploadedFileName(value[0].name);
+    } else {
+      fillData(attribute, "");
+      setUploadedFileName("");
+    }
   }
 
   function emptyUploadedFile() {
@@ -73,7 +78,7 @@ function StepperInput({ label, type, attribute, fillData, defaultValue }) {
         placeholder={label}
         autoComplete="off"
         {...register(label, {
-          required: true,
+          required: false,
           validate: handleInput,
         })}
       />

@@ -1,8 +1,7 @@
 .button-area {
   display: flex;
-  margin: 5% auto;
-  justify-content: center;
   gap: 10px;
+  margin: auto;
 }
 
 .content {
@@ -25,23 +24,44 @@
   background-size: auto 85%;
 }
 
-.sad-content {
-  .content-up {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-around;
-  }
+.content-up {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: row;
+  width: 459.5px;
+}
 
+@include mq($until: m-height, $media-feature: height) {
   .lips {
-    width: 50px;
-    height: 10px;
-    border-radius: 30px;
-    background-color: black;
-    opacity: 0.3;
-    margin: 10px auto 0;
+  }
+}
+@include mq($until: s-height, $media-feature: height) {
+  .content-up {
+    width: 250px;
+    img {
+      width: 30px;
+    }
+  }
+  .lips {
+    width: 30px;
+    margin-top: 0;
+  }
+}
+@include mq($until: xs-height, $media-feature: height) {
+  .content-up {
+    width: 200px;
+    img {
+      width: 15px;
+    }
+  }
+  .lips {
+    width: 15px;
+    margin-top: 20px;
   }
 }
 
+/*
 @include mq($until: tablet-portrait) {
   .shop-and-play-layer {
     background: url("../../../resources/assets/img/background-layer-mobile.png")
@@ -97,4 +117,4 @@
       margin: 10px auto 0;
     }
   }
-}
+}*/

@@ -34,18 +34,6 @@ function Landing() {
   const urlParams = new URLSearchParams(queryString);
 
   useEffect(() => {
-    if (isMobile) {
-      setBackgroundLayerStyle({
-        backgroundImage: "url(" + mobileBackgroundLayer + ")",
-      });
-    } else {
-      setBackgroundLayerStyle({
-        backgroundImage: "url(" + desktopBackgroundImgLayer + ")",
-      });
-    }
-  }, [isMobile, desktopBackgroundImgLayer]);
-
-  useEffect(() => {
     const token = urlParams.get("info");
     if (token) {
       retrieveGameInformationFromToken(token);
@@ -58,6 +46,18 @@ function Landing() {
       }
     }
   }, []);
+
+  useEffect(() => {
+    if (isMobile) {
+      setBackgroundLayerStyle({
+        backgroundImage: "url(" + mobileBackgroundLayer + ")",
+      });
+    } else {
+      setBackgroundLayerStyle({
+        backgroundImage: "url(" + desktopBackgroundImgLayer + ")",
+      });
+    }
+  }, [isMobile, desktopBackgroundImgLayer]);
 
   function authenticate() {
     getCryptedAuthentication()
@@ -89,9 +89,9 @@ function Landing() {
 
   return allowed ? (
     <>
-      <div className="part1">
+      <div className="info-part">
         <div className="go-to-game-container">
-          <div className="go-to-game-content content">
+          <div className="go-to-game-content">
             <div className="game-period">
               {" "}
               {t("landing.gamePeriod", {

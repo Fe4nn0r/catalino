@@ -1,15 +1,41 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SlotMachine from "../../components/Slotmachine/SlotMachine";
 import Button from "../../components/Button/Button";
 import { useTranslation } from "react-i18next";
 import RadioButton from "../../components/Radio/RadioButton";
 import { refundPages } from "./RefundPagesEnum";
+import {
+  getCryptedAuthentication,
+  retrieveGameInformationFromToken,
+} from "../../../utils/catalinaRequests";
+import { useNavigate } from "@reach/router";
 
 function RefundChoices({ selectPage }) {
   const [bank, setBank] = useState(false);
   const [paypal, setPaypal] = useState(false);
   const [later, setLater] = useState(false);
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const navigate = useNavigate();
 
+  useEffect(() => {
+    const token = urlParams.get("info");
+    if (token) {
+      retrieveGameInformationFromToken(token);
+      authenticate();
+    } else {
+      if (!localStorage.getItem("Authorization")) {
+        navigate("/in-store");
+      } else {
+        authenticate();
+      }
+    }
+  }, []);
+  function authenticate() {
+    getCryptedAuthentication().catch((err) => {
+      navigate("/can-not-play");
+    });
+  }
   function chooseRefund(choice) {
     switch (choice) {
       case refundPages.BANK:
@@ -48,8 +74,8 @@ function RefundChoices({ selectPage }) {
 
   function refundChoiceContent() {
     return (
-      <div className="content">
-        <div className="description">{t("refund.choices.description")}</div>
+      <>
+        <div className="subtitle">{t("refund.choices.description")}</div>
         <div className="refund-options">
           <RadioButton
             checked={bank}
@@ -74,8 +100,7 @@ function RefundChoices({ selectPage }) {
             doAction={() => navigateToChoice()}
           />{" "}
         </div>
-        <div className="lips" />
-      </div>
+      </>
     );
   }
 

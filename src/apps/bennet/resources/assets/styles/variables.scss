@@ -7,8 +7,11 @@ $color-info: #e8f1fb;
 $color-machine-levier: #c4c4c4;
 $color-machine-head: #000000;
 $color-machine-border: #de0504;
-
 //WEB RESPONSIVE
+$xs-height: 330px;
+$s-height: 565px;
+$m-height: 745px;
+
 $mobile-landscape: 645px;
 $smartphone-height: 641px;
 $iphone-x-height: 823px;
@@ -27,6 +30,9 @@ $mq-breakpoints: (
   desktop-large: 1600px,
   desktop-xlarge: 1681px,
   mobileLandscape: $mobile-landscape,
+  xs-height: $xs-height,
+  s-height: $s-height,
+  m-height: $m-height,
 );
 
 $mq-show-breakpoints: (
@@ -38,5 +44,8 @@ $mq-show-breakpoints: (
   desktop,
   desktop-large,
   desktop-xlarge,
-  mobileLandscape
+  mobileLandscape,
+  xs-height,
+  s-height,
+  m-height
 );

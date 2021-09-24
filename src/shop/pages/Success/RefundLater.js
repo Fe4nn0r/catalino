@@ -7,7 +7,7 @@ function RefundLater() {
   const { t } = useTranslation("message");
   function RefundLaterContent() {
     return (
-      <div className="success-email-content content">
+      <>
         <div className="title">{t("success.later.title")}</div>
         <div className="subtitle">{t("success.later.description")}</div>
         <div className="button-area">
@@ -19,7 +19,7 @@ function RefundLater() {
             }
           />
         </div>
-      </div>
+      </>
     );
   }
 

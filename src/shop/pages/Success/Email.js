@@ -7,7 +7,7 @@ function SuccessEmail() {
   const { t } = useTranslation("message");
   function SuccessEmailContent() {
     return (
-      <div className="success-email-content content">
+      <>
         <div className="title">{t("success.email.title")}</div>
         <div className="subtitle">{t("success.email.description")}</div>
         <div className="button-area">
@@ -19,7 +19,7 @@ function SuccessEmail() {
             }
           />
         </div>
-      </div>
+      </>
     );
   }
 

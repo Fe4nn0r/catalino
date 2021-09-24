@@ -1,17 +1,13 @@
 @import "../../../resources/assets/styles/variables";
 @import "~@mcaskill/sass-mq";
 
-.refund-content {
-  padding-top: 5%;
-}
-
 .refund-options {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: self-start;
   font-family: Open Sans;
-  row-gap: 20px;
+  row-gap: 24px;
 
   .info {
     font-style: normal;
@@ -23,12 +19,6 @@
     color: $color-info;
     margin-top: 10px;
   }
-}
-.description {
-  padding: 50px 0 20px 0;
-}
-.content {
-  grid-row-gap: initial;
 }
 .errors {
   min-height: 20px;

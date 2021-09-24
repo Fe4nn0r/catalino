@@ -33,16 +33,16 @@ function Win() {
 
   function winContent() {
     return (
-      <div className="win-content">
+      <>
         <div className="confetti">
           <Confetti active={hurray} config={config} />
         </div>
         <div className="title">{t("win.title")}</div>
-        <div className="description">{t("win.description")}</div>
+        <div className="subtitle">{t("win.description")}</div>
         <div className="button-area">
           <Button text={t("win.btn")} enable to="/refund" />{" "}
         </div>
-      </div>
+      </>
     );
   }
 

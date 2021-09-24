@@ -17,16 +17,18 @@ import {
   retrieveGameInformationFromToken,
 } from "../../../utils/catalinaRequests";
 import InStore from "../InStore/InStore";
+import Win from "../Game/Win/Win";
+import Lost from "../Game/Lost/Lost";
 
 function Home() {
   //TODO : remove this function
-  /*const encodeInfo = {
-    holderRef : 4
-    offerId : 4315,
-    retailerId :1
-  }
+  const encodeInfo = {
+    holderRef: 7,
+    offerId: 4318,
+    retailerId: 1,
+  };
   const token = encodeToRemove(encodeInfo);
-  */
+  console.log(token);
 
   return (
     <div id="home-container">
@@ -41,6 +43,9 @@ function Home() {
         <SuccessEmail path="/success-email" />
         <Legal path="legal/:legalType" />
         <InStore path="in-store" />
+
+        <Win path="/win" />
+        <Lost path="/lost" />
       </Router>
       <Footer />
     </div>

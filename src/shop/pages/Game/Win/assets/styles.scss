@@ -1,13 +1,7 @@
 @import "../../../../resources/assets/styles/variables";
 
-.win-content {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  font-family: Righteous;
-  .confetti {
-    position: fixed;
-    top: 0%;
-    left: 50%;
-  }
+.confetti {
+  position: fixed;
+  top: 0%;
+  left: 50%;
 }

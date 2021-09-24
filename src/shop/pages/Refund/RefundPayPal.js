@@ -45,8 +45,8 @@ function RefundPaypal({ selectPage }) {
 
   function refundPaypalContent() {
     return (
-      <div className="content">
-        <div className="description">{t("refund.paypal.title")}</div>
+      <>
+        <div className="subtitle">{t("refund.paypal.title")}</div>
         <div className="refund-options">
           <form>
             <input
@@ -115,7 +115,7 @@ function RefundPaypal({ selectPage }) {
             doAction={() => onSubmit()}
           />
         </div>
-      </div>
+      </>
     );
   }
 

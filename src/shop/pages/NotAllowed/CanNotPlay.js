@@ -3,12 +3,13 @@ import SlotMachine from "../../components/Slotmachine/SlotMachine";
 import Button from "../../components/Button/Button";
 import { useTranslation } from "react-i18next";
 import eye from "../../resources/assets/img/eye.png";
+import lips from "../../resources/assets/img/lips.png";
 
 function CanNotPlay() {
   const { t } = useTranslation("message");
   function CanNotPlayContent() {
     return (
-      <div className="sad-content">
+      <>
         <div className="content-up">
           <img src={eye} />{" "}
           <div className="title">
@@ -18,9 +19,6 @@ function CanNotPlay() {
           <img src={eye} />
         </div>
         <div className="description">{t("cannot.description")}</div>
-
-        <div className="lips" />
-
         <div className="button-area">
           <Button
             text={t("general.btnGoToSite")}
@@ -30,7 +28,8 @@ function CanNotPlay() {
             }
           />{" "}
         </div>
-      </div>
+        <img className="lips" src={lips} />
+      </>
     );
   }
 

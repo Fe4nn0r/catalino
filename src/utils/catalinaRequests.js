@@ -14,7 +14,8 @@ const subscriptionKey = "2fb179f5556c471f8ea8ea9c77dd2e50";
 
 export function encodeToRemove(body) {
   const token = jwt.encode(body, partner_secret);
-  retrieveGameInformationFromToken(token);
+  //retrieveGameInformationFromToken(token);
+  return token;
 }
 
 export function retrieveGameInformationFromToken(token) {
