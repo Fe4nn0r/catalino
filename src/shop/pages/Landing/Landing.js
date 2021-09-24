@@ -6,7 +6,7 @@ import { Link, useNavigate } from "@reach/router";
 import { useTranslation } from "react-i18next";
 import { useMediaQuery } from "react-responsive";
 import mobileBackgroundLayer from "../../resources/assets/img/background-layer-mobile.png";
-
+import config from "../../resources/config/config.json";
 import {
   getCryptedAuthentication,
   getOffer,
@@ -29,7 +29,9 @@ function Landing() {
     backgroundImage: desktopBackgroundImgLayer,
   });
   const navigate = useNavigate();
-  const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
+  const isMobile = useMediaQuery({
+    query: "(max-width: " + config.queryMobile + ")",
+  });
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
 
@@ -104,7 +106,10 @@ function Landing() {
             <div className="agree">
               <Checkbox checkAction={agree} />
               {t("landing.agreeP1")}
-              <Link to="game"> {t("landing.conditions")} </Link>{" "}
+              <Link to="/legal/generalConditions">
+                {" "}
+                {t("landing.conditions")}{" "}
+              </Link>{" "}
               {t("landing.agreeP2")}
             </div>
             <Button text={t("landing.play")} enable={agreed} to={"/game"} />

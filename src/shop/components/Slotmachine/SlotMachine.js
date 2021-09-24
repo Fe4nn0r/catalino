@@ -3,11 +3,14 @@ import "./assets/style.scss";
 import mobileBackgroundLayer from "../../resources/assets/img/background-layer-mobile.png";
 import { getDesktopBackgroundLayer } from "../../../utils/appApiConfiguration";
 import { useMediaQuery } from "react-responsive";
+import config from "../../resources/config/config.json";
 
 function SlotMachine({ content }) {
   const [desktopBackgroundImgLayer, setDesktopBackgroundImgLayer] =
     useState("");
-  const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
+  const isMobile = useMediaQuery({
+    query: "(max-width: " + config.queryMobile + ")",
+  });
   const [backgroundLayerStyle, setBackgroundLayerStyle] = useState({
     backgroundImage: desktopBackgroundImgLayer,
   });

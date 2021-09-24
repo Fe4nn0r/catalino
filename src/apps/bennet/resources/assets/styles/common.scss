@@ -15,13 +15,14 @@
 
 .shop-and-play-layer {
   pointer-events: none;
-  position: fixed;
+  position: absolute;
   width: 100%;
   height: 100%;
   z-index: 30;
   background: url("../../../resources/assets/img/background-layer.png")
     no-repeat center;
   background-size: auto 85%;
+  top: 0;
 }
 
 .content-up {
@@ -32,9 +33,7 @@
   width: 459.5px;
 }
 
-@include mq($until: m-height, $media-feature: height) {
-}
-@include mq($until: s-height, $media-feature: height) {
+@include mq($from: mobile, $and: mq($until: s-height, $media-feature: height)) {
   .content-up {
     width: 250px;
     img {
@@ -46,7 +45,11 @@
     margin-top: 0;
   }
 }
-@include mq($until: xs-height, $media-feature: height) {
+
+@include mq(
+  $from: mobile,
+  $and: mq($until: xs-height, $media-feature: height)
+) {
   .content-up {
     width: 200px;
     img {
@@ -58,6 +61,7 @@
     margin-top: 20px;
   }
 }
+
 /*
 @include mq($until: tablet-portrait) {
   .shop-and-play-layer {

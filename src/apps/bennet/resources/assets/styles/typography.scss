@@ -31,7 +31,8 @@
   letter-spacing: 0.02em;
   color: $color-secondary;
 }
-@include mq($until: m-height, $media-feature: height) {
+
+@include mq($from: mobile, $and: mq($until: m-height, $media-feature: height)) {
   .title {
     font-size: 40px;
     line-height: inherit;
@@ -48,7 +49,8 @@
     max-width: 350px;
   }
 }
-@include mq($until: s-height, $media-feature: height) {
+
+@include mq($from: mobile, $and: mq($until: s-height, $media-feature: height)) {
   .title {
     font-size: 25px;
   }
@@ -61,7 +63,11 @@
     max-width: 200px;
   }
 }
-@include mq($until: xs-height, $media-feature: height) {
+
+@include mq(
+  $from: mobile,
+  $and: mq($until: xs-height, $media-feature: height)
+) {
   .title {
     font-size: 20px;
     max-width: 170px;
@@ -72,6 +78,21 @@
   }
   .description {
     max-width: 170px;
+  }
+}
+
+@include mq($until: mobile) {
+  .title {
+    font-size: 50px;
+    line-height: 55px;
+  }
+  .subtitle {
+    font-size: 22px;
+    line-height: 30px;
+    max-width: 332px;
+  }
+  .description {
+    max-width: 332px;
   }
 }
 

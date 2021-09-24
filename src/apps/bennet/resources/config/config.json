@@ -3,5 +3,6 @@
     "colors": ["#ff0003", "#ff0003", "#ff0003", "#00000", "#FF4B4B", "#FFAB94"]
   },
   "dateFormat": "DD-MM-YYYY",
-  "homePageId": "home-container"
+  "homePageId": "home-container",
+  "queryMobile": "645px"
 }

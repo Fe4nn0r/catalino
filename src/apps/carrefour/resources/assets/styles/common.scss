@@ -15,13 +15,14 @@
 
 .shop-and-play-layer {
   pointer-events: none;
-  position: fixed;
+  position: absolute;
   width: 100%;
   height: 100%;
   z-index: 30;
   background: url("../../../resources/assets/img/background-layer.png")
     no-repeat center;
   background-size: auto 85%;
+  top: 0;
 }
 
 .content-up {

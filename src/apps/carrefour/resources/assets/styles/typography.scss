@@ -81,6 +81,21 @@
   }
 }
 
+@include mq($until: mobile) {
+  .title {
+    font-size: 50px;
+    line-height: 55px;
+  }
+  .subtitle {
+    font-size: 22px;
+    line-height: 30px;
+    max-width: 332px;
+  }
+  .description {
+    max-width: 332px;
+  }
+}
+
 /*
 @include mq(
   $from: tablet-portrait,
