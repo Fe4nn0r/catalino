@@ -39,6 +39,15 @@
       background-size: 600px auto;
       .slot-machine-screen-content {
         row-gap: 30px;
+        .refund-options {
+          .radio {
+            font-size: 15px;
+            .radioBox {
+              width: 15px;
+              height: 15px;
+            }
+          }
+        }
       }
     }
   }
@@ -50,6 +59,17 @@
       background-size: 330px auto;
       .slot-machine-screen-content {
         row-gap: 20px;
+        .refund-options {
+          row-gap: 0;
+          max-width: 200px;
+          .radio {
+            font-size: 10px;
+            .radioBox {
+              width: 10px;
+              height: 10px;
+            }
+          }
+        }
       }
     }
   }
