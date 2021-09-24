@@ -10,10 +10,36 @@ import { applyBasketAndGetWallet } from "../../../utils/catalinaRequests";
 import mobileHand from "../../resources/assets/img/mobile-ico.png";
 import Win from "./Win/Win";
 import Lost from "./Lost/Lost";
+import { useMediaQuery } from "react-responsive";
+import { getDesktopBackgroundLayer } from "../../../utils/appApiConfiguration";
+import mobileBackgroundLayer from "../../resources/assets/img/background-layer-mobile.png";
 
 const REDIRECTING_TIME = 800;
 
 function Game() {
+  const [desktopBackgroundImgLayer, setDesktopBackgroundImgLayer] =
+    useState("");
+  const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
+  const [backgroundLayerStyle, setBackgroundLayerStyle] = useState({
+    backgroundImage: desktopBackgroundImgLayer,
+  });
+  useEffect(() => {
+    getDesktopBackgroundLayer().then((res) =>
+      setDesktopBackgroundImgLayer(res)
+    );
+  }, []);
+  useEffect(() => {
+    if (isMobile) {
+      setBackgroundLayerStyle({
+        backgroundImage: "url(" + mobileBackgroundLayer + ")",
+      });
+    } else {
+      setBackgroundLayerStyle({
+        backgroundImage: "url(" + desktopBackgroundImgLayer + ")",
+      });
+    }
+  }, [isMobile, desktopBackgroundImgLayer]);
+
   const [animated, setAnimated] = useState(false);
   let [winner, setWinner] = useState(false);
   let [gameEnded, setGameEnded] = useState(false);
@@ -110,7 +136,7 @@ function Game() {
             onClick={() => play()}
           />
         </div>
-        <div className="shop-and-play-layer" />
+        <div className="shop-and-play-layer" style={backgroundLayerStyle} />
       </div>
     );
   }

@@ -1,32 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SlotMachine from "../../components/Slotmachine/SlotMachine";
 import Button from "../../components/Button/Button";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "@reach/router";
-import { useForm } from "react-hook-form";
 import { sendPaypalInformation } from "../../../utils/catalinaRequests";
 import { refundPages } from "./RefundPagesEnum";
+import InputText from "../../components/Form/Input/InputText";
+import ErrorMessage from "../../components/Form/Error/ErrorMessage";
+import Loading from "../../components/Loading/Loading";
 
 function RefundPaypal({ selectPage }) {
-  const {
-    register,
-    formState: { isValid, errors },
-  } = useForm({
-    mode: "onChange",
-    reValidateMode: "onChange",
-  });
   const { t } = useTranslation("message");
   const navigate = useNavigate();
   const [requestError, setRequestError] = useState(false);
   const [email, setEmail] = useState("");
-  const [confirmEmailValid, setConfirmEmailValid] = useState(false);
+  const [confirmEmail, setConfirmEmail] = useState(false);
+  const [isValid, setIsValid] = useState(false);
+  const [identicalEmails, setIdenticalEmails] = useState(true);
+  const [isLoading, setLoading] = useState(false);
 
   function onSubmit() {
+    setLoading(true);
     sendPaypalInformation(email)
       .then(() => {
+        setLoading(false);
         navigate("/success-email");
       })
       .catch((err) => {
+        setLoading(false);
         setRequestError(true);
       });
   }
@@ -36,12 +37,16 @@ function RefundPaypal({ selectPage }) {
   }
 
   function handleConfirmEmail(confirmEmail) {
-    if (confirmEmail === email) {
-      setConfirmEmailValid(true);
-    } else {
-      setConfirmEmailValid(false);
-    }
+    setConfirmEmail(confirmEmail);
   }
+
+  useEffect(() => {
+    if (confirmEmail === email) {
+      setIdenticalEmails(true);
+    } else {
+      setIdenticalEmails(false);
+    }
+  }, [confirmEmail, email]);
 
   function refundPaypalContent() {
     return (
@@ -49,56 +54,43 @@ function RefundPaypal({ selectPage }) {
         <div className="subtitle">{t("refund.paypal.title")}</div>
         <div className="refund-options">
           <form>
-            <input
+            <InputText
               autoFocus={true}
               type="text"
               placeholder={t("refund.paypal.email")}
               autoComplete="off"
-              {...register("email", {
-                required: true,
-                pattern: {
-                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                  message: "format incorrect",
-                },
-                validate: handleEmail,
-              })}
+              pattern={{
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                message: "format incorrect",
+              }}
+              required={true}
+              handleInput={handleEmail}
+              errorMessage={t("refund.intro.error")}
+              setIsValid={setIsValid}
             />
-            {errors.email && (
-              <label htmlFor="email" className="info">
-                {t("refund.intro.error")}
-              </label>
-            )}
-            <input
+            <InputText
               autoFocus={true}
               type="text"
               placeholder={t("refund.paypal.confirmEmail")}
               autoComplete="off"
-              {...register("confirmEmail", {
-                required: true,
-                pattern: {
-                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                  message: "format incorrect",
-                },
-                validate: handleConfirmEmail,
-              })}
+              pattern={{
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                message: "format incorrect",
+              }}
+              required={true}
+              handleInput={handleConfirmEmail}
+              errorMessage={t("refund.intro.error")}
+              setIsValid={setIsValid}
             />
-            {errors.confirmEmail && (
-              <label htmlFor="email" className="info">
-                {t("refund.intro.error")}
-              </label>
-            )}
-            <div className="errors">
-              {isValid && !confirmEmailValid && (
-                <label htmlFor="email" className="info">
-                  {t("refund.paypal.error")}
-                </label>
+            <>
+              {email && confirmEmail && !identicalEmails && (
+                <ErrorMessage message={t("refund.paypal.error")} />
               )}
+              {isLoading && <Loading />}
               {requestError && (
-                <label htmlFor="email" className="info">
-                  {t("refund.intro.errorRequest")}
-                </label>
+                <ErrorMessage message={t("refund.intro.errorRequest")} />
               )}
-            </div>
+            </>
             <div className="info">{t("refund.paypal.info")}</div>
           </form>
         </div>
@@ -109,9 +101,8 @@ function RefundPaypal({ selectPage }) {
             doAction={() => selectPage(refundPages.CHOICES)}
           />
           <Button
-            type="submit"
             text={t("general.next")}
-            enable={isValid && confirmEmailValid}
+            enable={isValid && identicalEmails}
             doAction={() => onSubmit()}
           />
         </div>

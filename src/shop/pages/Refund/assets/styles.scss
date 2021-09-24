@@ -8,17 +8,16 @@
   align-items: self-start;
   font-family: Open Sans;
   row-gap: 24px;
-
-  .info {
-    font-style: normal;
-    font-weight: normal;
-    font-size: 11px;
-    line-height: 15px;
-    text-align: center;
-    letter-spacing: 0.02em;
-    color: $color-info;
-    margin-top: 10px;
-  }
+}
+.info {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 11px;
+  line-height: 15px;
+  text-align: center;
+  letter-spacing: 0.02em;
+  color: $color-info;
+  margin-top: 10px;
 }
 .errors {
   min-height: 20px;

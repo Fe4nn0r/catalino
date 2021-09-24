@@ -1,26 +1,9 @@
 @import "../../../resources/assets/styles/variables";
-
 form {
   font-family: "Open sans";
   align-items: center;
   display: flex;
   flex-direction: column;
-
-  label {
-    display: block;
-    font-size: 13px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 5px;
-    text-align: center;
-    margin-top: 12px;
-    color: transparentize($color-secondary, 0.2);
-
-    &.info {
-      font-style: italic;
-      font-size: 11px;
-    }
-  }
 
   input[type="text"] {
     padding: 10px;
@@ -30,9 +13,8 @@ form {
     border-bottom: 2px solid transparentize($color-secondary, 0.7);
     outline: none;
     font-size: 20px;
-    width: 75%;
+    width: 378.83px;
   }
-
   input::-webkit-input-placeholder {
     color: $color-secondary;
     font-weight: 600;
@@ -41,106 +23,25 @@ form {
     letter-spacing: 0.02em;
     opacity: 0.6;
   }
-
-  button {
-    margin: 25px 0 25px 0;
-    font-family: "Righteous";
-    text-align: center;
-    border-radius: 30px;
-    cursor: pointer;
-    background-color: #ffffff;
-    padding: 13px;
+  .error-message {
+    color: $input-error-color;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 18px;
+    letter-spacing: 0.02em;
+    text-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
+    width: 378.83px;
+  }
+  label {
+    font-family: Open Sans;
     font-style: normal;
     font-weight: normal;
-    font-size: 22px;
-    line-height: 27px;
-    text-transform: uppercase;
-    color: $color-primary;
-    min-width: 160px;
-    text-decoration: none;
-    border: none;
-
-    &:disabled,
-    &[disabled] {
-      color: $color-grey;
-      pointer-events: none;
-    }
-  }
-
-  .agree {
-    display: flex;
-    align-items: center;
-    margin-top: 10px;
     font-size: 13px;
-    color: $color-light-primary;
-
-    .checkbox {
-      box-sizing: border-box;
-      width: 25px;
-      margin: 0;
-    }
-
-    a {
-      color: $color-light-primary;
-    }
-  }
-
-  .form-control {
-    font-family: "Open Sans";
-    position: relative;
-    margin: 10px 0;
-    width: 300px;
-    &.error {
-      input {
-        border-bottom: 2px solid #ff0000;
-        color: #ff0000;
-      }
-      label {
-        color: #ff0000;
-        span {
-          color: #ff0000;
-        }
-      }
-    }
-  }
-
-  .form-control input {
-    border: 0;
-    border-bottom: 2px solid #ffffff4d;
-    padding: 15px 0;
-    display: block;
-    text-align: initial;
-    width: 100%;
-    padding-bottom: 5px;
-    transition: 0.1s ease-in;
-    font-size: 20px;
-  }
-
-  .form-control input:focus,
-  .form-control input {
-    border-bottom-color: #ffffff4d;
-    outline: none;
-  }
-
-  .form-control input:focus + label span,
-  .form-control input:valid + label span {
-    color: #ffffff4d;
-    transform: translateY(-30px);
-  }
-
-  .form-control label {
-    position: absolute;
-    top: 15px;
-    left: 0;
-    font-size: 14px;
-    font-weight: 600;
-    color: #ffffff4d;
-  }
-
-  .form-control label span {
-    display: inline-block;
-    font-size: 18px;
-    min-width: 5px;
-    transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    line-height: 18px;
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 12px auto;
+    text-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
   }
 }

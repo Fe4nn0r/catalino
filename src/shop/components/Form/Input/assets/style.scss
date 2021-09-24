@@ -1,0 +1,16 @@
+@import "../../../../resources/assets/styles/variables";
+@import "~@mcaskill/sass-mq";
+@import "../../../../resources/assets/styles/form";
+
+.input-error-message {
+  @extend .error-message;
+  position: relative;
+  border-top: 2px solid $input-error-color;
+  bottom: 2px;
+  text-align: right;
+
+  img {
+    position: relative;
+    bottom: 25px;
+  }
+}

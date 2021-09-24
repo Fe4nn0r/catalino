@@ -1,0 +1,12 @@
+@import "../../../../resources/assets/styles/variables";
+@import "~@mcaskill/sass-mq";
+@import "../../../../resources/assets/styles/form";
+
+.generic-error-message {
+  @extend .error-message;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 10px auto;
+}

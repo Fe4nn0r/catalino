@@ -1,54 +1,43 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import SlotMachine from "../../components/Slotmachine/SlotMachine";
 import { useTranslation } from "react-i18next";
-import { useForm } from "react-hook-form";
 import { useNavigate } from "@reach/router";
 import "./assets/styles.scss";
 import "./assets/bank.scss";
 import Button from "../../components/Button/Button";
 import { refundPages } from "./RefundPagesEnum";
 import { sendBankInformation } from "../../../utils/catalinaRequests";
+import InputText from "../../components/Form/Input/InputText";
+import ErrorMessage from "../../components/Form/Error/ErrorMessage";
+import Loading from "../../components/Loading/Loading";
 
 function RefundBank({ selectPage }) {
-  const {
-    register,
-    handleSubmit,
-    formState: { isValid, errors },
-  } = useForm({
-    mode: "onChange",
-    reValidateMode: "onChange",
-  });
   const { t } = useTranslation("message");
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const labels = document.querySelectorAll(".form-control label");
-
-    labels.forEach((label) => {
-      label.innerHTML = label.innerText
-        .split("")
-        .map(
-          (letter, idx) => `<span style="
-				transition-delay: ${idx * 50}ms
-			">${letter}</span>`
-        )
-        .join("");
-    });
-  }, []);
-
   const [name, setName] = useState("");
   const [iban, setIban] = useState("");
   const [bic, setBic] = useState("");
-
+  const [isValid, setIsValid] = useState(false);
+  const [isBicValid, setIsBicValid] = useState(false);
+  const [isIbanValid, setIsIbanValid] = useState(false);
+  const [isNameValid, setIsNameValid] = useState(false);
   const [requestError, setRequestError] = useState(false);
+  const [isLoading, setLoading] = useState(false);
+  useEffect(() => {
+    if (name && iban && bic)
+      setIsValid(isIbanValid && isBicValid && isNameValid);
+  }, [isIbanValid, isBicValid, isNameValid, name, iban, bic]);
 
   function onSubmit() {
+    setLoading(true);
     sendBankInformation(name, iban, bic)
       .then(() => {
+        setLoading(false);
         navigate("/success-email");
       })
       .catch((err) => {
         setRequestError(true);
+        setLoading(false);
       });
   }
 
@@ -57,72 +46,51 @@ function RefundBank({ selectPage }) {
       <>
         <div className="subtitle">{t("refund.bank.title")}</div>
         <form>
-          <div className="form-control">
-            <input
-              type="text"
-              autoComplete="off"
-              {...register("name", {
-                required: true,
-                validate: (name) => setName(name),
-              })}
-              required
-            />
-            <label htmlFor="name">{t("refund.bank.name")}</label>
-          </div>
-          <div className="form-control">
-            <input
-              type="text"
-              autoComplete="off"
-              {...register("iban", {
-                required: true,
-                pattern: {
-                  value:
-                    /^[a-zA-Z]{2}[0-9]{2}\s?[a-zA-Z0-9]{4}\s?[0-9]{4}\s?[0-9]{3}([a-zA-Z0-9]\s?[a-zA-Z0-9]{0,4}\s?[a-zA-Z0-9]{0,4}\s?[a-zA-Z0-9]{0,4}\s?[a-zA-Z0-9]{0,3})?$/i,
-                },
-                validate: (iban) => setIban(iban),
-              })}
-              required
-            />
-            <label htmlFor="iban">{t("refund.bank.iban")}</label>
-          </div>
-          <div className="form-control">
-            <input
-              type="text"
-              autoComplete="off"
-              {...register("bic", {
-                required: true,
-                pattern: {
-                  value: /^[A-Z]{6,6}[A-Z2-9][A-NP-Z0-9]([A-Z0-9]{3,3}){0,1}$/i,
-                },
-                validate: (bic) => setBic(bic),
-              })}
-              required
-            />
-            <label>{t("refund.bank.bic")}</label>
-          </div>
-          {(errors.iban || errors.bic) && (
-            <div className="error-messages">
-              {errors.iban && (
-                <label htmlFor="bic" className="iban">
-                  {t("refund.bank.ibanerror")}
-                </label>
-              )}
-              {errors.bic && (
-                <label htmlFor="bic" className="bic">
-                  {t("refund.bank.bicerror")}
-                </label>
-              )}
-            </div>
-          )}
+          <InputText
+            autoFocus={true}
+            type="text"
+            placeholder={t("refund.bank.name")}
+            autoComplete="off"
+            required={true}
+            handleInput={setName}
+            errorMessage={t("refund.bank.nameerror")}
+            setIsValid={setIsNameValid}
+          />
 
+          <InputText
+            autoFocus={true}
+            type="text"
+            placeholder={t("refund.bank.iban")}
+            autoComplete="off"
+            pattern={{
+              value:
+                /^[a-zA-Z]{2}[0-9]{2}\s?[a-zA-Z0-9]{4}\s?[0-9]{4}\s?[0-9]{3}([a-zA-Z0-9]\s?[a-zA-Z0-9]{0,4}\s?[a-zA-Z0-9]{0,4}\s?[a-zA-Z0-9]{0,4}\s?[a-zA-Z0-9]{0,3})?$/i,
+              message: "format incorrect",
+            }}
+            required={true}
+            handleInput={setIban}
+            errorMessage={t("refund.bank.ibanerror")}
+            setIsValid={setIsIbanValid}
+          />
+          <InputText
+            autoFocus={true}
+            type="text"
+            placeholder={t("refund.bank.bic")}
+            autoComplete="off"
+            pattern={{
+              value: /^[A-Z]{6,6}[A-Z2-9][A-NP-Z0-9]([A-Z0-9]{3,3}){0,1}$/i,
+              message: "format incorrect",
+            }}
+            required={true}
+            handleInput={setBic}
+            errorMessage={t("refund.bank.bicerror")}
+            setIsValid={setIsBicValid}
+          />
+          {isLoading && <Loading />}
           {requestError && (
-            <label htmlFor="email" className="info">
-              {t("refund.intro.errorRequest")}
-            </label>
+            <ErrorMessage message={t("refund.intro.errorRequest")} />
           )}
-          <div className="agree">
-            <div className="text">{t("refund.bank.description")}</div>
-          </div>
+          <div className="info">{t("refund.bank.info")}</div>
         </form>
         <div className="button-area">
           <Button
