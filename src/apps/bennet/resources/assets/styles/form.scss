@@ -61,8 +61,6 @@ form {
   }
 }
 
-@include mq($until: m-height, $media-feature: height) {
-}
 @include mq($until: s-height, $media-feature: height) {
   form {
     input[type="text"] {
@@ -80,9 +78,8 @@ form {
         bottom: 17px;
       }
     }
+    .info,
     label {
-    }
-    .info {
       font-size: 9px;
       max-width: 270px;
       margin: 0;
@@ -107,9 +104,8 @@ form {
         bottom: 17px;
       }
     }
+    .info,
     label {
-    }
-    .info {
       font-size: 5px;
       max-width: 170px;
       margin: 0;
