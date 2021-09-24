@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import SlotMachine from "../../components/Slotmachine/SlotMachine";
 import Button from "../../components/Button/Button";
 import { useTranslation } from "react-i18next";
-import RadioButton from "../../components/Radio/RadioButton";
+import RadioButton from "../../components/Form/Radio/RadioButton";
 import { refundPages } from "./RefundPagesEnum";
 import {
   getCryptedAuthentication,

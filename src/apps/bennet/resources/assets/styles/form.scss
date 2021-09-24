@@ -19,7 +19,7 @@ form {
   input::-webkit-input-placeholder {
     color: $color-secondary;
     font-weight: 600;
-    font-size: 1.6vh;
+    font-size: 14px;
     line-height: 19px;
     letter-spacing: 0.02em;
     opacity: 0.6;
@@ -61,12 +61,15 @@ form {
   }
 }
 
-@include mq($until: s-height, $media-feature: height) {
+@include mq($from: mobile, $and: mq($until: s-height, $media-feature: height)) {
   form {
     input[type="text"] {
       padding: inherit;
       padding-bottom: 5px;
       max-width: 230px;
+      font-size: 9px;
+    }
+    input::-webkit-input-placeholder {
       font-size: 9px;
     }
     .error-message {
@@ -86,12 +89,19 @@ form {
     }
   }
 }
-@include mq($until: xs-height, $media-feature: height) {
+
+@include mq(
+  $from: mobile,
+  $and: mq($until: xs-height, $media-feature: height)
+) {
   form {
     input[type="text"] {
       padding: inherit;
       padding-bottom: 5px;
       max-width: 170px;
+      font-size: 9px;
+    }
+    input::-webkit-input-placeholder {
       font-size: 9px;
     }
     .error-message {

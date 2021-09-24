@@ -1,4 +1,4 @@
-@import "../../../resources/assets/styles/variables";
+@import "../../../../resources/assets/styles/variables";
 
 .radio {
   font-family: Open Sans;
@@ -16,6 +16,9 @@
   text-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
   .checked {
     opacity: 1 !important;
+  }
+  .checked-text {
+    color: $color-secondary;
   }
   .radioBox {
     width: 20px;

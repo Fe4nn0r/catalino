@@ -12,7 +12,9 @@ function RadioButton({ checkAction, title, checked }) {
       <div className={`radioBox ${checked ? "checked" : ""}`}>
         {checked ? <span className="circle" /> : null}
       </div>
-      <div className="radioTitle">{title}</div>
+      <div className={`radioTitle ${checked ? "checked-text" : ""}`}>
+        {title}
+      </div>
     </div>
   );
 }
