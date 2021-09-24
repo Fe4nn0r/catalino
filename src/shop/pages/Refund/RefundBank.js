@@ -26,7 +26,11 @@ function RefundBank({ selectPage }) {
     if (name && iban && bic)
       setIsValid(isIbanValid && isBicValid && isNameValid);
   }, [isIbanValid, isBicValid, isNameValid, name, iban, bic]);
-
+  const onEnter = (e) => {
+    if (e.key === "Enter") {
+      e.target.blur();
+    }
+  };
   function onSubmit() {
     setLoading(true);
     sendBankInformation(name, iban, bic)
@@ -44,7 +48,12 @@ function RefundBank({ selectPage }) {
     return (
       <>
         <div className="subtitle">{t("refund.bank.title")}</div>
-        <form>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+          }}
+          onKeyUp={onEnter}
+        >
           <InputText
             autoFocus={true}
             type="text"

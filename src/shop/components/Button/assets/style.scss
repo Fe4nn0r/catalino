@@ -24,14 +24,14 @@
   pointer-events: none;
 }
 
-@include mq($until: m-height, $media-feature: height) {
+@include mq($from: mobile, $and: mq($until: m-height, $media-feature: height)) {
   .button-area,
   .play-button {
     font-size: 17px;
     padding: 10px 15px;
   }
 }
-@include mq($until: s-height, $media-feature: height) {
+@include mq($from: mobile, $and: mq($until: s-height, $media-feature: height)) {
   .button-area,
   .play-button {
     font-size: 10px;
@@ -40,7 +40,10 @@
   }
 }
 
-@include mq($until: xs-height, $media-feature: height) {
+@include mq(
+  $from: mobile,
+  $and: mq($until: xs-height, $media-feature: height)
+) {
   .button-area,
   .play-button {
     font-size: 8px;

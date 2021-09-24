@@ -55,10 +55,7 @@
   }
 }
 
-@include mq($until: m-height, $media-feature: height) {
-}
-
-@include mq($until: s-height, $media-feature: height) {
+@include mq($from: mobile, $and: mq($until: s-height, $media-feature: height)) {
   .stepper-inputs {
     grid-row-gap: 10px;
     row-gap: 10px;
@@ -82,7 +79,4 @@
       }
     }
   }
-}
-
-@include mq($until: xs-height, $media-feature: height) {
 }

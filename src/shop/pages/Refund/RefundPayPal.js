@@ -18,7 +18,11 @@ function RefundPaypal({ selectPage }) {
   const [isValid, setIsValid] = useState(false);
   const [identicalEmails, setIdenticalEmails] = useState(true);
   const [isLoading, setLoading] = useState(false);
-
+  const onEnter = (e) => {
+    if (e.key === "Enter") {
+      e.target.blur();
+    }
+  };
   function onSubmit() {
     setLoading(true);
     sendPaypalInformation(email)
@@ -53,7 +57,12 @@ function RefundPaypal({ selectPage }) {
       <>
         <div className="subtitle">{t("refund.paypal.title")}</div>
         <div className="refund-options">
-          <form>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+            }}
+            onKeyUp={onEnter}
+          >
             <InputText
               autoFocus={true}
               type="text"

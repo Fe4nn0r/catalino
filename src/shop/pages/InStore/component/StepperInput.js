@@ -16,7 +16,11 @@ function StepperInput({ label, type, attribute, fillData, defaultValue }) {
       setUploadedFileName(defaultValue[0].name);
     }
   }, []);
-
+  const onEnter = (e) => {
+    if (e.key === "Enter") {
+      e.target.blur();
+    }
+  };
   function handleInput(value) {
     if (value) {
       fillData(attribute, value);
@@ -85,7 +89,16 @@ function StepperInput({ label, type, attribute, fillData, defaultValue }) {
     );
   }
 
-  return <form>{getInput()}</form>;
+  return (
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+      }}
+      onKeyUp={onEnter}
+    >
+      {getInput()}
+    </form>
+  );
 }
 
 export default StepperInput;

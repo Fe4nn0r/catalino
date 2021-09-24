@@ -49,7 +49,8 @@
     }
   }
 }
-@include mq($until: m-height, $media-feature: height) {
+
+@include mq($from: mobile, $and: mq($until: m-height, $media-feature: height)) {
   .info-part {
     .go-to-game-container {
       background-size: 550px auto;
@@ -68,7 +69,8 @@
     }
   }
 }
-@include mq($until: s-height, $media-feature: height) {
+
+@include mq($from: mobile, $and: mq($until: s-height, $media-feature: height)) {
   .info-part {
     .go-to-game-container {
       background-size: 300px auto;
@@ -88,7 +90,10 @@
   }
 }
 
-@include mq($until: xs-height, $media-feature: height) {
+@include mq(
+  $from: mobile,
+  $and: mq($until: xs-height, $media-feature: height)
+) {
   .info-part {
     .go-to-game-container {
       background-size: 250px auto;

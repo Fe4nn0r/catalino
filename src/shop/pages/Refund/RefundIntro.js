@@ -14,7 +14,11 @@ function RefundIntro({ selectPage }) {
   const [email, setEmail] = useState("");
   const [isValid, setIsValid] = useState(false);
   const [isLoading, setLoading] = useState(false);
-
+  const onEnter = (e) => {
+    if (e.key === "Enter") {
+      e.target.blur();
+    }
+  };
   function handleEmail(email) {
     setEmail(email);
   }
@@ -37,7 +41,12 @@ function RefundIntro({ selectPage }) {
     return (
       <>
         <div className="subtitle">{t("refund.intro.title")}</div>
-        <form>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+          }}
+          onKeyUp={onEnter}
+        >
           <InputText
             autoFocus={true}
             type="text"

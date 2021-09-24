@@ -32,9 +32,7 @@
   width: 459.5px;
 }
 
-@include mq($until: m-height, $media-feature: height) {
-}
-@include mq($until: s-height, $media-feature: height) {
+@include mq($from: mobile, $and: mq($until: s-height, $media-feature: height)) {
   .content-up {
     width: 250px;
     img {
@@ -46,7 +44,11 @@
     margin-top: 0;
   }
 }
-@include mq($until: xs-height, $media-feature: height) {
+
+@include mq(
+  $from: mobile,
+  $and: mq($until: xs-height, $media-feature: height)
+) {
   .content-up {
     width: 200px;
     img {

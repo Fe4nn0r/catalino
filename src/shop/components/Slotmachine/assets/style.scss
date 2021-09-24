@@ -33,7 +33,7 @@
   }
 }
 
-@include mq($until: m-height, $media-feature: height) {
+@include mq($from: mobile, $and: mq($until: m-height, $media-feature: height)) {
   .slot-machine-container {
     .slot-machine-screen {
       background-size: 600px auto;
@@ -52,7 +52,7 @@
     }
   }
 }
-@include mq($until: s-height, $media-feature: height) {
+@include mq($from: mobile, $and: mq($until: s-height, $media-feature: height)) {
   .slot-machine-container {
     .slot-machine-screen {
       background-position-x: 51%;
@@ -75,7 +75,10 @@
   }
 }
 
-@include mq($until: xs-height, $media-feature: height) {
+@include mq(
+  $from: mobile,
+  $and: mq($until: xs-height, $media-feature: height)
+) {
   .slot-machine-container {
     .slot-machine-screen {
       background-size: 250px auto;
