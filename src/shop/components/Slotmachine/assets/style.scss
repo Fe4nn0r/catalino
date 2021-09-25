@@ -15,6 +15,7 @@
       no-repeat center;
     background-position-x: 53%;
     background-size: 787px 530px;
+
     .slot-machine-screen-content {
       display: flex;
       justify-content: center;
@@ -37,14 +38,18 @@
   .slot-machine-container {
     .slot-machine-screen {
       background-size: 600px auto;
+
       .slot-machine-screen-content {
         row-gap: 30px;
+
         .refund-options {
           .radio {
             font-size: 15px;
+
             .radioBox {
               width: 15px;
               height: 15px;
+
               .circle {
                 width: 5px;
                 height: 5px;
@@ -56,18 +61,23 @@
     }
   }
 }
+
 @include mq($from: mobile, $and: mq($until: s-height, $media-feature: height)) {
   .slot-machine-container {
     .slot-machine-screen {
       background-position-x: 51%;
       background-size: 330px auto;
+
       .slot-machine-screen-content {
         row-gap: 20px;
+
         .refund-options {
           row-gap: 0;
           max-width: 200px;
+
           .radio {
             font-size: 10px;
+
             .radioBox {
               width: 10px;
               height: 10px;
@@ -86,8 +96,25 @@
   .slot-machine-container {
     .slot-machine-screen {
       background-size: 250px auto;
+
       .slot-machine-screen-content {
         row-gap: 0;
+      }
+    }
+  }
+}
+
+@include mq($until: mobile) {
+  .slot-machine-container {
+    .slot-machine-screen {
+      background: url("../../../resources/assets/img/slot-spot.png") no-repeat
+        center;
+      background-size: 499px 530px;
+      @include mq($until: $smartphone-height, $media-feature: height) {
+        background-size: 450px 470px;
+        .slot-machine-screen-content {
+          row-gap: 25px;
+        }
       }
     }
   }

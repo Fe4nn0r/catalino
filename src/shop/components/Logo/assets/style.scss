@@ -9,19 +9,19 @@
   align-items: center;
   top: 40px;
 }
-@include mq($until: mobileLandscape, $media-feature: height) {
-  .logo {
-    top: 13px;
-    text-align: center;
-    position: absolute;
-    img {
-      width: 80%;
-    }
-  }
-}
 @include mq($until: s-height, $media-feature: height) {
   .logo {
     top: 15px;
+    text-align: center;
+    position: absolute;
+    img {
+      width: 60%;
+    }
+  }
+}
+@include mq($until: mobile) {
+  .logo {
+    top: 36px;
     text-align: center;
     position: absolute;
     img {

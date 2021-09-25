@@ -61,7 +61,11 @@
     margin-top: 20px;
   }
 }
-
+@include mq($until: mobile) {
+  .content-up {
+    max-width: 368px;
+  }
+}
 /*
 @include mq($until: tablet-portrait) {
   .shop-and-play-layer {

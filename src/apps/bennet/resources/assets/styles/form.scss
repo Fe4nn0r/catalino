@@ -122,3 +122,12 @@ form {
     }
   }
 }
+
+@include mq($until: mobile) {
+  form {
+    input[type="text"],
+    .error-message {
+      max-width: 325.99px;
+    }
+  }
+}
