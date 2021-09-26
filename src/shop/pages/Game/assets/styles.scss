@@ -390,7 +390,7 @@
   }
 }
 
-@include mq($until: tablet-portrait) {
+@include mq($until: mobile) {
   .game-container {
     margin-top: 10%;
     display: block;
@@ -402,9 +402,8 @@
       height: 100%;
 
       .title {
-        font-size: 25px;
-        margin-top: 12%;
-        padding: 10px 35px;
+        font-size: 28px;
+        width: 262px;
       }
 
       .slot-machine {
@@ -412,8 +411,8 @@
           center;
         position: absolute;
         width: 100%;
-        background-size: 125% 95%;
-
+        background-size: 507px 530px;
+        row-gap: 3px;
         .screen-container {
           width: 350px;
           height: 127px;
@@ -432,7 +431,7 @@
 
         .buttons-area {
           flex-direction: column;
-          margin: auto;
+          margin: 0 auto;
           justify-content: center;
           align-items: center;
 
