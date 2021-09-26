@@ -5,7 +5,7 @@
   display: block !important;
 }
 
-@include mq($until: tablet-portrait) {
+@include mq($until: mobile) {
   .mobile-only {
     display: block !important;
   }
