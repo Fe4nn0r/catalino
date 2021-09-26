@@ -23,14 +23,14 @@
       z-index: 10;
       background: url("../../../resources/assets/img/slot-spot.png") no-repeat
         center;
-      background-size: 720px 530px;
+      background-size: 719.6px 530px;
       row-gap: 33px;
       .title {
         font-size: 28px;
         line-height: 30px;
         text-align: center;
         letter-spacing: 0.03em;
-        min-width: 527px;
+        max-width: inherit;
       }
 
       .description {
@@ -123,18 +123,19 @@
       position: absolute;
       width: 85px;
       height: 80px;
-      top: 350px;
-      left: 705px;
+      top: 332px;
+      left: 702px;
       z-index: 8;
       background: url("../../../resources/assets/img/slot-lever-support.png")
         no-repeat center;
       cursor: pointer;
+      background-size: 85px 80px;
     }
 
     .slot-lever {
       position: absolute;
-      top: 26%;
-      left: 750px;
+      top: 121px;
+      left: 746px;
       width: 13px;
       height: 218px;
       background-color: $color-machine-levier;
@@ -161,8 +162,8 @@
 
     .slot-hand {
       position: absolute;
-      top: 23%;
-      left: 732px;
+      top: 101px;
+      left: 727px;
       width: 52px;
       height: 52px;
       background-color: $color-machine-head;
@@ -208,6 +209,184 @@
     height: 0px;
     border-radius: 9px;
     border: 4px solid rgba(0, 0, 0, 0.4);
+  }
+}
+
+@include mq($from: mobile, $and: mq($until: m-height, $media-feature: height)) {
+  .game-container {
+    .game-content {
+      .slot-machine {
+        background-size: 550px auto;
+        row-gap: 20px;
+        .title {
+          font-size: 24px;
+          line-height: 30px;
+          text-align: center;
+          letter-spacing: 0.03em;
+          max-width: inherit;
+        }
+        .screen-container {
+          width: 500px;
+          height: 190px;
+        }
+      }
+      .slot-lever-support {
+        top: 307px;
+        left: 622px;
+        background-size: 65px;
+      }
+      .slot-lever {
+        top: 27%;
+        left: 666px;
+        width: 10px;
+        height: 175px;
+      }
+      .slot-hand {
+        top: 26.5%;
+        left: 651px;
+        width: 40px;
+        height: 40px;
+      }
+    }
+  }
+}
+
+@include mq($from: mobile, $and: mq($until: s-height, $media-feature: height)) {
+  .game-container {
+    .game-content {
+      .slot-machine {
+        min-height: 300px;
+        background-size: 300px auto;
+        row-gap: 5px;
+        .title {
+          font-size: 14px;
+          line-height: 30px;
+          text-align: center;
+          letter-spacing: 0.03em;
+          max-width: inherit;
+        }
+        .screen-container {
+          width: 270px;
+          height: 110px;
+        }
+      }
+      .slot-lever-support {
+        top: 147px;
+        left: 495px;
+        background-size: 52px;
+      }
+      .slot-lever {
+        top: 25%;
+        left: 538px;
+        width: 7px;
+        height: 100px;
+      }
+      @keyframes lever-slide-frame {
+        0% {
+          top: 25%;
+          height: 100px;
+        }
+        100% {
+          top: 60%;
+          height: 0px;
+        }
+      }
+      .slot-hand {
+        top: 17.5%;
+        left: 524px;
+        width: 35px;
+        height: 35px;
+      }
+      @keyframes hand-slide-frame {
+        0% {
+          top: 17.5%;
+        }
+        100% {
+          top: 60%;
+        }
+      }
+      .buttons-area {
+        margin-left: 7% !important;
+        .insert-coin {
+          width: 50px;
+          height: 25px;
+          border-radius: 6px;
+          .coin-line {
+            width: 30px;
+            border-radius: 6px;
+            border: 3px solid rgba(0, 0, 0, 0.4);
+          }
+        }
+      }
+    }
+  }
+}
+
+@include mq(
+  $from: mobile,
+  $and: mq($until: xs-height, $media-feature: height)
+) {
+  .game-container {
+    .game-content {
+      .slot-machine {
+        min-height: 200px;
+        background-size: 230px auto;
+        row-gap: 0;
+        .title {
+          font-size: 10px;
+        }
+        .screen-container {
+          width: 200px;
+          height: 90px;
+        }
+      }
+      .slot-lever-support {
+        top: 95px;
+        left: 458px;
+        background-size: 40px;
+      }
+      .slot-lever {
+        top: 25%;
+        left: 500px;
+        width: 5px;
+        height: 80px;
+      }
+      @keyframes lever-slide-frame {
+        0% {
+          top: 25%;
+          height: 100px;
+        }
+        100% {
+          top: 60%;
+          height: 0px;
+        }
+      }
+      .slot-hand {
+        left: 490px;
+        width: 25px;
+        height: 25px;
+      }
+      @keyframes hand-slide-frame {
+        0% {
+          top: 17.5%;
+        }
+        100% {
+          top: 60%;
+        }
+      }
+      .buttons-area {
+        .insert-coin {
+          width: 50px;
+          height: 25px;
+          border-radius: 6px;
+          .coin-line {
+            width: 30px;
+            border-radius: 6px;
+            border: 3px solid rgba(0, 0, 0, 0.4);
+          }
+        }
+      }
+    }
   }
 }
 
@@ -268,131 +447,6 @@
       .slot-hand {
         display: none;
       }
-    }
-  }
-}
-
-@include mq($until: mobile-sm) {
-  .game-container {
-    .game-content {
-      .slot-machine {
-        min-height: 450px;
-
-        .screen-container {
-          width: 260px;
-          height: 105px;
-          margin: auto;
-        }
-      }
-    }
-  }
-}
-
-@media only screen and (min-device-width: $tablet-portrait) and (max-device-width: $tablet-landscape) and (orientation: portrait) {
-  .game-container .game-content {
-    .slot-machine {
-      background-size: 80%;
-
-      .screen-container {
-        margin: 30px auto;
-        width: 470px;
-        height: 180px;
-      }
-    }
-
-    .title {
-      padding-top: 13%;
-    }
-
-    .slot-hand {
-      top: 19%;
-      left: 675px;
-    }
-
-    .slot-lever {
-      top: 21%;
-      left: 694px;
-    }
-
-    .slot-lever-support {
-      top: 60%;
-      left: 86%;
-    }
-  }
-}
-@media screen and (orientation: landscape) and (max-height: $mobile-landscape) {
-  .game-container .game-content {
-    .slot-machine {
-      background-size: 50%;
-      min-height: auto;
-      padding: 10% 0;
-      .screen-container {
-        margin: 0 auto;
-        width: 45%;
-        height: 120px;
-      }
-      .shake-phone {
-        display: none;
-      }
-      .description {
-        display: none !important;
-      }
-      .buttons-area {
-        .insert-coin {
-          margin-left: 4%;
-          margin-top: 1%;
-          width: 60px;
-          height: 25px;
-          border-radius: 9px;
-        }
-      }
-    }
-
-    .title {
-      font-size: 13px;
-      margin-top: 0;
-      padding: 0;
-    }
-    .slot-lever,
-    .slot-lever-support,
-    .slot-hand {
-      display: block !important;
-    }
-    .slot-hand {
-      top: 19%;
-      left: 74%;
-      width: 40px;
-      height: 40px;
-    }
-
-    .slot-lever {
-      top: 21%;
-      left: 76%;
-      height: 40%;
-      width: 10px;
-    }
-    @keyframes lever-slide-frame {
-      0% {
-        top: 21%;
-        height: 40%;
-      }
-      100% {
-        top: 69%;
-        height: 0px;
-      }
-    }
-    @keyframes hand-slide-frame {
-      0% {
-        top: 19%;
-      }
-      100% {
-        top: 69%;
-      }
-    }
-    .slot-lever-support {
-      top: 53%;
-      left: 70%;
-      background-size: 70%;
     }
   }
 }
