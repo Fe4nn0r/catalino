@@ -133,38 +133,3 @@
     background-size: auto;
   }
 }
-/*
-@include mq(
-  $from: tablet-portrait,
-  $and: mq($until: mobileLandscape, $media-feature: height)
-) {
-  .part1 {
-    .go-to-game-container {
-      background-size: auto 60%;
-
-      .go-to-game-content {
-        .game-period {
-          font-size: 2vh;
-          padding-bottom: 0;
-        }
-        .agree {
-          font-size: 2vh;
-          margin: 2% auto;
-        }
-      }
-    }
-  }
-}
-@include mq($until: mobile-sm) {
-  .part1 {
-    overflow: hidden;
-    .go-to-game-container {
-      .go-to-game-content {
-        .title {
-          font-size: 6vh;
-          max-width: 85%;
-        }
-      }
-    }
-  }
-}*/

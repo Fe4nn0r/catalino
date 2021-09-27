@@ -452,6 +452,9 @@
         width: 100%;
         background-size: 507px 530px;
         row-gap: 3px;
+        @include mq($until: $smartphone-height, $media-feature: height) {
+          background-size: 507px 465px;
+        }
 
         .screen-container {
           width: 350px;
