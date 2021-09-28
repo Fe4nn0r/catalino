@@ -31,12 +31,15 @@ function SlotMachine({ content }) {
     }
   }, [isMobile, desktopBackgroundImgLayer]);
   return (
-    <div className="slot-machine-container">
-      <div className="slot-machine-screen">
-        <div className="slot-machine-screen-content">{content}</div>
+    <>
+      {isMobile && <div className="mobileLogoSpace" />}
+      <div className="slot-machine-container">
+        <div className="slot-machine-screen">
+          <div className="slot-machine-screen-content">{content}</div>
+        </div>
+        <div className="shop-and-play-layer" style={backgroundLayerStyle} />
       </div>
-      <div className="shop-and-play-layer" style={backgroundLayerStyle} />
-    </div>
+    </>
   );
 }
 

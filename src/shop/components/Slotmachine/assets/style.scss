@@ -105,12 +105,17 @@
 }
 
 @include mq($until: mobile) {
+  .mobileLogoSpace {
+    min-height: 80px;
+  }
   .slot-machine-container {
     .slot-machine-screen {
+      height: 530px;
       background: url("../../../resources/assets/img/slot-spot.png") no-repeat
         center;
       background-size: 499px 530px;
       @include mq($until: $smartphone-height, $media-feature: height) {
+        height: 470px;
         background-size: 450px 470px;
         .slot-machine-screen-content {
           row-gap: 25px;
