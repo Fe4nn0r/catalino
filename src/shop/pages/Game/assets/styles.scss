@@ -461,6 +461,9 @@
           width: 350px;
           height: 127px;
           margin: 5px auto;
+          @include mq($until: $smartphone-height, $media-feature: height) {
+            width: 320px;
+          }
         }
 
         .screen-column {

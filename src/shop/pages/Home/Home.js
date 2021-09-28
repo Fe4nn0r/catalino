@@ -5,7 +5,7 @@ import Game from "../Game/Game";
 import Landing from "../Landing/Landing";
 import Footer from "../../components/Footer/Footer";
 import CanNotPlay from "../NotAllowed/CanNotPlay";
-import AlreadyPlayed from "../NotAllowed/AlreadyPlayed";
+import NotFound from "../NotAllowed/NotFound";
 import SuccessEmail from "../Success/Email";
 import Logo from "../../components/Logo/Logo";
 import Legal from "../Legals/component/Legal";
@@ -30,16 +30,16 @@ function Home() {
     <div id="home-container">
       <Logo displayLogo />
       <Router>
+        <NotFound default />
         <Landing path="/" />
         <Game path="game" />
         <CanNotPlay path="/can-not-play" />
-        <AlreadyPlayed path="/already-played" />
+        <NotFound path="/already-played" />
         <Refund path="/refund" />
         <Refund path="/refund-choices" page={refundPages.CHOICES} />
         <SuccessEmail path="/success-email" />
         <Legal path="legal/:legalType" />
         <InStore path="in-store" />
-
         <Win path="/win" />
         <Lost path="/lost" />
       </Router>

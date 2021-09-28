@@ -70,9 +70,10 @@
     "lost": "you lost",
     "description": "Try your luck next time"
   },
-  "already": {
-    "alreadyPlayed": "you have already play",
-    "description": "You can’t play again, try your luck next time"
+  "notFound": {
+    "oops": "Oops !",
+    "description": "The page you are looking for doesn't exist or is not available anymore.",
+    "back": "Home"
   },
   "cannot": {
     "canNotPlay": "you can’t play",
