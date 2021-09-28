@@ -102,7 +102,9 @@ function Landing() {
               })}
             </div>
             <div className="title">{landingInformation.offerTitle}</div>
-            <div className="description">{t("landing.description")}</div>
+            <div className="description">
+              {landingInformation.offerDescription}
+            </div>
             <div className="agree">
               <Checkbox checkAction={agree} />
               {t("landing.agreeP1")}

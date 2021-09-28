@@ -20,7 +20,7 @@
   box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.2);
 }
 .disabled {
-  opacity: 0.5;
+  color: $color-grey;
   pointer-events: none;
 }
 

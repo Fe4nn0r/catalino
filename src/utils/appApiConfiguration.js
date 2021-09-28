@@ -10,10 +10,17 @@ export function getAndApplyApiConfiguration(offer) {
   const startDate = getDate(offer.started_at);
   const endDate = getDate(offer.ended_at);
   const offerTitle = offer.subtitle;
+  const offerFullDescription = offer.full_description;
+
   localStorage.setItem("bgDesktopImageUrl", offer.picture_url);
   localStorage.setItem("footer", offer.carousel_pictures[0]);
   localStorage.setItem("winIcon", offer.brand_logo_url);
-  return { offerTitle: offerTitle, startDate: startDate, endDate: endDate };
+  return {
+    offerTitle: offerTitle,
+    offerDescription: offerFullDescription,
+    startDate: startDate,
+    endDate: endDate,
+  };
 }
 
 export async function getDesktopBackgroundLayer() {
