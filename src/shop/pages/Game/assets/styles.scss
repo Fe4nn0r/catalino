@@ -431,10 +431,11 @@
 
 @include mq($until: mobile) {
   .game-container {
-    margin-top: 10%;
     display: block;
-    height: 85vh;
-
+    height: 530px;
+    @include mq($until: $smartphone-height, $media-feature: height) {
+      height: 465px;
+    }
     .game-content {
       display: flex;
       align-items: center;
