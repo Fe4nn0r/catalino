@@ -108,7 +108,10 @@
 @include mq($until: mobile) {
   .info-part {
     .go-to-game-container {
-      height: 427px;
+      height: 530px;
+      @include mq($until: $smartphone-height, $media-feature: height) {
+        height: 427px;
+      }
       background: url("../../../resources/assets/img/spot.png") no-repeat center;
       background-size: 461px 427px;
       width: 100%;
@@ -132,7 +135,7 @@
   .shop-and-play-layer {
     background-size: auto;
     top: initial;
-    bottom: 85px;
+    bottom: 4%;
     @include mq($until: $smartphone-height, $media-feature: height) {
       top: initial;
       bottom: 15px;
