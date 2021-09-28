@@ -109,11 +109,7 @@
   .info-part {
     .go-to-game-container {
       height: 530px;
-      @include mq($until: $smartphone-height, $media-feature: height) {
-        height: 427px;
-      }
-      background: url("../../../resources/assets/img/spot.png") no-repeat center;
-      background-size: 461px 427px;
+      background-size: 499px 530px;
       width: 100%;
       margin-top: 0;
       margin-bottom: 0;

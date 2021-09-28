@@ -54,6 +54,15 @@
     .options {
       flex-direction: column;
       background-color: $color-secondary;
+      a {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 11px;
+        line-height: 15px;
+        text-align: center;
+        letter-spacing: 0.02em;
+        padding-bottom: 18px;
+      }
     }
   }
 }
