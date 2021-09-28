@@ -1,6 +1,6 @@
 {
   "landing": {
-    "gamePeriod": "Dal 1 al 30",
+    "gamePeriod": "Dal {{start}} al {{end}}",
     "title": "Prova a vincere il tuo canestro",
     "description": "Prova a vincere il tuo canestro",
     "agreeP1": "sono d'accordo con",
