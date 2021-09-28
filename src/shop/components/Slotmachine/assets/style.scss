@@ -105,9 +105,6 @@
 }
 
 @include mq($until: mobile) {
-  .mobileLogoSpace {
-    min-height: 80px;
-  }
   .slot-machine-container {
     .slot-machine-screen {
       height: 530px;

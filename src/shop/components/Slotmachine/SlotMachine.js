@@ -32,7 +32,6 @@ function SlotMachine({ content }) {
   }, [isMobile, desktopBackgroundImgLayer]);
   return (
     <>
-      {isMobile && <div className="mobileLogoSpace" />}
       <div className="slot-machine-container">
         <div className="slot-machine-screen">
           <div className="slot-machine-screen-content">{content}</div>

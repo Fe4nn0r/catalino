@@ -11,11 +11,7 @@ import Logo from "../../components/Logo/Logo";
 import Legal from "../Legals/component/Legal";
 import Refund from "../Refund/Refund";
 import { refundPages } from "../Refund/RefundPagesEnum";
-import {
-  encodeToDO,
-  encodeToRemove,
-  retrieveGameInformationFromToken,
-} from "../../../utils/catalinaRequests";
+import { encodeToRemove } from "../../../utils/catalinaRequests";
 import InStore from "../InStore/InStore";
 import Win from "../Game/Win/Win";
 import Lost from "../Game/Lost/Lost";
