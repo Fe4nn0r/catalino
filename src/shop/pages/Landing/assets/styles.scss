@@ -108,12 +108,12 @@
 @include mq($until: mobile) {
   .info-part {
     .go-to-game-container {
+      height: 427px;
       background: url("../../../resources/assets/img/spot.png") no-repeat center;
       background-size: 461px 427px;
-      height: 427px;
       width: 100%;
-      margin-top: 135px;
-      margin-bottom: 89px;
+      margin-top: 0;
+      margin-bottom: 0;
       .go-to-game-content {
         row-gap: 0;
         .title {
@@ -131,5 +131,11 @@
   }
   .shop-and-play-layer {
     background-size: auto;
+    top: initial;
+    bottom: 85px;
+    @include mq($until: $smartphone-height, $media-feature: height) {
+      top: initial;
+      bottom: 15px;
+    }
   }
 }
