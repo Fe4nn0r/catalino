@@ -82,7 +82,7 @@
             top: 0;
             @media screen and (-ms-high-contrast: active),
               screen and (-ms-high-contrast: none) {
-              top: -50%;
+              top: -30%;
             }
           }
 
@@ -195,13 +195,13 @@
       }
     }
   }
-
+}
+.display-game {
   .shop-and-play-layer {
     z-index: 2;
     opacity: 0.4;
   }
 }
-
 .insert-coin {
   display: flex;
   margin-left: 4%;
@@ -240,6 +240,31 @@
         .screen-container {
           width: 500px;
           height: 190px;
+          .screen-column {
+            img {
+              //IE
+              @media screen and (-ms-high-contrast: active),
+                screen and (-ms-high-contrast: none) {
+                top: -480%;
+              }
+            }
+            .winnerImg {
+              top: 0;
+              @media screen and (-ms-high-contrast: active),
+                screen and (-ms-high-contrast: none) {
+                top: -50%;
+              }
+            }
+
+            @keyframes spinItIE {
+              from {
+                top: -400%;
+              }
+              to {
+                top: 0%;
+              }
+            }
+          }
         }
       }
 
@@ -285,6 +310,32 @@
         .screen-container {
           width: 270px;
           height: 110px;
+          .screen-column {
+            img {
+              //IE
+              @media screen and (-ms-high-contrast: active),
+                screen and (-ms-high-contrast: none) {
+                top: -480%;
+                width: 50px;
+              }
+            }
+            .winnerImg {
+              top: 0;
+              @media screen and (-ms-high-contrast: active),
+                screen and (-ms-high-contrast: none) {
+                top: 0;
+              }
+            }
+
+            @keyframes spinItIE {
+              from {
+                top: -400%;
+              }
+              to {
+                top: 0%;
+              }
+            }
+          }
         }
       }
 

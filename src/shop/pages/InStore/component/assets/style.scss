@@ -9,6 +9,10 @@
   form {
     .inputFile {
       .uploadFile {
+        @media screen and (-ms-high-contrast: active),
+          screen and (-ms-high-contrast: none) {
+          margin-top: 16px;
+        }
         display: flex;
         flex-direction: row;
         gap: 16px;
@@ -17,6 +21,10 @@
           border: 1px solid white;
           padding: 15px;
           border-radius: 54px;
+          @media screen and (-ms-high-contrast: active),
+            screen and (-ms-high-contrast: none) {
+            margin-right: 5px;
+          }
         }
 
         .uploadLabel {

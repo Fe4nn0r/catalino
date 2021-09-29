@@ -10,6 +10,11 @@
   text-align: center;
   color: $color-secondary;
   max-width: 389px;
+  @media screen and (-ms-high-contrast: active),
+    screen and (-ms-high-contrast: none) {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
 }
 
 .subtitle {
@@ -22,6 +27,12 @@
   letter-spacing: 0.02em;
   color: $color-secondary;
   max-width: 496px;
+  @media screen and (-ms-high-contrast: active),
+    screen and (-ms-high-contrast: none) {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    max-width: 389px;
+  }
 }
 .description {
   font-style: normal;
@@ -31,6 +42,12 @@
   text-align: center;
   letter-spacing: 0.02em;
   color: $color-secondary;
+  @media screen and (-ms-high-contrast: active),
+    screen and (-ms-high-contrast: none) {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    max-width: 389px;
+  }
 }
 
 @include mq($from: mobile, $and: mq($until: m-height, $media-feature: height)) {

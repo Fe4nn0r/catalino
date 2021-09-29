@@ -14,6 +14,10 @@
   cursor: pointer;
   color: rgba(255, 255, 255, 0.6);
   text-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
+  @media screen and (-ms-high-contrast: active),
+    screen and (-ms-high-contrast: none) {
+    margin-bottom: 10px;
+  }
   .checked {
     opacity: 1 !important;
   }
@@ -38,5 +42,9 @@
   .radioTitle {
     max-width: 300px;
     text-align: start;
+    @media screen and (-ms-high-contrast: active),
+      screen and (-ms-high-contrast: none) {
+      padding-left: 10px;
+    }
   }
 }

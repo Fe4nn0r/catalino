@@ -1,4 +1,5 @@
 @import "../../../resources/assets/styles/variables";
+
 form {
   font-family: "Open sans";
   align-items: center;
@@ -16,6 +17,7 @@ form {
     width: 378.83px;
     text-align: center;
   }
+
   input::-webkit-input-placeholder {
     color: $color-secondary;
     font-weight: 600;
@@ -25,6 +27,7 @@ form {
     opacity: 0.6;
     text-align: left;
   }
+
   .error-message {
     color: $input-error-color;
     font-weight: 600;
@@ -34,6 +37,7 @@ form {
     text-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
     width: 378.83px;
   }
+
   label {
     font-style: normal;
     font-weight: normal;
@@ -55,7 +59,12 @@ form {
     letter-spacing: 0.02em;
     color: $color-info;
     margin-top: 10px;
+    @media screen and (-ms-high-contrast: active),
+      screen and (-ms-high-contrast: none) {
+      max-width: 378.83px;
+    }
   }
+
   .loading-container {
     position: relative;
   }
@@ -69,18 +78,23 @@ form {
       max-width: 230px;
       font-size: 9px;
     }
+
     input::-webkit-input-placeholder {
       font-size: 9px;
     }
+
     .error-message {
       max-width: 230px;
     }
+
     .input-error-message {
       font-size: 7px;
+
       img {
         bottom: 17px;
       }
     }
+
     .info,
     label {
       font-size: 9px;
@@ -101,19 +115,24 @@ form {
       max-width: 170px;
       font-size: 9px;
     }
+
     input::-webkit-input-placeholder {
       font-size: 9px;
     }
+
     .error-message {
       max-width: 170px;
     }
+
     .input-error-message {
       font-size: 5px;
+
       img {
         width: 10px;
         bottom: 17px;
       }
     }
+
     .info,
     label {
       font-size: 5px;
@@ -122,6 +141,7 @@ form {
     }
   }
 }
+
 @include mq($until: mobile) {
   form {
     input[type="text"],

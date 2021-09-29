@@ -79,62 +79,64 @@ function Game() {
 
   function gameContent() {
     return (
-      <div className="game-container">
-        <div className="game-content">
-          <div className="slot-machine">
-            <div className="title mobile-only">
-              Shake your phone or click to play!
-            </div>
-            <div className="title desktop-only">
-              Pull the handle or click to play!
-            </div>
-            <div className="screen-container">
-              <Screen
-                animate={animated}
-                speed={0.8}
-                screenNumber={1}
-                winner={winner}
-              />
-              <Screen
-                animate={animated}
-                speed={0.6}
-                screenNumber={2}
-                winner={winner}
-              />
-              <Screen
-                animate={animated}
-                speed={0.4}
-                screenNumber={3}
-                winner={winner}
-                onFinish={onScreenFinished}
-              />
-            </div>
-            <div className="shake-phone">
-              <img src={mobileHand} />
-              <div className="insert-coin">
-                <div className="coin-line" />
+      <div className="display-game">
+        <div className="game-container">
+          <div className="game-content">
+            <div className="slot-machine">
+              <div className="title mobile-only">
+                Shake your phone or click to play!
+              </div>
+              <div className="title desktop-only">
+                Pull the handle or click to play!
+              </div>
+              <div className="screen-container">
+                <Screen
+                  animate={animated}
+                  speed={0.8}
+                  screenNumber={1}
+                  winner={winner}
+                />
+                <Screen
+                  animate={animated}
+                  speed={0.6}
+                  screenNumber={2}
+                  winner={winner}
+                />
+                <Screen
+                  animate={animated}
+                  speed={0.4}
+                  screenNumber={3}
+                  winner={winner}
+                  onFinish={onScreenFinished}
+                />
+              </div>
+              <div className="shake-phone">
+                <img src={mobileHand} />
+                <div className="insert-coin">
+                  <div className="coin-line" />
+                </div>
+              </div>
+              <div className="description mobile-only">
+                Shake to start the slot machine <br />{" "}
+                <span className="or"> or </span>
+              </div>
+              <div className="buttons-area">
+                <Button text="Play" enable={!animated} doAction={play} />
+                <div className="insert-coin">
+                  <div className="coin-line" />
+                </div>
               </div>
             </div>
-            <div className="description mobile-only">
-              Shake to start the slot machine <br />{" "}
-              <span className="or"> or </span>
-            </div>
-            <div className="buttons-area">
-              <Button text="Play" enable={!animated} doAction={play} />
-              <div className="insert-coin">
-                <div className="coin-line" />
-              </div>
-            </div>
+            <div className="slot-lever-support" onClick={() => play()} />
+            <div
+              className={`slot-lever ${animated ? "lever-slide" : ""}`}
+              onClick={() => play()}
+            />
+            <div
+              className={`slot-hand ${animated ? "hand-slide" : ""}`}
+              onClick={() => play()}
+            />
           </div>
-          <div className="slot-lever-support" onClick={() => play()} />
-          <div
-            className={`slot-lever ${animated ? "lever-slide" : ""}`}
-            onClick={() => play()}
-          />
-          <div
-            className={`slot-hand ${animated ? "hand-slide" : ""}`}
-            onClick={() => play()}
-          />
         </div>
         <div className="shop-and-play-layer" style={backgroundLayerStyle} />
       </div>
