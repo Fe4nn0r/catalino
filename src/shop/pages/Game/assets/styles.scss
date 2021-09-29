@@ -78,10 +78,17 @@
               top: -480%;
             }
           }
+          .winnerImg {
+            top: 0;
+            @media screen and (-ms-high-contrast: active),
+              screen and (-ms-high-contrast: none) {
+              top: -50%;
+            }
+          }
 
           @keyframes spinItIE {
             from {
-              top: -600%;
+              top: -400%;
             }
             to {
               top: 0%;
@@ -201,7 +208,7 @@
   margin-top: 1%;
   width: 96px;
   height: 37px;
-  background-color: #00000047;
+  background-color: $insert-coin-color;
   border-radius: 9px;
 
   .coin-line {

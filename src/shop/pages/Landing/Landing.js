@@ -114,7 +114,9 @@ function Landing() {
               </Link>{" "}
               {t("landing.agreeP2")}
             </div>
-            <Button text={t("landing.play")} enable={agreed} to={"/game"} />
+            <div className="button-area">
+              <Button text={t("landing.play")} enable={agreed} to={"/game"} />
+            </div>
           </div>
         </div>
       </div>

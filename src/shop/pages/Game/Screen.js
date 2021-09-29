@@ -93,18 +93,7 @@ function Screen({ animate, speed, screenNumber, winner, onFinish }) {
   }
 
   function winningCombination() {
-    return constructFruitsOrder([
-      ico1,
-      ico2,
-      ico3,
-      ico4,
-      icoWin,
-      ico6,
-      ico7,
-      ico8,
-      ico9,
-      ico5,
-    ]);
+    return constructFruitsOrder([ico4, icoWin, ico6]);
   }
 
   function defaultCombination() {
@@ -167,7 +156,13 @@ function Screen({ animate, speed, screenNumber, winner, onFinish }) {
   function constructFruitsOrder(fruitsOrder) {
     let allFruits = [];
     allFruits.push(...fruitsOrder);
-    return allFruits.map((fruit) => <img style={fruitStyle} src={fruit} />);
+    return allFruits.map((fruit) => (
+      <img
+        className={gameFinished && winner ? "winnerImg" : ""}
+        style={fruitStyle}
+        src={fruit}
+      />
+    ));
   }
 
   return (
