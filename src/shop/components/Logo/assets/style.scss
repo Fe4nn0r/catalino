@@ -8,6 +8,9 @@
   justify-content: center;
   align-items: center;
   top: 40px;
+  img {
+    width: 80%;
+  }
 }
 @include mq($until: s-height, $media-feature: height) {
   .logo {
