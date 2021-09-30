@@ -6,13 +6,18 @@ import winSound from "../../resources/assets/sound/Win.mp3";
 import "./assets/styles.scss";
 import Screen from "./Screen";
 import Button from "../../components/Button/Button";
-import { applyBasketAndGetWallet } from "../../../utils/catalinaRequests";
+import {
+  applyBasketAndGetWallet,
+  getCryptedAuthentication,
+  getHolderRef,
+} from "../../../utils/catalinaRequests";
 import mobileHand from "../../resources/assets/img/mobile-ico.png";
 import Win from "./Win/Win";
 import Lost from "./Lost/Lost";
 import { useMediaQuery } from "react-responsive";
 import { getDesktopBackgroundLayer } from "../../../utils/appApiConfiguration";
 import mobileBackgroundLayer from "../../resources/assets/img/background-layer-mobile.png";
+import { useNavigate } from "@reach/router";
 
 const REDIRECTING_TIME = 800;
 
@@ -23,11 +28,21 @@ function Game() {
   const [backgroundLayerStyle, setBackgroundLayerStyle] = useState({
     backgroundImage: desktopBackgroundImgLayer,
   });
+  const navigate = useNavigate();
+
   useEffect(() => {
+    if (getHolderRef()) {
+      authenticate();
+    }
     getDesktopBackgroundLayer().then((res) =>
       setDesktopBackgroundImgLayer(res)
     );
   }, []);
+  function authenticate() {
+    getCryptedAuthentication().catch(() => {
+      navigate("/can-not-play");
+    });
+  }
   useEffect(() => {
     if (isMobile) {
       setBackgroundLayerStyle({

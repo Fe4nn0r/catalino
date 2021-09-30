@@ -2,8 +2,8 @@ import CryptoJS from "crypto-js";
 import request from "./request";
 import jwt from "jwt-simple";
 import {
-  inStoreRetailerId,
   inStoreOfferId,
+  inStoreRetailerId,
 } from "../shop/resources/inStore/instore-config.json";
 
 const apiHost = "https://cmfr-test.azure-api.net/s-a-p-test/";
@@ -14,11 +14,10 @@ const subscriptionKey = "2fb179f5556c471f8ea8ea9c77dd2e50";
 
 export function encodeToRemove(body) {
   const token = jwt.encode(body, partner_secret);
-  //retrieveGameInformationFromToken(token);
   return token;
 }
 
-export function retrieveGameInformationFromToken(token) {
+export function extractGameInformationFromToken(token) {
   const decodedInfo = jwt.decode(token, partner_secret);
   localStorage.setItem("retailerId", decodedInfo.retailerId.toString());
   localStorage.setItem(
@@ -30,8 +29,8 @@ export function retrieveGameInformationFromToken(token) {
 
 export function getCryptedAuthentication() {
   const body = {
-    retailer_id: Number(localStorage.getItem("retailerId")),
-    holder_ref: localStorage.getItem("holderRef"),
+    retailer_id: Number(getRetailerId()),
+    holder_ref: getHolderRef(),
   };
   const encryptedAuthUrl = apiHost + "members/crypted_authentication";
   return httpPost(
@@ -45,15 +44,9 @@ export function getCryptedAuthentication() {
 }
 
 export function getOffer() {
-  const actionPath =
-    "/ecommerce/offers?retailer_id=" + localStorage.getItem("retailerId");
-  const offerId = localStorage.getItem("offerId");
-  return httpGet(apiHost + actionPath, actionPath).then((offers) => {
-    return extractOffer(offers, offerId);
-  });
-}
-export function getOfferByIdAndRetailerID(offerId, retailerId) {
-  const actionPath = "/ecommerce/offers?retailer_id=" + retailerId;
+  console.log("here");
+  const actionPath = "/ecommerce/offers?retailer_id=" + getRetailerId();
+  const offerId = getOfferId();
   return httpGet(apiHost + actionPath, actionPath).then((offers) => {
     return extractOffer(offers, offerId);
   });
@@ -75,8 +68,8 @@ export async function applyBasket() {
     apiHost + "members/" + localStorage.getItem("memberId") + "/basket";
   const body = [
     {
-      retailer_id: Number(localStorage.getItem("retailerId")),
-      offer_id: Number(localStorage.getItem("offerId")),
+      retailer_id: Number(getRetailerId()),
+      offer_id: Number(getOfferId()),
     },
   ];
   return httpPost(
@@ -92,8 +85,8 @@ export async function sendEmailForRefund(email) {
     email: email,
     holders: [
       {
-        ref: localStorage.getItem("holderRef"),
-        retailer_id: Number(localStorage.getItem("retailerId")),
+        ref: getHolderRef(),
+        retailer_id: Number(getRetailerId()),
       },
     ],
   };
@@ -239,12 +232,10 @@ export function getEncryptedHolderRef(holder_ref) {
 }
 
 export function sendInStoreInformation(body) {
-  localStorage.setItem("retailerId", inStoreRetailerId);
   localStorage.setItem(
     "holderRef",
     getEncryptedHolderRef(body.holder_ref.toString())
   );
-  localStorage.setItem("offerId", body.offerId);
   const inStoreUrl =
     apiHost + "members/" + localStorage.getItem("memberId") + "/basket";
   return true;
@@ -253,4 +244,23 @@ export function sendInStoreInformation(body) {
         "/members/" + localStorage.getItem("memberId") + "/basket",
         body
     );*/
+}
+
+export function getHolderRef() {
+  console.log(localStorage.getItem("holderRef"));
+  return localStorage.getItem("holderRef");
+}
+export function getOfferId() {
+  let offerId = localStorage.getItem("offerId");
+  if (!offerId) {
+    offerId = inStoreOfferId;
+  }
+  return offerId;
+}
+export function getRetailerId() {
+  let retailerId = localStorage.getItem("retailerId");
+  if (!retailerId) {
+    retailerId = inStoreRetailerId;
+  }
+  return retailerId;
 }

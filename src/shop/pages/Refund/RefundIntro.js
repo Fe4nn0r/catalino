@@ -8,6 +8,8 @@ import InputText from "../../components/Form/Input/InputText";
 import Button from "../../components/Button/Button";
 import ErrorMessage from "../../components/Form/Error/ErrorMessage";
 import Loading from "../../components/Loading/Loading";
+import appConfig from "../../resources/config/config.json";
+import { useNavigate } from "@reach/router";
 
 function RefundIntro({ selectPage }) {
   const { t } = useTranslation("message");
@@ -15,6 +17,7 @@ function RefundIntro({ selectPage }) {
   const [isValid, setIsValid] = useState(false);
   const [isLoading, setLoading] = useState(false);
   const [displayInputErrors, setDisplayInputErrors] = useState(false);
+  const navigate = useNavigate();
   const onEnter = (e) => {
     if (e.key === "Enter") {
       e.target.blur();
@@ -22,6 +25,17 @@ function RefundIntro({ selectPage }) {
   };
   function handleEmail(email) {
     setEmail(email);
+  }
+  function nextPage() {
+    //TODO remove getItem
+    if (
+      appConfig.refundChoicesEnabled ||
+      localStorage.getItem("refundChoices")
+    ) {
+      selectPage(refundPages.CHOICES);
+    } else {
+      navigate("/success-email");
+    }
   }
   function onSubmit() {
     if (isValid) {
@@ -31,7 +45,7 @@ function RefundIntro({ selectPage }) {
       sendEmailForRefund(email)
         .then(() => {
           setLoading(false);
-          selectPage(refundPages.CHOICES);
+          nextPage();
         })
         .catch((err) => {
           setLoading(false);

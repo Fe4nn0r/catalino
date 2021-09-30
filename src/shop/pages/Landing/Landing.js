@@ -7,11 +7,7 @@ import { useTranslation } from "react-i18next";
 import { useMediaQuery } from "react-responsive";
 import mobileBackgroundLayer from "../../resources/assets/img/background-layer-mobile.png";
 import config from "../../resources/config/config.json";
-import {
-  getCryptedAuthentication,
-  getOffer,
-  retrieveGameInformationFromToken,
-} from "../../../utils/catalinaRequests";
+import { getOffer } from "../../../utils/catalinaRequests";
 import Loading from "../../components/Loading/Loading";
 import {
   getAndApplyApiConfiguration,
@@ -32,21 +28,9 @@ function Landing() {
   const isMobile = useMediaQuery({
     query: "(max-width: " + config.queryMobile + ")",
   });
-  const queryString = window.location.search;
-  const urlParams = new URLSearchParams(queryString);
 
   useEffect(() => {
-    const token = urlParams.get("info");
-    if (token) {
-      retrieveGameInformationFromToken(token);
-      authenticate();
-    } else {
-      if (!localStorage.getItem("holderRef")) {
-        navigate("/in-store");
-      } else {
-        authenticate();
-      }
-    }
+    applyApiConfiguration();
   }, []);
 
   useEffect(() => {
@@ -61,30 +45,30 @@ function Landing() {
     }
   }, [isMobile, desktopBackgroundImgLayer]);
 
-  function authenticate() {
-    getCryptedAuthentication()
-      .then(() => {
-        getOffer()
-          .then((offer) => {
-            if (offer) {
-              setLandingInformation(getAndApplyApiConfiguration(offer));
-              getDesktopBackgroundLayer().then((res) =>
-                setDesktopBackgroundImgLayer(res)
-              );
-              setAllowed(true);
-            } else {
-              navigate("/can-not-play");
-            }
-          })
-          .catch((err) => {
-            navigate("/can-not-play");
-          });
+  function applyApiConfiguration() {
+    getOffer()
+      .then((offer) => {
+        if (offer) {
+          setLandingInformation(getAndApplyApiConfiguration(offer));
+          getDesktopBackgroundLayer().then((res) =>
+            setDesktopBackgroundImgLayer(res)
+          );
+          setAllowed(true);
+        } else {
+          navigate("/can-not-play");
+        }
       })
-      .catch((err) => {
+      .catch(() => {
         navigate("/can-not-play");
       });
   }
-
+  function navigateToPage() {
+    if (localStorage.getItem("holderRef")) {
+      navigate("/game");
+    } else {
+      navigate("/in-store");
+    }
+  }
   function agree() {
     setAgreed(!agreed);
   }
@@ -115,7 +99,11 @@ function Landing() {
               {t("landing.agreeP2")}
             </div>
             <div className="button-area">
-              <Button text={t("landing.play")} enable={agreed} to={"/game"} />
+              <Button
+                text={t("landing.play")}
+                enable={agreed}
+                doAction={navigateToPage}
+              />
             </div>
           </div>
         </div>

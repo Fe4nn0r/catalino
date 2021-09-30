@@ -16,6 +16,8 @@ function RefundPaypal({ selectPage }) {
   const [email, setEmail] = useState("");
   const [confirmEmail, setConfirmEmail] = useState(false);
   const [isValid, setIsValid] = useState(false);
+  const [isEmailValid, setIsEmailValid] = useState(false);
+  const [isConfirmEmailValid, setIsConfirmEmailValid] = useState(false);
   const [identicalEmails, setIdenticalEmails] = useState(true);
   const [isLoading, setLoading] = useState(false);
   const [displayInputErrors, setDisplayInputErrors] = useState(false);
@@ -25,8 +27,11 @@ function RefundPaypal({ selectPage }) {
       e.target.blur();
     }
   };
+  useEffect(() => {
+    setIsValid(isEmailValid && isConfirmEmailValid);
+  }, [isEmailValid, isConfirmEmailValid]);
   function onSubmit() {
-    if (isValid) {
+    if (isValid && identicalEmails) {
       setDisplayInputErrors(false);
       setLoading(true);
       sendPaypalInformation(email)
@@ -82,7 +87,7 @@ function RefundPaypal({ selectPage }) {
               required={true}
               handleInput={handleEmail}
               errorMessage={t("refund.intro.error")}
-              setIsValid={setIsValid}
+              setIsValid={setIsEmailValid}
               displayErrors={displayInputErrors}
             />
             <InputText
@@ -97,7 +102,7 @@ function RefundPaypal({ selectPage }) {
               required={true}
               handleInput={handleConfirmEmail}
               errorMessage={t("refund.intro.error")}
-              setIsValid={setIsValid}
+              setIsValid={setIsConfirmEmailValid}
               displayErrors={displayInputErrors}
             />
             <>

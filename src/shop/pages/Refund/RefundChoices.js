@@ -5,8 +5,8 @@ import { useTranslation } from "react-i18next";
 import RadioButton from "../../components/Form/Radio/RadioButton";
 import { refundPages } from "./RefundPagesEnum";
 import {
+  extractGameInformationFromToken,
   getCryptedAuthentication,
-  retrieveGameInformationFromToken,
 } from "../../../utils/catalinaRequests";
 import { useNavigate } from "@reach/router";
 
@@ -21,13 +21,13 @@ function RefundChoices({ selectPage }) {
   useEffect(() => {
     const token = urlParams.get("info");
     if (token) {
-      retrieveGameInformationFromToken(token);
+      extractGameInformationFromToken(token);
       getCryptedAuthentication().catch(() => {
         navigate("/can-not-play");
       });
     } else {
       if (!localStorage.getItem("Authorization")) {
-        navigate("/in-store");
+        navigate("/");
       }
     }
   }, []);

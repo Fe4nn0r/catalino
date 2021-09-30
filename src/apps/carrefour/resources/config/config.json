@@ -4,5 +4,6 @@
   },
   "dateFormat": "DD-MM-YYYY",
   "homePageId": "home-container",
-  "queryMobile": "645px"
+  "queryMobile": "645px",
+  "refundChoicesEnabled": false
 }
