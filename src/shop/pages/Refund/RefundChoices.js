@@ -22,20 +22,15 @@ function RefundChoices({ selectPage }) {
     const token = urlParams.get("info");
     if (token) {
       retrieveGameInformationFromToken(token);
-      authenticate();
+      getCryptedAuthentication().catch(() => {
+        navigate("/can-not-play");
+      });
     } else {
       if (!localStorage.getItem("Authorization")) {
         navigate("/in-store");
-      } else {
-        authenticate();
       }
     }
   }, []);
-  function authenticate() {
-    getCryptedAuthentication().catch((err) => {
-      navigate("/can-not-play");
-    });
-  }
   function chooseRefund(choice) {
     switch (choice) {
       case refundPages.BANK:

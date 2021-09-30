@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import {
   inStoreOfferId,
+  inStoreRetailerId,
   inStoreBody,
   steps,
 } from "../../resources/inStore/instore-config.json";
 import Stepper from "./component/Stepper";
 import {
   getOfferById,
+  getOfferByIdAndRetailerID,
   sendInStoreInformation,
 } from "../../../utils/catalinaRequests";
 import { useNavigate } from "@reach/router";
@@ -26,7 +28,7 @@ function InStore() {
       ? urlParams.get("offerId")
       : inStoreOfferId;
     if (offerId) {
-      getOfferById(offerId)
+      getOfferByIdAndRetailerID(offerId, inStoreRetailerId)
         .then((offer) => {
           if (offer) {
             getAndApplyApiConfiguration(offer);

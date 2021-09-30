@@ -52,9 +52,8 @@ export function getOffer() {
     return extractOffer(offers, offerId);
   });
 }
-export function getOfferById(offerId) {
-  const actionPath =
-    "/ecommerce/offers?retailer_id=" + localStorage.getItem("retailerId");
+export function getOfferByIdAndRetailerID(offerId, retailerId) {
+  const actionPath = "/ecommerce/offers?retailer_id=" + retailerId;
   return httpGet(apiHost + actionPath, actionPath).then((offers) => {
     return extractOffer(offers, offerId);
   });
