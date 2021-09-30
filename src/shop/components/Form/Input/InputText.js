@@ -1,11 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import "./assets/style.scss";
 import { useForm } from "react-hook-form";
 import union from "../../../resources/assets/img/union.png";
 function InputText({
   defaultValue,
-  autoFocus,
   type,
   placeholder,
   autoComplete,
@@ -14,15 +13,19 @@ function InputText({
   pattern,
   errorMessage,
   setIsValid,
+  displayErrors,
 }) {
   const {
     register,
+    watch,
     formState: { errors },
   } = useForm({
     mode: "onChange",
     reValidateMode: "onChange",
   });
+  const showPlaceHolder = watch(placeholder);
   useEffect(() => {
+    console.log(errors[placeholder]);
     if (errors[placeholder]) {
       setIsValid(false);
     } else {
@@ -30,25 +33,26 @@ function InputText({
     }
   }, [errors[placeholder]]);
 
-  function validateInput(value) {
-    handleInput(value);
-  }
+  useEffect(() => {
+    handleInput(showPlaceHolder);
+  }, [showPlaceHolder]);
 
   return (
     <>
+      <div className="top-placeholder">
+        {showPlaceHolder ? placeholder : ""}
+      </div>
       <input
         defaultValue={defaultValue}
-        autoFocus={autoFocus}
         type={type}
         placeholder={placeholder}
         autoComplete={autoComplete}
         {...register(placeholder, {
           required: required,
           pattern: pattern,
-          validate: validateInput,
         })}
       />
-      {errors[placeholder] && (
+      {displayErrors && errors[placeholder] && (
         <div className="input-error-message">
           {errorMessage}
           <img src={union} />

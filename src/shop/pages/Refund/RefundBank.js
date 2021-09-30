@@ -21,6 +21,7 @@ function RefundBank({ selectPage }) {
   const [isIbanValid, setIsIbanValid] = useState(false);
   const [isNameValid, setIsNameValid] = useState(false);
   const [requestError, setRequestError] = useState(false);
+  const [displayInputErrors, setDisplayInputErrors] = useState(false);
   const [isLoading, setLoading] = useState(false);
   useEffect(() => {
     if (name && iban && bic)
@@ -31,17 +32,23 @@ function RefundBank({ selectPage }) {
       e.target.blur();
     }
   };
+
   function onSubmit() {
-    setLoading(true);
-    sendBankInformation(name, iban, bic)
-      .then(() => {
-        setLoading(false);
-        navigate("/success-email");
-      })
-      .catch((err) => {
-        setRequestError(true);
-        setLoading(false);
-      });
+    if (isValid) {
+      setDisplayInputErrors(false);
+      setLoading(true);
+      sendBankInformation(name, iban, bic)
+        .then(() => {
+          setLoading(false);
+          navigate("/success-email");
+        })
+        .catch((err) => {
+          setRequestError(true);
+          setLoading(false);
+        });
+    } else {
+      setDisplayInputErrors(true);
+    }
   }
 
   function RefundIntroContent() {
@@ -63,6 +70,7 @@ function RefundBank({ selectPage }) {
             handleInput={setName}
             errorMessage={t("refund.bank.nameerror")}
             setIsValid={setIsNameValid}
+            displayErrors={displayInputErrors}
           />
 
           <InputText
@@ -79,6 +87,7 @@ function RefundBank({ selectPage }) {
             handleInput={setIban}
             errorMessage={t("refund.bank.ibanerror")}
             setIsValid={setIsIbanValid}
+            displayErrors={displayInputErrors}
           />
           <InputText
             autoFocus={true}
@@ -93,6 +102,7 @@ function RefundBank({ selectPage }) {
             handleInput={setBic}
             errorMessage={t("refund.bank.bicerror")}
             setIsValid={setIsBicValid}
+            displayErrors={displayInputErrors}
           />
           {isLoading && <Loading />}
           {requestError && (
@@ -109,7 +119,7 @@ function RefundBank({ selectPage }) {
           <Button
             type="submit"
             text={t("general.next")}
-            enable={isValid}
+            enable={name && bic && iban}
             doAction={() => onSubmit()}
           />
         </div>

@@ -18,22 +18,29 @@ function RefundPaypal({ selectPage }) {
   const [isValid, setIsValid] = useState(false);
   const [identicalEmails, setIdenticalEmails] = useState(true);
   const [isLoading, setLoading] = useState(false);
+  const [displayInputErrors, setDisplayInputErrors] = useState(false);
+
   const onEnter = (e) => {
     if (e.key === "Enter") {
       e.target.blur();
     }
   };
   function onSubmit() {
-    setLoading(true);
-    sendPaypalInformation(email)
-      .then(() => {
-        setLoading(false);
-        navigate("/success-email");
-      })
-      .catch((err) => {
-        setLoading(false);
-        setRequestError(true);
-      });
+    if (isValid) {
+      setDisplayInputErrors(false);
+      setLoading(true);
+      sendPaypalInformation(email)
+        .then(() => {
+          setLoading(false);
+          navigate("/success-email");
+        })
+        .catch((err) => {
+          setLoading(false);
+          setRequestError(true);
+        });
+    } else {
+      setDisplayInputErrors(true);
+    }
   }
 
   function handleEmail(email) {
@@ -76,6 +83,7 @@ function RefundPaypal({ selectPage }) {
               handleInput={handleEmail}
               errorMessage={t("refund.intro.error")}
               setIsValid={setIsValid}
+              displayErrors={displayInputErrors}
             />
             <InputText
               autoFocus={true}
@@ -90,9 +98,10 @@ function RefundPaypal({ selectPage }) {
               handleInput={handleConfirmEmail}
               errorMessage={t("refund.intro.error")}
               setIsValid={setIsValid}
+              displayErrors={displayInputErrors}
             />
             <>
-              {email && confirmEmail && !identicalEmails && (
+              {displayInputErrors && !identicalEmails && (
                 <ErrorMessage message={t("refund.paypal.error")} />
               )}
               {isLoading && <Loading />}
@@ -111,7 +120,7 @@ function RefundPaypal({ selectPage }) {
           />
           <Button
             text={t("general.next")}
-            enable={isValid && identicalEmails}
+            enable={email && confirmEmail}
             doAction={() => onSubmit()}
           />
         </div>

@@ -14,6 +14,7 @@ function RefundIntro({ selectPage }) {
   const [email, setEmail] = useState("");
   const [isValid, setIsValid] = useState(false);
   const [isLoading, setLoading] = useState(false);
+  const [displayInputErrors, setDisplayInputErrors] = useState(false);
   const onEnter = (e) => {
     if (e.key === "Enter") {
       e.target.blur();
@@ -23,17 +24,22 @@ function RefundIntro({ selectPage }) {
     setEmail(email);
   }
   function onSubmit() {
-    setLoading(true);
-    setRequestError(false);
-    sendEmailForRefund(email)
-      .then(() => {
-        setLoading(false);
-        selectPage(refundPages.CHOICES);
-      })
-      .catch((err) => {
-        setLoading(false);
-        setRequestError(true);
-      });
+    if (isValid) {
+      setDisplayInputErrors(false);
+      setLoading(true);
+      setRequestError(false);
+      sendEmailForRefund(email)
+        .then(() => {
+          setLoading(false);
+          selectPage(refundPages.CHOICES);
+        })
+        .catch((err) => {
+          setLoading(false);
+          setRequestError(true);
+        });
+    } else {
+      setDisplayInputErrors(true);
+    }
   }
   const [requestError, setRequestError] = useState(false);
 
@@ -60,6 +66,7 @@ function RefundIntro({ selectPage }) {
             handleInput={handleEmail}
             errorMessage={t("refund.intro.error")}
             setIsValid={setIsValid}
+            displayErrors={displayInputErrors}
           />
           <label>{t("refund.intro.label")}</label>
           {isLoading && <Loading />}
@@ -69,7 +76,7 @@ function RefundIntro({ selectPage }) {
           <div className="button-area">
             <Button
               text={t("general.next")}
-              enable={isValid}
+              enable={email}
               doAction={() => onSubmit()}
             />
           </div>

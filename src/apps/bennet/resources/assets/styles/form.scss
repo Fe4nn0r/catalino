@@ -7,7 +7,7 @@ form {
   flex-direction: column;
 
   input[type="text"] {
-    padding: 10px;
+    padding: 0px 10px 10px 0;
     background-color: $color-primary;
     border: none;
     color: $color-secondary;
@@ -17,8 +17,16 @@ form {
     width: 378.83px;
     text-align: center;
   }
+  .top-placeholder {
+    width: 378.83px;
+    min-height: 19px;
+  }
+  input[type="text"]:focus {
+    border-bottom: 2px solid $color-secondary;
+  }
 
-  input::-webkit-input-placeholder {
+  input::-webkit-input-placeholder,
+  .top-placeholder {
     color: $color-secondary;
     font-weight: 600;
     font-size: 14px;
@@ -78,8 +86,12 @@ form {
       max-width: 230px;
       font-size: 9px;
     }
+    .top-placeholder {
+      width: 230px;
+    }
 
-    input::-webkit-input-placeholder {
+    input::-webkit-input-placeholder,
+    .top-placeholder {
       font-size: 9px;
     }
 
@@ -115,8 +127,12 @@ form {
       max-width: 170px;
       font-size: 9px;
     }
+    .top-placeholder {
+      width: 170px;
+    }
 
-    input::-webkit-input-placeholder {
+    input::-webkit-input-placeholder,
+    .top-placeholder {
       font-size: 9px;
     }
 

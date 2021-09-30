@@ -6,10 +6,12 @@ import deleteImg from "../../../resources/assets/img/delete.png";
 import { useForm } from "react-hook-form";
 
 function StepperInput({ label, type, attribute, fillData, defaultValue }) {
-  const { register } = useForm({
+  const { register, watch } = useForm({
     mode: "onChange",
     reValidateMode: "onChange",
   });
+  const showPlaceHolder = watch(label);
+
   const [uploadedFileName, setUploadedFileName] = useState();
   useEffect(() => {
     if (type === "upload" && defaultValue) {
@@ -75,17 +77,20 @@ function StepperInput({ label, type, attribute, fillData, defaultValue }) {
         />
       </>
     ) : (
-      <input
-        defaultValue={defaultValue}
-        autoFocus={true}
-        type="text"
-        placeholder={label}
-        autoComplete="off"
-        {...register(label, {
-          required: false,
-          validate: handleInput,
-        })}
-      />
+      <>
+        <div className="top-placeholder">{showPlaceHolder ? label : ""}</div>
+        <input
+          defaultValue={defaultValue}
+          autoFocus={true}
+          type="text"
+          placeholder={label}
+          autoComplete="off"
+          {...register(label, {
+            required: false,
+            validate: handleInput,
+          })}
+        />
+      </>
     );
   }
 
