@@ -8,6 +8,7 @@ import StepperInput from "./StepperInput";
 function Stepper({
   id,
   totalSteps,
+  stepNumber,
   title,
   inputs,
   stepperNavigation,
@@ -105,7 +106,10 @@ function Stepper({
   function StepperContent() {
     return (
       <>
-        <div className="subtitle">{title}</div>
+        <div className="subtitle">
+          {stepNumber} <br />
+          {title}
+        </div>
         <div className="stepper-inputs">
           {inputs.map((stepInput) => (
             <StepperInput

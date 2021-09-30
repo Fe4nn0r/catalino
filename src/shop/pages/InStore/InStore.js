@@ -64,6 +64,7 @@ function InStore() {
         <Stepper
           id={pageIndex}
           totalSteps={stepperPages.length}
+          stepNumber={stepperPages[pageIndex].stepNumber}
           title={stepperPages[pageIndex].title}
           inputs={stepperPages[pageIndex].inputs}
           stepperNavigation={setSelectedInStorePage}
