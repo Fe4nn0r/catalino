@@ -1,18 +1,48 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
+  inStoreOfferId,
   inStoreBody,
   steps,
 } from "../../resources/inStore/instore-config.json";
 import Stepper from "./component/Stepper";
-import { sendInStoreInformation } from "../../../utils/catalinaRequests";
+import {
+  getOfferById,
+  sendInStoreInformation,
+} from "../../../utils/catalinaRequests";
 import { useNavigate } from "@reach/router";
+import { getAndApplyApiConfiguration } from "../../../utils/appApiConfiguration";
 
 function InStore() {
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
   const stepperPages = steps;
   const [selectedInStorePage, setSelectedInStorePage] = useState(0);
   const [inStoreInformationToSend, setInStoreInformationToSend] =
     useState(inStoreBody);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const offerId = urlParams.get("offerId")
+      ? urlParams.get("offerId")
+      : inStoreOfferId;
+    if (offerId) {
+      getOfferById(offerId)
+        .then((offer) => {
+          if (offer) {
+            getAndApplyApiConfiguration(offer);
+            let body = { offerId: offerId };
+            setInStoreInformationToSend(body);
+          } else {
+            navigate("/can-not-play");
+          }
+        })
+        .catch(() => {
+          navigate("/can-not-play");
+        });
+    } else {
+      navigate("/can-not-play");
+    }
+  }, []);
 
   function fillInStoreInformation(stepData) {
     let body = inStoreInformationToSend;
@@ -21,8 +51,8 @@ function InStore() {
     });
     setInStoreInformationToSend(body);
   }
+
   function sendFilledInformation() {
-    console.log("sending this body ", inStoreInformationToSend);
     sendInStoreInformation(inStoreInformationToSend);
     navigate("/");
   }

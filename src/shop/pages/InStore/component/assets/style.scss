@@ -9,6 +9,7 @@
   form {
     .inputFile {
       .uploadFile {
+        cursor: pointer;
         @media screen and (-ms-high-contrast: active),
           screen and (-ms-high-contrast: none) {
           margin-top: 16px;
@@ -59,6 +60,9 @@
       line-height: 27px;
       letter-spacing: 0.02em;
       color: #ffffff;
+      .deleteImg {
+        cursor: pointer;
+      }
     }
   }
 }

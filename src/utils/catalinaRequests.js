@@ -47,13 +47,20 @@ export function getCryptedAuthentication() {
 export function getOffer() {
   const actionPath =
     "/ecommerce/offers?retailer_id=" + localStorage.getItem("retailerId");
+  const offerId = localStorage.getItem("offerId");
   return httpGet(apiHost + actionPath, actionPath).then((offers) => {
-    return extractOffer(offers);
+    return extractOffer(offers, offerId);
+  });
+}
+export function getOfferById(offerId) {
+  const actionPath =
+    "/ecommerce/offers?retailer_id=" + localStorage.getItem("retailerId");
+  return httpGet(apiHost + actionPath, actionPath).then((offers) => {
+    return extractOffer(offers, offerId);
   });
 }
 
-function extractOffer(offers) {
-  const offerId = localStorage.getItem("offerId");
+function extractOffer(offers, offerId) {
   let availableOffer = null;
   offers.forEach((offer) => {
     console.log(offer.id.toString(), offerId);
@@ -236,9 +243,9 @@ export function sendInStoreInformation(body) {
   localStorage.setItem("retailerId", inStoreRetailerId);
   localStorage.setItem(
     "holderRef",
-    getEncryptedHolderRef(body.code_member.toString())
+    getEncryptedHolderRef(body.holder_ref.toString())
   );
-  localStorage.setItem("offerId", inStoreOfferId);
+  localStorage.setItem("offerId", body.offerId);
   const inStoreUrl =
     apiHost + "members/" + localStorage.getItem("memberId") + "/basket";
   return true;
