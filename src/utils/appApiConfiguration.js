@@ -9,7 +9,7 @@ export function getAndApplyApiConfiguration(offer) {
     offer.background_color;
   const startDate = getDate(offer.started_at);
   const endDate = getDate(offer.ended_at);
-  const offerTitle = offer.subtitle;
+  const offerTitle = offer.title;
   const offerFullDescription = offer.overview ? offer.overview : offer.subtitle;
 
   localStorage.setItem("bgDesktopImageUrl", offer.picture_url);
