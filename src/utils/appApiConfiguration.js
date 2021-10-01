@@ -10,9 +10,7 @@ export function getAndApplyApiConfiguration(offer) {
   const startDate = getDate(offer.started_at);
   const endDate = getDate(offer.ended_at);
   const offerTitle = offer.subtitle;
-  const offerFullDescription = offer.overview
-    ? offer.overview
-    : offer.title + " " + offer.subtitle;
+  const offerFullDescription = offer.overview ? offer.overview : offer.subtitle;
 
   localStorage.setItem("bgDesktopImageUrl", offer.picture_url);
   localStorage.setItem("footer", offer.carousel_pictures[0]);
