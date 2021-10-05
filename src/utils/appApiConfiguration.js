@@ -42,14 +42,16 @@ export async function getFooterImage() {
 }
 
 async function getImageIfExistOrReturnDefault(imgUrl, defaultUrl) {
-  return await fetch(imgUrl, { method: "HEAD", mode: "no-cors" })
-    .then(() => {
-      return imgUrl;
-    })
-    .catch((err) => {
-      console.error("Error:", err);
-      return defaultUrl;
-    });
+  if (imgUrl) {
+    return await fetch(imgUrl, { method: "HEAD", mode: "no-cors" })
+      .then(() => {
+        return imgUrl;
+      })
+      .catch((err) => {
+        console.error("Error:", err);
+        return defaultUrl;
+      });
+  } else return Promise.resolve(defaultUrl);
 }
 
 function getDate(date) {

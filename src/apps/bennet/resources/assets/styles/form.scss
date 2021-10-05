@@ -161,6 +161,7 @@ form {
 @include mq($until: mobile) {
   form {
     input[type="text"],
+    .top-placeholder,
     .error-message {
       max-width: 325.99px;
     }

@@ -18,6 +18,7 @@ import { useMediaQuery } from "react-responsive";
 import { getDesktopBackgroundLayer } from "../../../utils/appApiConfiguration";
 import mobileBackgroundLayer from "../../resources/assets/img/background-layer-mobile.png";
 import { useNavigate } from "@reach/router";
+import Loading from "../../components/Loading/Loading";
 
 const REDIRECTING_TIME = 2000;
 
@@ -36,6 +37,8 @@ function Game() {
 
     if (getHolderRef()) {
       authenticate();
+    } else {
+      navigate("/in-store");
     }
     getDesktopBackgroundLayer().then((res) =>
       setDesktopBackgroundImgLayer(res)
@@ -43,9 +46,11 @@ function Game() {
   }, []);
 
   function authenticate() {
-    getCryptedAuthentication().catch(() => {
-      navigate("/can-not-play");
-    });
+    getCryptedAuthentication()
+      .then(setAllowed(true))
+      .catch(() => {
+        navigate("/can-not-play");
+      });
   }
 
   useEffect(() => {
@@ -60,6 +65,7 @@ function Game() {
     }
   }, [isMobile, desktopBackgroundImgLayer]);
 
+  const [allowed, setAllowed] = useState(false);
   const [animated, setAnimated] = useState(false);
   let [winner, setWinner] = useState(false);
   let [gameEnded, setGameEnded] = useState(false);
@@ -102,7 +108,7 @@ function Game() {
   }
 
   function gameContent() {
-    return (
+    return allowed ? (
       <div className="display-game">
         <div className="game-container">
           <div className="game-content">
@@ -164,6 +170,8 @@ function Game() {
         </div>
         <div className="shop-and-play-layer" style={backgroundLayerStyle} />
       </div>
+    ) : (
+      <Loading />
     );
   }
 

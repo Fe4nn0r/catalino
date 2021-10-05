@@ -17,10 +17,12 @@ form {
     width: 378.83px;
     text-align: center;
   }
+
   .top-placeholder {
     width: 378.83px;
     min-height: 19px;
   }
+
   input[type="text"]:focus {
     border-bottom: 2px solid $color-secondary;
   }
@@ -86,6 +88,7 @@ form {
       max-width: 230px;
       font-size: 9px;
     }
+
     .top-placeholder {
       width: 230px;
     }
@@ -127,6 +130,7 @@ form {
       max-width: 170px;
       font-size: 9px;
     }
+
     .top-placeholder {
       width: 170px;
     }
@@ -161,6 +165,7 @@ form {
 @include mq($until: mobile) {
   form {
     input[type="text"],
+    .top-placeholder,
     .error-message {
       max-width: 325.99px;
     }
