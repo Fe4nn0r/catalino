@@ -9,7 +9,7 @@
   line-height: 60px;
   text-align: center;
   color: $color-secondary;
-  max-width: 389px;
+  max-width: 496px;
   @media screen and (-ms-high-contrast: active),
     screen and (-ms-high-contrast: none) {
     margin-top: 10px;
@@ -54,7 +54,7 @@
   .title {
     font-size: 40px;
     line-height: inherit;
-    max-width: 270px;
+    max-width: 350px;
   }
   .subtitle {
     font-size: 18px;
@@ -71,6 +71,7 @@
 @include mq($from: mobile, $and: mq($until: s-height, $media-feature: height)) {
   .title {
     font-size: 25px;
+    max-width: 200px;
   }
   .subtitle {
     font-size: 13px;
