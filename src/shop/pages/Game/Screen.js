@@ -101,7 +101,7 @@ function Screen({ animate, speed, screenNumber, winner, onFinish }) {
       case 1:
         return constructFruitsOrder([
           ico1,
-          ico2,
+          icoWin,
           ico3,
           ico4,
           ico5,
@@ -109,13 +109,13 @@ function Screen({ animate, speed, screenNumber, winner, onFinish }) {
           ico7,
           ico8,
           ico9,
-          icoWin,
+          ico2,
         ]);
       case 2:
         return constructFruitsOrder([
-          icoWin,
-          ico1,
           ico2,
+          ico1,
+          icoWin,
           ico3,
           ico4,
           ico5,
