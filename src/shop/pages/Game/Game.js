@@ -31,6 +31,9 @@ function Game() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    // register a shake event
+    window.addEventListener("shake", shakeEventDidOccur, false);
+
     if (getHolderRef()) {
       authenticate();
     }
@@ -38,11 +41,13 @@ function Game() {
       setDesktopBackgroundImgLayer(res)
     );
   }, []);
+
   function authenticate() {
     getCryptedAuthentication().catch(() => {
       navigate("/can-not-play");
     });
   }
+
   useEffect(() => {
     if (isMobile) {
       setBackgroundLayerStyle({
@@ -74,6 +79,10 @@ function Game() {
     }
   }, [isScreenFinished]);
 
+  //shake event callback
+  function shakeEventDidOccur() {
+    play();
+  }
   function play() {
     if (!animated) {
       leverPulled();
