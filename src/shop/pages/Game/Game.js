@@ -19,7 +19,7 @@ import { getDesktopBackgroundLayer } from "../../../utils/appApiConfiguration";
 import mobileBackgroundLayer from "../../resources/assets/img/background-layer-mobile.png";
 import { useNavigate } from "@reach/router";
 
-const REDIRECTING_TIME = 800;
+const REDIRECTING_TIME = 2000;
 
 function Game() {
   const [desktopBackgroundImgLayer, setDesktopBackgroundImgLayer] =
