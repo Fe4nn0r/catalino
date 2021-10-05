@@ -12,8 +12,8 @@ function Legal() {
         return legalJson.help;
       case "generalConditions":
         return legalJson.generalConditions;
-      case "legalNotice":
-        return legalJson.legalNotice;
+      case "legalNotices":
+        return legalJson.legalNotices;
       case "dataProtection":
         return legalJson.dataProtection;
       default:
