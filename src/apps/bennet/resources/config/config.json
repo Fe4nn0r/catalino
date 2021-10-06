@@ -5,5 +5,6 @@
   "dateFormat": "DD-MM-YYYY",
   "homePageId": "home-container",
   "queryMobile": "645px",
-  "refundChoicesEnabled": false
+  "refundChoicesEnabled": false,
+  "googleAnalyticsTrackingId": "UA-103xxxxx-xx"
 }
