@@ -9,6 +9,7 @@ import Button from "../../components/Button/Button";
 import {
   applyBasketAndGetWallet,
   getCryptedAuthentication,
+  getDecryptedHolderRef,
   getHolderRef,
 } from "../../../utils/catalinaRequests";
 import mobileHand from "../../resources/assets/img/mobile-ico.png";

@@ -7,7 +7,10 @@ import { useTranslation } from "react-i18next";
 import { useMediaQuery } from "react-responsive";
 import mobileBackgroundLayer from "../../resources/assets/img/background-layer-mobile.png";
 import config from "../../resources/config/config.json";
-import { getOffer } from "../../../utils/catalinaRequests";
+import {
+  getDecryptedHolderRef,
+  getOffer,
+} from "../../../utils/catalinaRequests";
 import Loading from "../../components/Loading/Loading";
 import {
   getAndApplyApiConfiguration,

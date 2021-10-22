@@ -85,7 +85,7 @@ export async function sendEmailForRefund(email) {
     email: email,
     holders: [
       {
-        ref: getHolderRef(),
+        ref: getDecryptedHolderRef(getHolderRef()),
         retailer_id: Number(getRetailerId()),
       },
     ],
@@ -229,6 +229,18 @@ export function getEncryptedHolderRef(holder_ref) {
   );
 
   return encrypted_source.toString();
+}
+export function getDecryptedHolderRef(holder_ref) {
+  const encrypted_source = CryptoJS.AES.decrypt(
+    holder_ref,
+    CryptoJS.enc.Utf8.parse(partner_key),
+    {
+      mode: CryptoJS.mode.ECB,
+      padding: CryptoJS.pad.Pkcs7,
+    }
+  );
+
+  return encrypted_source.toString().replaceAll(/3/gi, "");
 }
 
 export function sendInStoreInformation(body) {
