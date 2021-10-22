@@ -109,7 +109,7 @@ function Game() {
 
   function gameContent() {
     return allowed ? (
-      <div className="display-game">
+      <div className="display-screen">
         <div className="game-container">
           <div className="game-content">
             <div className="slot-machine">
