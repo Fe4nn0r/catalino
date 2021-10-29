@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import Home from "./shop/pages/Home/Home";
-import { googleAnalyticsTrackingId } from "./shop/resources/config/config.json";
+import { googleTagManagerId } from "./shop/resources/config/config.json";
 import { globalHistory } from "@reach/router";
 import ReactGA from "react-ga";
+import TagManager from "react-gtm-module";
 
 let Shake = require("shake.js");
 
@@ -13,13 +14,26 @@ function App() {
   }, []);
 
   function initializeGoogleAnalytics() {
-    ReactGA.initialize(googleAnalyticsTrackingId);
+    TagManager.initialize(googleTagManagerId);
+    //ReactGA.initialize(googleTagManagerId);
     globalHistory.listen(({ location }) => {
-      ReactGA.pageview(window.location.pathname + window.location.search);
+      //ReactGA.pageview(window.location.pathname + window.location.search);
+      window.dataLayer.push({
+        event: "pageview",
+        page: {
+          url: window.location.pathname + window.location.search,
+          title: window.location.pathname,
+        },
+      });
       console.log("Sending the visite", location.pathname + location.search);
     });
-    //First info collection
-    ReactGA.pageview(window.location.pathname + window.location.search);
+    window.dataLayer.push({
+      event: "pageview",
+      page: {
+        url: window.location.pathname + window.location.search,
+        title: window.location.pathname,
+      },
+    });
   }
   function initializeShaker() {
     //Shaker part
