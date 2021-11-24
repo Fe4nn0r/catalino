@@ -5,7 +5,6 @@ var partner_secret = "3c1931161ae51ef1a168a82fe7f0eba3";
 var subscription_key = "2fb179f5556c471f8ea8ea9c77dd2e50";
 var partner_id = 9;
 var retailer_id = 1;
-var category_id = 10;
 
 var bannerId = "banner-promo-catalina";
 var classNameElementSearchElement = "js-search-content";
@@ -212,13 +211,9 @@ async function initCatalina() {
   const data = await httpGet(
     host +
       "/ecommerce/offers?retailer_id=" +
-      retailer_id +
-      "&category_id=" +
-      category_id,
+      retailer_id ,
     "/ecommerce/offers?retailer_id=" +
-      retailer_id +
-      "&category_id=" +
-      category_id
+      retailer_id
   );
   var codePromoArray = data[0].products.map((e) => e.code);
   console.log("data API : ", data);
