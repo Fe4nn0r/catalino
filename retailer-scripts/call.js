@@ -11,16 +11,17 @@ var classNameElementSearchElement = 'js-search-content';
 var config = [
   {
     name: 'homepage',
-    url: 'http://www.in-tact.fr',
+    getUrl: (data, pageViewData) => '',
     style: 'width:100%;',
     xpath: '//*[@id="maincontent"]/div[3]/div',
     condition: (pageViewData) => {
       return pageViewData.page_path === '/';
     },
+    indexBanner: 0,
   },
   {
     name: 'categories',
-    url: 'http://www.in-tact.fr',
+    getUrl: (data, pageViewData) => '',
     style: 'width:100%;',
     xpath: "//div[contains(@class, 'product-grid js-search-content')]",
     condition: (pageViewData, codePromoArray) => {
@@ -29,10 +30,11 @@ var config = [
           isEligibleProductsInPage(codePromoArray)
       );
     },
+    indexBanner: 0,
   },
   {
     name: 'search',
-    url: 'http://www.in-tact.fr',
+    getUrl: (data, pageViewData) => '',
     style: 'width:100%;',
     xpath: "//div[contains(@class, 'product-grid js-search-content')]",
     condition: (pageViewData, codePromoArray) => {
@@ -41,10 +43,11 @@ var config = [
           isEligibleProductsInPage(codePromoArray)
       );
     },
+    indexBanner: 0,
   },
   {
     name: 'cart',
-    url: 'http://www.in-tact.fr',
+    getUrl: (data, pageViewData) => '',
     style: 'width:100%;margin-top:10px;',
     xpath: "//div[contains(@class, 'line-item-card-wrapper')]",
     condition: (pageViewData, codePromoArray) => {
@@ -55,13 +58,19 @@ var config = [
               .filter((value) => codePromoArray.includes(value)).length
       );
     },
+    indexBanner: 2,
   },
   {
     name: 'confirmation',
-    url: 'http://www.in-tact.fr',
+    getUrl: (data, pageViewData) => {
+      return 'https://shop-play-catalina.firebaseapp.com/?offerId='+data[0].id+'&retailerId='+retailer_id+'&holderRef='+pageViewData.user_id;
+    },
     style: 'width:100%;margin-bottom:20px;',
     xpath: "//*[@id='maincontent']/div[2]/div[4]/div",
-    condition: (pageViewData) => pageViewData.page_name === 'thankyou-page',
+    condition: (pageViewData) => {
+      return pageViewData.page_name === 'thankyou-page';
+    },
+    indexBanner: 2,
   },
 ];
 
@@ -76,17 +85,27 @@ function getElementByXpath(path) {
 }
 
 function addBanner(xPath, imgSrc, linkUrl, style) {
-  var link = document.createElement('a');
-  link.href = linkUrl;
-  link.target = '_BLANK';
-  link.id = bannerId;
-  var img = document.createElement('img');
-  img.src = imgSrc;
-  img.style = style;
-  img.className = 'banner-game';
-  link.appendChild(img);
-  var content = getElementByXpath(xPath);
-  content.parentNode.insertBefore(link, content);
+  if(linkUrl) {
+    var link = document.createElement('a');
+    link.href = linkUrl;
+    link.target = '_BLANK';
+    link.id = bannerId;
+    var img = document.createElement('img');
+    img.src = imgSrc;
+    img.style = style;
+    img.className = 'banner-game';
+    link.appendChild(img);
+    var content = getElementByXpath(xPath);
+    content.parentNode.insertBefore(link, content);
+  }else{
+    var img = document.createElement('img');
+    img.src = imgSrc;
+    img.style = style;
+    img.className = 'banner-game';
+    var content = getElementByXpath(xPath);
+    content.parentNode.insertBefore(img, content);
+  }
+
 }
 
 function isEligibleProductsInPage(arrayIds) {
@@ -200,8 +219,8 @@ function showOrHideBanner(data, pageViewData, codePromoArray) {
     if (currentConfig.condition(pageViewData, codePromoArray)) {
       addBanner(
           currentConfig.xpath,
-          data[0].carousel_pictures[1],
-          currentConfig.url,
+          data[0].carousel_pictures[currentConfig.indexBanner],
+          currentConfig.getUrl(data, pageViewData),
           currentConfig.style
       );
       console.log('show banner : ', currentConfig.name, currentConfig.style);
@@ -215,12 +234,18 @@ function returnPageViewData() {
 
 async function initCatalina() {
   var pageViewData = returnPageViewData();
+  var userID = pageViewData.user_id;
+  var callUser = '';
+  if(userID) {
+    callUser = '&card_number=' + userID;
+  }
+
   const data = await httpGet(
       host +
       '/ecommerce/offers?retailer_id=' +
-      retailer_id,
+      retailer_id + callUser,
       '/ecommerce/offers?retailer_id=' +
-      retailer_id
+      retailer_id + callUser
   );
   var codePromoArray = data[0].products.map((e) => e.code);
   console.log('data API : ', data);
