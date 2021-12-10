@@ -8,6 +8,7 @@ var retailer_id = 1;
 
 var bannerId = 'banner-promo-catalina';
 var classNameElementSearchElement = 'js-search-content';
+var classNameElementCartElement = 'line-item-card-wrapper';
 var config = [
   {
     name: 'homepage',
@@ -54,11 +55,10 @@ var config = [
     style: 'margin-top:10px;',
     xpath: "//div[contains(@class, 'line-item-card-wrapper')]",
     condition: (pageViewData, codePromoArray) => {
+      const listPID = Array.from(document.getElementsByClassName('line-item-card')).map(e => e.className).map(e => e.split(' ')[2]).map(pid => pid.replace('pid-', ''));
       return (
           pageViewData.page_type === 'checkout' &&
-          !!pageViewData.cart_listItem
-              .split(',')
-              .filter((value) => codePromoArray.includes(value)).length
+          !!listPID.filter((value) => codePromoArray.includes(value)).length
       );
     },
     indexBanner: 2,
@@ -225,9 +225,12 @@ function isBannerShown() {
 }
 
 function showOrHideBanner(data, pageViewData, codePromoArray) {
+  let isBannerExist = false;
   config.forEach((currentConfig) => {
-    if (isBannerShown()) return;
     if (currentConfig.condition(pageViewData, codePromoArray)) {
+      console.log('show banner');
+      isBannerExist = true;
+      if(isBannerShown()) return ;
       addBanner(
           currentConfig.xpath,
           data[0].carousel_pictures[currentConfig.indexBanner],
@@ -238,6 +241,12 @@ function showOrHideBanner(data, pageViewData, codePromoArray) {
       console.log('show banner : ', currentConfig.name, currentConfig.style);
     }
   });
+
+  if(isBannerShown() && !isBannerExist) {
+    console.log('remove banner');
+    document.getElementById(bannerId).remove();
+  }
+
 }
 
 function returnPageViewData() {
@@ -267,11 +276,12 @@ async function initCatalina() {
 
   var target = document.getElementsByClassName(
       classNameElementSearchElement
-  )[0];
+  )[0] || document.getElementsByClassName(classNameElementCartElement)[0];
   if (target) {
     var MutationObserver =
         window.MutationObserver || window.WebKitMutationObserver;
     var observer = new MutationObserver(() => {
+      console.log('observer');
       showOrHideBanner(data, pageViewData, codePromoArray);
     });
     var config = { attributes: true, childList: true, characterData: true };
