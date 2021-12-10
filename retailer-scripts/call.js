@@ -12,17 +12,18 @@ var config = [
   {
     name: 'homepage',
     getUrl: (data, pageViewData) => '',
-    style: 'width:100%;',
-    xpath: '//*[@id="maincontent"]/div[3]/div',
+    style: 'max-width: 1920px;margin: auto;',
+    xpath: '//*[@id="maincontent"]/div[3]/div/div[1]/section',
     condition: (pageViewData) => {
       return pageViewData.page_path === '/';
     },
     indexBanner: 0,
+    target: '_self',
   },
   {
     name: 'categories',
     getUrl: (data, pageViewData) => '',
-    style: 'width:100%;',
+    style: '',
     xpath: "//div[contains(@class, 'product-grid js-search-content')]",
     condition: (pageViewData, codePromoArray) => {
       return (
@@ -31,11 +32,12 @@ var config = [
       );
     },
     indexBanner: 0,
+    target: '_self',
   },
   {
     name: 'search',
     getUrl: (data, pageViewData) => '',
-    style: 'width:100%;',
+    style: '',
     xpath: "//div[contains(@class, 'product-grid js-search-content')]",
     condition: (pageViewData, codePromoArray) => {
       return (
@@ -44,11 +46,12 @@ var config = [
       );
     },
     indexBanner: 0,
+    target: '_self',
   },
   {
     name: 'cart',
     getUrl: (data, pageViewData) => '',
-    style: 'width:100%;margin-top:10px;',
+    style: 'margin-top:10px;',
     xpath: "//div[contains(@class, 'line-item-card-wrapper')]",
     condition: (pageViewData, codePromoArray) => {
       return (
@@ -59,18 +62,20 @@ var config = [
       );
     },
     indexBanner: 2,
+    target: '_self',
   },
   {
     name: 'confirmation',
     getUrl: (data, pageViewData) => {
       return 'https://shop-play-catalina.firebaseapp.com/?offerId='+data[0].id+'&retailerId='+retailer_id+'&holderRef='+pageViewData.user_id;
     },
-    style: 'width:100%;margin-bottom:20px;',
-    xpath: "//*[@id='maincontent']/div[2]/div[4]/div",
+    style: 'margin-bottom:20px;',
+    xpath: "//*[@id=\"maincontent\"]/div[2]/div[4]",
     condition: (pageViewData) => {
       return pageViewData.page_name === 'thankyou-page';
     },
     indexBanner: 2,
+    target: '_BLANK',
   },
 ];
 
@@ -84,26 +89,32 @@ function getElementByXpath(path) {
   ).singleNodeValue;
 }
 
-function addBanner(xPath, imgSrc, linkUrl, style) {
+function addBanner(xPath, imgSrc, linkUrl, style, target) {
+  var content = getElementByXpath(xPath);
+  var parentDiv = document.createElement('div');
+
   if(linkUrl) {
     var link = document.createElement('a');
     link.href = linkUrl;
-    link.target = '_BLANK';
-    link.id = bannerId;
+    link.target = target;
     var img = document.createElement('img');
     img.src = imgSrc;
-    img.style = style;
+    img.style = 'width:100%;';
     img.className = 'banner-game';
     link.appendChild(img);
-    var content = getElementByXpath(xPath);
-    content.parentNode.insertBefore(link, content);
+    parentDiv.id = bannerId;
+    parentDiv.style = style;
+    parentDiv.appendChild(link);
+    content.parentNode.insertBefore(parentDiv, content);
   }else{
     var img = document.createElement('img');
     img.src = imgSrc;
-    img.style = style;
+    img.style = 'width:100%;';
     img.className = 'banner-game';
-    var content = getElementByXpath(xPath);
-    content.parentNode.insertBefore(img, content);
+    parentDiv.id = bannerId;
+    parentDiv.style = style;
+    parentDiv.appendChild(img);
+    content.parentNode.insertBefore(parentDiv, content);
   }
 
 }
@@ -221,7 +232,8 @@ function showOrHideBanner(data, pageViewData, codePromoArray) {
           currentConfig.xpath,
           data[0].carousel_pictures[currentConfig.indexBanner],
           currentConfig.getUrl(data, pageViewData),
-          currentConfig.style
+          currentConfig.style,
+          currentConfig.target,
       );
       console.log('show banner : ', currentConfig.name, currentConfig.style);
     }
